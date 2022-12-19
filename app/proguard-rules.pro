@@ -1,0 +1,3 @@
+-keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Food-E</string>
+    <string name="developer_heading">Developer:</string>
+    <string name="github_avatar">https://avatars.githubusercontent.com/SuhasDissa</string>
+    <string name="avatar_description">avatar description</string>
+    <string name="developer_name">Suhas Dissanayake</string>
+    <string name="developer_username">\@SuhasDissa</string>
+    <string name="github_icon_hint">github icon</string>
+    <string name="twitter_icon_hint">twitter icon</string>
+    <string name="update_description">Check Update:</string>
+    <string name="update_btn">UPDATE</string>
+    <string name="search_for_songs">Search For Additives or E-number</string>
+    <string name="no_results">No additives or E-number match the given search</string>
+    <string name="about_title">About</string>
+    <string name="settings_title">Settings</string>
+</resources>
