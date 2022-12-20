@@ -28,8 +28,8 @@ fun AboutScreen(modifier: Modifier = Modifier) {
             modifier
                 .fillMaxWidth()
                 .padding(innerPadding)
-                .padding(horizontal = 10.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+                .padding(horizontal = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
 
             Text(
@@ -40,13 +40,13 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                 Row(
                     modifier
                         .fillMaxWidth()
-                        .padding(20.dp),
+                        .padding(24.dp),
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     AsyncImage(
                         modifier = modifier
-                            .size(120.dp)
+                            .size(128.dp)
                             .clip(CircleShape),
                         model = ImageRequest.Builder(context = LocalContext.current)
                             .data(stringResource(R.string.github_avatar)).crossfade(true).build(),
@@ -73,7 +73,7 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                                 Icon(
                                     painterResource(R.drawable.ic_github),
                                     contentDescription = stringResource(R.string.github_icon_hint),
-                                    modifier.size(40.dp)
+                                    modifier.size(48.dp)
                                 )
                             }
                             IconButton(onClick = {
@@ -85,7 +85,7 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                                 Icon(
                                     painterResource(R.drawable.ic_twitter),
                                     contentDescription = stringResource(R.string.twitter_icon_hint),
-                                    modifier.size(40.dp)
+                                    modifier.size(48.dp)
                                 )
                             }
                         }
@@ -98,7 +98,7 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                 Row(
                     modifier
                         .fillMaxWidth()
-                        .padding(20.dp),
+                        .padding(24.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {

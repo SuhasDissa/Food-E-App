@@ -12,25 +12,30 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextCard(
-    modifier: Modifier = Modifier,
-    clickAction: () -> Unit,
-    mainText: String,
-    subText: String
+    modifier: Modifier = Modifier, clickAction: () -> Unit, mainText: String, subText: String
 ) {
     ElevatedCard(
-        onClick = { clickAction() },
-        modifier = modifier
-            .padding(4.dp)
+        onClick = { clickAction() }, modifier = modifier
+            .padding(8.dp)
             .fillMaxWidth()
 
     ) {
         Column(
-            modifier
-                .padding(10.dp)
+            modifier.padding(8.dp)
         ) {
-            Text(text = mainText, style = MaterialTheme.typography.titleLarge)
-            Spacer(modifier.height(10.dp))
-            Text(text = subText, style = MaterialTheme.typography.titleMedium)
+            Text(
+                text = mainText,
+                maxLines = 1,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Spacer(modifier.height(8.dp))
+            Text(
+                text = subText,
+                maxLines = 1,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }

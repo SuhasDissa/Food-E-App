@@ -1,4 +1,4 @@
-package app.suhasdissa.foode.ui.screens.songreader
+package app.suhasdissa.foode.ui.screens.additivedetails
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,7 +15,7 @@ import app.suhasdissa.foode.backend.viewmodels.AdditiveDetailViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SongView(
+fun AdditiveView(
     id: Int,
     modifier: Modifier = Modifier,
     additiveViewModel: AdditiveDetailViewModel = viewModel(factory = AdditiveDetailViewModel.Factory)
@@ -31,8 +31,8 @@ fun SongView(
             modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = 10.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp),
+                .padding(horizontal = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
@@ -42,7 +42,7 @@ fun SongView(
                     Column(
                         modifier
                             .fillMaxWidth()
-                            .padding(10.dp)
+                            .padding(16.dp)
                     ) {
                         Text(additive.title, style = MaterialTheme.typography.titleLarge)
                         Text(additive.eCode, style = MaterialTheme.typography.titleSmall)
@@ -56,7 +56,7 @@ fun SongView(
                     Column(
                         modifier
                             .fillMaxWidth()
-                            .padding(10.dp)
+                            .padding(16.dp)
                     ) {
                         SelectionContainer(modifier.fillMaxWidth()) {
                             Text(additive.info, style = MaterialTheme.typography.bodyLarge)

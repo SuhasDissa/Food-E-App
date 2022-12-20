@@ -8,7 +8,7 @@ import app.suhasdissa.foode.ui.screens.home.HomeScreen
 import app.suhasdissa.foode.ui.screens.home.search.SearchScreen
 import app.suhasdissa.foode.ui.screens.settings.SettingsScreen
 import app.suhasdissa.foode.ui.screens.settings.about.AboutScreen
-import app.suhasdissa.foode.ui.screens.songreader.SongView
+import app.suhasdissa.foode.ui.screens.additivedetails.AdditiveView
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
@@ -47,7 +47,7 @@ fun AppNavHost(
         ) {
             val id = it.arguments?.getInt("SongID")
             if (id != null) {
-                SongView(id)
+                AdditiveView(id)
             }
         }
     }

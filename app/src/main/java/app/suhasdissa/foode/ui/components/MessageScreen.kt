@@ -14,10 +14,8 @@ fun MessageScreen(message: Int, modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize()
     ) {
-
         Text(
             stringResource(message), style = MaterialTheme.typography.bodyLarge
         )
-
     }
 }

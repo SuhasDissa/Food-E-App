@@ -17,7 +17,7 @@ fun CardGrid(
     LazyVerticalGrid(
         columns = GridCells.Adaptive(500.dp),
         modifier = modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(4.dp)
+        contentPadding = PaddingValues(8.dp)
     ) {
         items(items = songs) { item ->
             TextCard(

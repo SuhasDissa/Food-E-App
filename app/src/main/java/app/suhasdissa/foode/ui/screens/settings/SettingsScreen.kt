@@ -28,7 +28,7 @@ fun SettingsScreen(
             modifier
                 .fillMaxWidth()
                 .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             item {
                 SettingItem(
