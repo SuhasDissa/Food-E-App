@@ -1,11 +1,8 @@
-<p align="center">
+<div align="center">
   <img width="150" src="/logo.svg" alt="App icon">
-</p>
-
-<h1 align="center">Food-E App</h1>
-
-**Food-E** is a food additives database app
-
+  <h1 align="center">Food-E App</h1>
+  <b>Food-E</b> is a food additives database app
+</div>
 
 <div align="center">
 
@@ -15,8 +12,20 @@
 
 </div>
 
+---
+
+<p align="center">
+  <img src="./screenshots/Food-E-Screenshot1.png" width="30%" />
+  <img src="./screenshots/Food-E-Screenshot2.png" width="30%" />
+</p>
+
+## Features
+- A Collection of more than 150 Food Additives
+- Search by additive name or E-number
+- Detailed info about each additive
+
 ## Installation
 
-Download the app now
-
-[![Download](https://img.shields.io/badge/Download-238636?style=for-the-badge&logoColor=white)](https://github.com/SuhasDissa/Food-E-App/releases)
+[<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png"
+    alt="Get it on GitHub"
+    height="80">](https://github.com/SuhasDissa/Food-E-App/releases/latest)
