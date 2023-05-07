@@ -13,7 +13,7 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 18
+          java-version: 17
       - name: Build APK
         run: bash ./gradlew assembleRelease --stacktrace
       - name: Upload APK
