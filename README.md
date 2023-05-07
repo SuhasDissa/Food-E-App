@@ -1,7 +1,9 @@
 <div align="center">
   <img width="150" src="/logo.svg" alt="App icon">
   <h1 align="center">Food-E App</h1>
-  <b>Food-E</b> is a food additives database app
+  <b>Food-E</b> is a food additives database app.
+  Contains comprehensive information about each additive.
+  App is using the <a href="https://github.com/SuhasDissa/E-Number-Database">E-Number-Database</a><br><br>
 </div>
 
 <div align="center">
