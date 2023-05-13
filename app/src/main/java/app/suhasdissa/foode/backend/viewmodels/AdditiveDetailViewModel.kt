@@ -21,7 +21,7 @@ class AdditiveDetailViewModel(private val additivesRepository: AdditivesReposito
         private set
 
 
-    fun getSong(id: Int) {
+    fun getAdditive(id: Int) {
         viewModelScope.launch {
             additive = additivesRepository.getAdditive(id)
         }
