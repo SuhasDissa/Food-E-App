@@ -1,4 +1,4 @@
-package app.suhasdissa.foode.ui.screens.home.search
+package app.suhasdissa.foode.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

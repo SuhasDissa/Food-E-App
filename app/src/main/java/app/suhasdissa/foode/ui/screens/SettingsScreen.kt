@@ -1,4 +1,4 @@
-package app.suhasdissa.foode.ui.screens.settings
+package app.suhasdissa.foode.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import app.suhasdissa.foode.ui.components.SettingItem
 import app.suhasdissa.foode.R
+import app.suhasdissa.foode.ui.components.SettingItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

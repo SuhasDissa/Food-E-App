@@ -1,4 +1,4 @@
-package app.suhasdissa.foode.ui.screens.settings.about
+package app.suhasdissa.foode.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape

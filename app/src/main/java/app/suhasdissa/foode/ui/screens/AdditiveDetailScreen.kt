@@ -1,8 +1,10 @@
-package app.suhasdissa.foode.ui.screens.additivedetails
+package app.suhasdissa.foode.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,29 +21,6 @@ import app.suhasdissa.foode.backend.viewmodels.AdditiveDetailViewModel
 @Composable
 fun AdditiveDetailScreen(
     id: Int,
-    modifier: Modifier = Modifier,
-    additiveViewModel: AdditiveDetailViewModel = viewModel(factory = AdditiveDetailViewModel.Factory)
-) {
-    val additive = additiveViewModel.additive
-    LaunchedEffect(Unit) {
-        additiveViewModel.getAdditive(id)
-    }
-    Scaffold(modifier = modifier.fillMaxSize(), topBar = {
-        TopAppBar(title = { Text(additive.eCode, overflow = TextOverflow.Ellipsis) })
-    }) { innerPadding ->
-        Column(
-            Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            AdditiveDetailBox(additive = additive)
-        }
-    }
-}
-
-@Composable
-fun AdditiveDetailView(
-    id: Int,
     additiveViewModel: AdditiveDetailViewModel = viewModel(factory = AdditiveDetailViewModel.Factory)
 ) {
     LaunchedEffect(id) {
@@ -52,9 +31,28 @@ fun AdditiveDetailView(
             Text("Select an Additive")
         }
     } else {
-        AdditiveDetailBox(additive = additiveViewModel.additive)
-    }
+        Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+            TopAppBar(title = {
+                Text(
+                    additiveViewModel.additive.eCode,
+                    overflow = TextOverflow.Ellipsis
+                )
+            })
+        }, floatingActionButton = {
+            FloatingActionButton(onClick = { }) {
+                Icon(imageVector = Icons.Filled.Star, contentDescription = "Search")
+            }
+        }) { innerPadding ->
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            ) {
 
+                AdditiveDetailBox(additive = additiveViewModel.additive)
+            }
+        }
+    }
 }
 
 @Composable

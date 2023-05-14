@@ -12,7 +12,9 @@ import app.suhasdissa.foode.backend.repositories.data.DetailedAdditive
 
 @Composable
 fun CardGrid(
-    songs: ArrayList<DetailedAdditive>, modifier: Modifier = Modifier, onClickTextCard: (url: Int) -> Unit
+    songs: ArrayList<DetailedAdditive>,
+    modifier: Modifier = Modifier,
+    onClickTextCard: (url: Int) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(500.dp),
