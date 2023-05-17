@@ -4,7 +4,7 @@
     <string name="avatar_description">Entwickler-Avatar</string>
     <string name="github_icon_hint">GitHub Symbol</string>
     <string name="twitter_icon_hint">Twitter Symbol</string>
-    <string name="update_description">Update prüfen:</string>
+    <string name="update_description">Auf Updates prüfen:</string>
     <string name="update_btn">UPDATE</string>
     <string name="search_for_additives">Suche nach Zusatzstoffen oder E-Nummer</string>
     <string name="no_results">Keine Zusatzstoffe oder E-Nummern gefunden</string>
