@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="twitter_icon_hint">twitter අයිකනය</string>
+    <string name="developer_heading">ක්‍රමලේඛක:</string>
+    <string name="avatar_description">ක්‍රමලේඛක චායාරූපය</string>
+    <string name="update_btn">යාවත්කාලින කරන්න</string>
+    <string name="search_for_additives">රසකාරක/වර්ණක හො E-කේතය සොයන්න</string>
+    <string name="no_results">දී ඇති සෙවුම් පද සදහා රසකාරක/වර්ණක නොමැත</string>
+    <string name="about_title">පිලිබද</string>
+    <string name="settings_title">සැකසුම්</string>
+    <string name="search_icon_hint">සොයන්න</string>
+    <string name="search_bar_text">සොයන්න</string>
+    <string name="developer_contact">ක්‍රමලේඛක සමග සම්බන්ද වීම</string>
+    <string name="github_icon_hint">github අයිකනය</string>
+    <string name="update_description">යාවත්කාලින පරික්ෂා කරන්න:</string>
+</resources>
