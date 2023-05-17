@@ -11,4 +11,6 @@
     <string name="developer_contact">Entwicklerkontakt</string>
     <string name="developer_heading">Entwickler:</string>
     <string name="avatar_description">Entwickler-Avatar</string>
+    <string name="github_icon_hint">GitHub Symbol</string>
+    <string name="twitter_icon_hint">Twitter Symbol</string>
 </resources>
