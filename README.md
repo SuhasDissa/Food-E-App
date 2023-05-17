@@ -34,6 +34,4 @@
     height="80">](https://github.com/SuhasDissa/Food-E-App/releases/latest)
 
 ## Translation
-<a href="https://hosted.weblate.org/projects/suhasdissa/food-e-app/">
-<img src="https://hosted.weblate.org/widgets/suhasdissa/-/food-e-app/287x66-grey.png" alt="Translation status" />
-</a>
+[Crowdin Translate](https://crowdin.com/project/food-e-app)
