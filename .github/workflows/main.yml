@@ -2,6 +2,8 @@ name: Create Apk
 
 on:
   push:
+   branches:
+      - main
 
 jobs:
   apk:
