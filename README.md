@@ -25,6 +25,7 @@
 - A Collection of more than 150 Food Additives
 - Search by additive name or E-number
 - Detailed info about each additive
+- Support for Large Screen tablets
 
 ## Installation
 
