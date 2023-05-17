@@ -26,7 +26,7 @@ fun AdditiveDetailScreen(
     LaunchedEffect(id) {
         if (id != 0) additiveViewModel.getAdditive(id)
     }
-    if (id == 0) {
+    if (additiveViewModel.additive.id == 0) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("Select an Additive")
         }

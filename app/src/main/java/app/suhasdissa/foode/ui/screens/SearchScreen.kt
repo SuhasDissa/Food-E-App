@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -19,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -29,7 +29,7 @@ import app.suhasdissa.foode.ui.components.CardGrid
 import app.suhasdissa.foode.ui.components.MessageScreen
 import kotlinx.coroutines.delay
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
@@ -59,13 +59,13 @@ fun SearchScreen(
                     .fillMaxWidth()
                     .focusRequester(focusRequester),
                 singleLine = true,
-                placeholder = { Text("Search") },
+                placeholder = { Text(stringResource(R.string.search_bar_text)) },
                 shape = CircleShape
             )
         }
 
         when (val searchState = searchViewModel.searchState) {
-            is SearchState.Empty -> MessageScreen(R.string.search_for_songs, modifier)
+            is SearchState.Empty -> MessageScreen(R.string.search_for_additives, modifier)
             is SearchState.Success -> if (searchState.additives.isEmpty()) {
                 MessageScreen(R.string.no_results, modifier)
             } else {

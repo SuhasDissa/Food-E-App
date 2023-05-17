@@ -35,14 +35,14 @@ fun HomeScreen(
             IconButton(onClick = { onClickSettings() }) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
-                    contentDescription = "Search"
+                    contentDescription = stringResource(R.string.search_icon_hint)
                 )
             }
 
         })
     }, floatingActionButton = {
         FloatingActionButton(onClick = { onClickSearch() }) {
-            Icon(imageVector = Icons.Filled.Search, contentDescription = "Search")
+            Icon(imageVector = Icons.Filled.Search, stringResource(R.string.search_icon_hint))
         }
     }) { innerPadding ->
         Column(

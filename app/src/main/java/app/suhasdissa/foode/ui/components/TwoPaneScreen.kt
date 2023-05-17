@@ -1,4 +1,4 @@
-package app.suhasdissa.foode.ui.screens
+package app.suhasdissa.foode.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
