@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
-import app.suhasdissa.foode.backend.repositories.data.DetailedAdditive
 import app.suhasdissa.foode.backend.viewmodels.AdditiveDetailViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
