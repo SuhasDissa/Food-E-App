@@ -8,11 +8,12 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.data.DetailedAdditive
 
 @Composable
 fun CardGrid(
-    songs: ArrayList<DetailedAdditive>,
+    songs: List<AdditivesEntity>,
     modifier: Modifier = Modifier,
     onClickTextCard: (url: Int) -> Unit
 ) {

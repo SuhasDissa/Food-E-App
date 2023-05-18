@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import app.suhasdissa.foode.backend.database.dao.AdditivesDao
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 
-@Database(entities = [AdditivesEntity::class], version = 1, exportSchema = true)
+@Database(entities = [AdditivesEntity::class], version = 2, exportSchema = false)
 abstract class ENumberDatabase : RoomDatabase() {
 
     abstract fun additivesDao(): AdditivesDao
@@ -21,6 +21,7 @@ abstract class ENumberDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext, ENumberDatabase::class.java, "database"
                 ).createFromAsset("databases/database.db")
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries().build()
                 INSTANCE = instance
                 instance

@@ -10,12 +10,12 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import app.suhasdissa.foode.FoodeApplication
+import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
-import app.suhasdissa.foode.backend.repositories.data.DetailedAdditive
 import kotlinx.coroutines.launch
 
 class MainAdditivesModel(private val additivesRepository: AdditivesRepository) : ViewModel() {
-    var additives: ArrayList<DetailedAdditive> by mutableStateOf(arrayListOf())
+    var additives: List<AdditivesEntity> by mutableStateOf(listOf())
         private set
 
     init {

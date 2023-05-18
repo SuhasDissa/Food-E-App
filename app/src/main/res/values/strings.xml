@@ -15,4 +15,5 @@
     <string name="search_icon_hint">Search</string>
     <string name="search_bar_text">Search</string>
     <string name="developer_contact">Developer Contact</string>
+    <string name="halal_status">Halal Status</string>
 </resources>

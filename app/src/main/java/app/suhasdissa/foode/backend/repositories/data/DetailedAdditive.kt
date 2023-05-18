@@ -5,5 +5,6 @@ data class DetailedAdditive(
     val eCode: String,
     val title: String,
     val info: String,
-    val eType: String
+    val eType: String,
+    val halalStatus : String
 )
