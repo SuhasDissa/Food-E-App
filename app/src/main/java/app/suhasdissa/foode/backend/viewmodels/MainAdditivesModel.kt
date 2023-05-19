@@ -18,19 +18,19 @@ class MainAdditivesModel(private val additivesRepository: AdditivesRepository) :
     var additives: List<AdditivesEntity> by mutableStateOf(listOf())
         private set
 
+    var listFavourite by mutableStateOf(false)
+
     init {
         getAdditives()
     }
 
     fun getAdditives() {
         viewModelScope.launch {
-            additives = additivesRepository.getAdditives()
-        }
-    }
-
-    fun getFavourites() {
-        viewModelScope.launch {
-            additives = additivesRepository.getFavourites()
+            if (listFavourite) {
+                additives = additivesRepository.getFavourites()
+            } else {
+                additives = additivesRepository.getAdditives()
+            }
         }
     }
 

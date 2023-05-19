@@ -37,20 +37,13 @@ fun HomeScreen(
     onClickSettings: () -> Unit,
     onClickSearch: () -> Unit
 ) {
-    var isFavourite by remember { mutableStateOf(false) }
+    var isFavourite by remember { mutableStateOf(additiveListViewModel.listFavourite) }
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
         TopAppBar(title = { Text(stringResource(R.string.app_name)) }, actions = {
             IconButton(onClick = {
-                when (isFavourite) {
-                    true -> {
-                        additiveListViewModel.getAdditives()
-                    }
-
-                    false -> {
-                        additiveListViewModel.getFavourites()
-                    }
-                }
                 isFavourite = !isFavourite
+                additiveListViewModel.listFavourite = isFavourite
+                additiveListViewModel.getAdditives()
             }) {
                 when (isFavourite) {
                     false -> Icon(
