@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import app.suhasdissa.foode.backend.database.dao.AdditivesDao
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 
-@Database(entities = [AdditivesEntity::class], version = 2, exportSchema = false)
+@Database(entities = [AdditivesEntity::class], version = 3, exportSchema = false)
 abstract class ENumberDatabase : RoomDatabase() {
 
     abstract fun additivesDao(): AdditivesDao

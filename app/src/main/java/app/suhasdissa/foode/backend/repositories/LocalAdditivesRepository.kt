@@ -16,4 +16,12 @@ class LocalAdditivesRepository(private val additivesDao: AdditivesDao) : Additiv
     override suspend fun search(search: String): List<AdditivesEntity> {
         return additivesDao.search(search)
     }
+
+    override suspend fun getFavourites(): List<AdditivesEntity> {
+        return additivesDao.getFavourites()
+    }
+
+    override suspend fun setFavourite(id: Int, favourite: Int) {
+        additivesDao.setFavourite(id, favourite)
+    }
 }

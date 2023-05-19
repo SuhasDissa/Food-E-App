@@ -49,7 +49,8 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                             .size(128.dp)
                             .clip(CircleShape),
                         model = ImageRequest.Builder(context = LocalContext.current)
-                            .data("https://avatars.githubusercontent.com/SuhasDissa").crossfade(true).build(),
+                            .data("https://avatars.githubusercontent.com/SuhasDissa")
+                            .crossfade(true).build(),
                         contentDescription = stringResource(R.string.avatar_description)
                     )
                     Column(

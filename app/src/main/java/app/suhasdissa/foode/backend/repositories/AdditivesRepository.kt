@@ -6,4 +6,8 @@ interface AdditivesRepository {
     suspend fun getAdditives(): List<AdditivesEntity>
     suspend fun getAdditive(id: Int): AdditivesEntity
     suspend fun search(search: String): List<AdditivesEntity>
+
+    suspend fun getFavourites(): List<AdditivesEntity>
+
+    suspend fun setFavourite(id: Int, favourite: Int)
 }

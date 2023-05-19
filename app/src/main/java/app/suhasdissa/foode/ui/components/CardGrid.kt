@@ -12,7 +12,7 @@ import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 
 @Composable
 fun CardGrid(
-    songs: List<AdditivesEntity>,
+    additives: List<AdditivesEntity>,
     modifier: Modifier = Modifier,
     onClickTextCard: (url: Int) -> Unit
 ) {
@@ -21,7 +21,7 @@ fun CardGrid(
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(8.dp)
     ) {
-        items(items = songs) { item ->
+        items(items = additives) { item ->
             TextCard(
                 clickAction = { onClickTextCard(item.id) },
                 mainText = item.eCode,
