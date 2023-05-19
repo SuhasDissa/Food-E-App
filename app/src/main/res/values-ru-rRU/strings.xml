@@ -4,14 +4,19 @@
     <string name="avatar_description">Аватар разработчика</string>
     <string name="github_icon_hint">Иконка GitHub</string>
     <string name="twitter_icon_hint">Иконка Twitter</string>
-    <string name="update_description">Проверить Обновления:</string>
+    <string name="update_description">Проверить обновления:</string>
     <string name="update_btn">ОБНОВИТЬ</string>
     <string name="search_for_additives">Поиск добавок или E-номера</string>
-    <string name="no_results">No additives or E-number match the given search</string>
-    <string name="about_title">About</string>
-    <string name="settings_title">Settings</string>
-    <string name="search_icon_hint">Search</string>
-    <string name="search_bar_text">Search</string>
-    <string name="developer_contact">Developer Contact</string>
-    <string name="halal_status">Halal Status</string>
+    <string name="no_results">Ни одна добавка или E-номер не соответствует заданному запросу</string>
+    <string name="about_title">Информация</string>
+    <string name="settings_title">Настройки</string>
+    <string name="search_icon_hint">Поиск</string>
+    <string name="search_bar_text">Поиск</string>
+    <string name="developer_contact">Контакты разработчика</string>
+    <string name="halal_status">Статус безопасности</string>
+    <string name="select_an_additive">Select an Additive</string>
+    <string name="copy_text_to_clipboard">Copy Text To Clipboard</string>
+    <string name="add_to_favourite">Add to favourites</string>
+    <string name="remove_from_favourite">Remove from favourites</string>
+    <string name="list_is_empty">List is empty</string>
 </resources>
