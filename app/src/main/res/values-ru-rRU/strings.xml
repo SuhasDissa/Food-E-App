@@ -14,4 +14,9 @@
     <string name="search_bar_text">Search</string>
     <string name="developer_contact">Developer Contact</string>
     <string name="halal_status">Halal Status</string>
+    <string name="select_an_additive">Select an Additive</string>
+    <string name="copy_text_to_clipboard">Copy Text To Clipboard</string>
+    <string name="add_to_favourite">Add to favourite</string>
+    <string name="remove_from_favourite">Remove from favourite</string>
+    <string name="list_is_empty">List is empty</string>
 </resources>

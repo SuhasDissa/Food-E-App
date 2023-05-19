@@ -4,8 +4,8 @@
     <string name="avatar_description">Developer Avatar</string>
     <string name="developer_name" translatable="false">Suhas Dissanayake</string>
     <string name="developer_username" translatable="false">\@SuhasDissa</string>
-    <string name="github_icon_hint">github icon</string>
-    <string name="twitter_icon_hint">twitter icon</string>
+    <string name="github_icon_hint">GitHub icon</string>
+    <string name="twitter_icon_hint">Twitter icon</string>
     <string name="update_description">Check Update:</string>
     <string name="update_btn">UPDATE</string>
     <string name="search_for_additives">Search For Additives or E-number</string>
@@ -16,4 +16,9 @@
     <string name="search_bar_text">Search</string>
     <string name="developer_contact">Developer Contact</string>
     <string name="halal_status">Halal Status</string>
+    <string name="select_an_additive">Select an Additive</string>
+    <string name="copy_text_to_clipboard">Copy Text To Clipboard</string>
+    <string name="add_to_favourite">Add to favourites</string>
+    <string name="remove_from_favourite">Remove from favourites</string>
+    <string name="list_is_empty">List is empty</string>
 </resources>

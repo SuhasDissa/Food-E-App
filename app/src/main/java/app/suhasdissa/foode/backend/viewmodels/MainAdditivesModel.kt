@@ -19,14 +19,18 @@ class MainAdditivesModel(private val additivesRepository: AdditivesRepository) :
         private set
 
     init {
-        getSongs()
+        getAdditives()
     }
 
-    private fun getSongs() {
+    fun getAdditives() {
         viewModelScope.launch {
             additives = additivesRepository.getAdditives()
+        }
+    }
 
-
+    fun getFavourites() {
+        viewModelScope.launch {
+            additives = additivesRepository.getFavourites()
         }
     }
 

@@ -1,13 +1,20 @@
 package app.suhasdissa.foode.ui.screens
 
+import android.content.ClipData
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.StarOutline
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -30,7 +37,7 @@ fun AdditiveDetailScreen(
     }
     if (additiveViewModel.additive.id == 0) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Select an Additive")
+            Text(stringResource(R.string.select_an_additive))
         }
     } else {
         Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
@@ -41,8 +48,45 @@ fun AdditiveDetailScreen(
                 )
             })
         }, floatingActionButton = {
-            FloatingActionButton(onClick = { }) {
-                Icon(imageVector = Icons.Filled.Star, contentDescription = "Search")
+            Column {
+                var isFavourite by remember { mutableStateOf(additiveViewModel.additive.isFavourite) }
+                FloatingActionButton(onClick = {
+                    val copyText =
+                        "${additiveViewModel.additive.eCode} : ${additiveViewModel.additive.title}\n\nHalal Status : ${additiveViewModel.additive.halalStatus}\n\n${additiveViewModel.additive.info}"
+                    val clip: ClipData = ClipData.newPlainText("Additive Details", copyText)
+                    additiveViewModel.getClipboard().setPrimaryClip(clip)
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.ContentCopy,
+                        contentDescription = stringResource(R.string.copy_text_to_clipboard)
+                    )
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                FloatingActionButton(onClick = {
+                    when (isFavourite) {
+                        0 -> {
+                            isFavourite = 1
+                            additiveViewModel.setFavourite(1)
+                        }
+
+                        else -> {
+                            isFavourite = 0
+                            additiveViewModel.setFavourite(0)
+                        }
+                    }
+                }) {
+                    when (isFavourite) {
+                        0 -> Icon(
+                            imageVector = Icons.Filled.StarOutline,
+                            contentDescription = stringResource(R.string.add_to_favourite)
+                        )
+
+                        else -> Icon(
+                            imageVector = Icons.Filled.Star,
+                            contentDescription = stringResource(R.string.remove_from_favourite)
+                        )
+                    }
+                }
             }
         }) { innerPadding ->
             Column(
@@ -91,7 +135,10 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                         .padding(16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(stringResource(R.string.halal_status), style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        stringResource(R.string.halal_status),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
                     Text(additive.halalStatus, style = MaterialTheme.typography.bodyLarge)
                 }
             }
@@ -125,7 +172,8 @@ fun AdditiveDetailBoxPreview() {
             eType = "Test",
             title = "Test Additive",
             info = "lorem ipsum fewa gewa gewar ywhg wrqa bhewar aewrab awegad awtaweg f awega ga werqwetaw ",
-            halalStatus = "Unknown"
+            halalStatus = "Unknown",
+            isFavourite = 0
         )
     )
 }
