@@ -2,7 +2,11 @@ name: Create Apk
 
 on:
   push:
-   branches:
+    paths-ignore:
+        - "README*.md"
+        - "app/src/res/**"
+        - ".github/**"
+    branches:
       - main
 
 jobs:
