@@ -2,8 +2,8 @@
 <resources>
     <string name="developer_heading">Developer:</string>
     <string name="avatar_description">Developer Avatar</string>
-    <string name="github_icon_hint">github icon</string>
-    <string name="twitter_icon_hint">twitter icon</string>
+    <string name="github_icon_hint">GitHub icon</string>
+    <string name="twitter_icon_hint">Twitter icon</string>
     <string name="update_description">Check Update:</string>
     <string name="update_btn">UPDATE</string>
     <string name="search_for_additives">Search For Additives or E-number</string>
