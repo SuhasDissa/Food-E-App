@@ -11,15 +11,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
-import app.suhasdissa.foode.utils.checkUpdate
+import app.suhasdissa.foode.backend.viewmodels.CheckUpdateViewModel
 import app.suhasdissa.foode.utils.openBrowser
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AboutScreen(modifier: Modifier = Modifier) {
+fun AboutScreen(
+    modifier: Modifier = Modifier,
+    updateViewModel: CheckUpdateViewModel = viewModel()
+) {
     val context = LocalContext.current
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
         TopAppBar(title = { Text(stringResource(R.string.about_title)) })
@@ -49,7 +53,7 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                             .size(128.dp)
                             .clip(CircleShape),
                         model = ImageRequest.Builder(context = LocalContext.current)
-                            .data("https://avatars.githubusercontent.com/SuhasDissa")
+                            .data("https://avatars.githubusercontent.com/SuhasDissa?size=128")
                             .crossfade(true).build(),
                         contentDescription = stringResource(R.string.avatar_description)
                     )
@@ -93,23 +97,37 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                     }
                 }
             }
-            Card(
-                modifier.fillMaxWidth()
-            ) {
-                Row(
+            Card {
+                Column(
                     modifier
                         .fillMaxWidth()
-                        .padding(24.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                        .padding(24.dp)
                 ) {
-                    Text(
-                        text = stringResource(R.string.update_description)
-                    )
-                    Button(onClick = { checkUpdate(context) }, enabled = false) {
+                    Text(stringResource(R.string.current_version) +" ${updateViewModel.currentVersion}")
+                    Text(stringResource(R.string.latest_version) +" ${updateViewModel.latestVersion}")
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(
+                        modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Text(
-                            stringResource(R.string.update_btn)
+                            text = stringResource(R.string.update_description)
                         )
+                        Button(
+                            onClick = {
+                                openBrowser(
+                                    context,
+                                    "https://github.com/SuhasDissa/Food-E-App/releases/latest"
+                                )
+                            },
+                            enabled = updateViewModel.isUpdateAvailable
+                        ) {
+                            Text(
+                                stringResource(R.string.update_btn)
+                            )
+                        }
                     }
                 }
             }
