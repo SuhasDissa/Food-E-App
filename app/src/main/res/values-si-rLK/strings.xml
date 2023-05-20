@@ -19,6 +19,6 @@
     <string name="add_to_favourite">ප්‍රියතමයන් වෙත එක් කරන්න</string>
     <string name="remove_from_favourite">ප්‍රියතමයන් වෙතින් ඉවත් කරන්න</string>
     <string name="list_is_empty">ලැයිස්තුව හිස්ය</string>
-    <string name="latest_version">Latest Version :</string>
-    <string name="current_version">"Current Version : "</string>
+    <string name="latest_version">නවතම අනුවාදය :</string>
+    <string name="current_version">"වත්මන් අනුවාදය :"</string>
 </resources>
