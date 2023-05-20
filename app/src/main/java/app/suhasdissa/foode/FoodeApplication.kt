@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.ClipboardManager
 import android.content.Context
 import app.suhasdissa.foode.backend.database.ENumberDatabase
+import app.suhasdissa.foode.utils.UpdateUtil
 
 class FoodeApplication : Application() {
     private val database by lazy { ENumberDatabase.getDatabase(this) }
@@ -13,5 +14,6 @@ class FoodeApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         container = DefaultAppContainer(database, clipboard)
+        UpdateUtil.getCurrentVersion(this.applicationContext)
     }
 }
