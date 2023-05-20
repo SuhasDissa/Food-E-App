@@ -19,6 +19,6 @@
     <string name="add_to_favourite">Zu Favoriten hinzufügen</string>
     <string name="remove_from_favourite">Aus Favoriten entfernen</string>
     <string name="list_is_empty">Keine Einträge vorhanden</string>
-    <string name="latest_version">Latest Version :</string>
-    <string name="current_version">"Current Version : "</string>
+    <string name="latest_version">Neueste Version:</string>
+    <string name="current_version">"Installierte Version: "</string>
 </resources>
