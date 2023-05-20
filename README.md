@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="150" src="/logo.svg" alt="App icon">
+  <img width="150" src="/logo.png" alt="App icon">
   <h1 align="center">Food-E App</h1>
   <b>Food-E</b> is a food additives database app.
   Contains comprehensive information about each additive.
