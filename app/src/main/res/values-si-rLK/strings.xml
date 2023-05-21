@@ -21,4 +21,6 @@
     <string name="list_is_empty">ලැයිස්තුව හිස්ය</string>
     <string name="latest_version">නවතම අනුවාදය :</string>
     <string name="current_version">"වත්මන් අනුවාදය :"</string>
+    <string name="halal_status_halal">හලාල්</string>
+    <string name="halal_status_doubtful">සැක සහිතය</string>
 </resources>

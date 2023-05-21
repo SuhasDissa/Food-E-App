@@ -21,4 +21,6 @@
     <string name="list_is_empty">Keine Einträge vorhanden</string>
     <string name="latest_version">Neueste Version:</string>
     <string name="current_version">"Installierte Version: "</string>
+    <string name="halal_status_halal">Halal</string>
+    <string name="halal_status_doubtful">Zweifelhaft</string>
 </resources>
