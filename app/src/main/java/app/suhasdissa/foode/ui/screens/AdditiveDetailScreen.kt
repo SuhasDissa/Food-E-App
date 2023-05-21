@@ -139,7 +139,12 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                         stringResource(R.string.halal_status),
                         style = MaterialTheme.typography.bodyLarge
                     )
-                    Text(additive.halalStatus, style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        when (additive.halalStatus) {
+                            "Halal" -> stringResource(R.string.halal_status_halal)
+                            else -> stringResource(R.string.halal_status_doubtful)
+                        }, style = MaterialTheme.typography.bodyLarge
+                    )
                 }
             }
         }
