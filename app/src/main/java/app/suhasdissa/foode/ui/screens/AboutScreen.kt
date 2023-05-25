@@ -105,14 +105,14 @@ fun AboutScreen(
                 ) {
                     Text(stringResource(R.string.current_version) +" ${updateViewModel.currentVersion}")
                     Text(stringResource(R.string.latest_version) +" ${updateViewModel.latestVersion}")
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     Row(
                         modifier
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
+                        Text(modifier = modifier.weight(0.5f),
                             text = stringResource(R.string.update_description)
                         )
                         Button(
