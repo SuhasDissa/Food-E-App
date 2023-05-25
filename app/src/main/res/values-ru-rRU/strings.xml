@@ -21,6 +21,6 @@
     <string name="list_is_empty">Список пуст</string>
     <string name="latest_version">Последняя версия :</string>
     <string name="current_version">"Текущая версия :"</string>
-    <string name="halal_status_halal">Halal</string>
-    <string name="halal_status_doubtful">Doubtful</string>
+    <string name="halal_status_halal">Безопасно</string>
+    <string name="halal_status_doubtful">Сомнительно</string>
 </resources>
