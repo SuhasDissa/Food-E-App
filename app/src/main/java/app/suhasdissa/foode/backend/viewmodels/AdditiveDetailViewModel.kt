@@ -20,7 +20,7 @@ class AdditiveDetailViewModel(
     private val clipboard: ClipboardManager
 ) : ViewModel() {
     var additive: AdditivesEntity by mutableStateOf(
-        AdditivesEntity(0, "", "", "", "", "", 0)
+        AdditivesEntity(0, "", "", "", "", 0, 0,0)
     )
         private set
 

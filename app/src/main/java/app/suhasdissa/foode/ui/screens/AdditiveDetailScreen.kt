@@ -6,6 +6,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.QuestionMark
+import androidx.compose.material.icons.filled.SentimentDissatisfied
+import androidx.compose.material.icons.filled.SentimentNeutral
+import androidx.compose.material.icons.filled.SentimentSatisfied
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarOutline
 import androidx.compose.material3.*
@@ -141,10 +145,47 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                     )
                     Text(
                         when (additive.halalStatus) {
-                            "Halal" -> stringResource(R.string.halal_status_halal)
+                            1 -> stringResource(R.string.halal_status_halal)
                             else -> stringResource(R.string.halal_status_doubtful)
                         }, style = MaterialTheme.typography.bodyLarge
                     )
+                }
+            }
+        }
+        item {
+            Card(
+                modifier.fillMaxWidth()
+            ) {
+                Row(
+                    modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        stringResource(R.string.health_rating),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+
+                    when (additive.healthRating) {
+                        1 -> Icon(
+                            imageVector = Icons.Filled.SentimentDissatisfied,
+                            contentDescription = stringResource(R.string.add_to_favourite)
+                        )
+                        2 -> Icon(
+                            imageVector = Icons.Filled.SentimentNeutral,
+                            contentDescription = stringResource(R.string.add_to_favourite)
+                        )
+                        3 -> Icon(
+                            imageVector = Icons.Filled.SentimentSatisfied,
+                            contentDescription = stringResource(R.string.add_to_favourite)
+                        )
+                        else -> Icon(
+                            imageVector = Icons.Filled.QuestionMark,
+                            contentDescription = stringResource(R.string.add_to_favourite)
+                        )
+                    }
+
                 }
             }
         }
@@ -177,8 +218,9 @@ fun AdditiveDetailBoxPreview() {
             eType = "Test",
             title = "Test Additive",
             info = "lorem ipsum fewa gewa gewar ywhg wrqa bhewar aewrab awegad awtaweg f awega ga werqwetaw ",
-            halalStatus = "Unknown",
-            isFavourite = 0
+            halalStatus = 0,
+            isFavourite = 0,
+            healthRating = 0
         )
     )
 }
