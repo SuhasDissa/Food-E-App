@@ -23,5 +23,5 @@
     <string name="current_version">"Installierte Version: "</string>
     <string name="halal_status_halal">Halal</string>
     <string name="halal_status_doubtful">Zweifelhaft</string>
-    <string name="health_rating">Health Rating :</string>
+    <string name="health_rating">Gesundheitseinstufung:</string>
 </resources>
