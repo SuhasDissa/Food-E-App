@@ -23,4 +23,5 @@
     <string name="current_version">"වත්මන් අනුවාදය :"</string>
     <string name="halal_status_halal">හලාල්</string>
     <string name="halal_status_doubtful">සැක සහිතය</string>
+    <string name="health_rating">Health Rating :</string>
 </resources>
