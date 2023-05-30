@@ -27,4 +27,8 @@
     <string name="halal_status_halal">Halal</string>
     <string name="halal_status_doubtful">Doubtful</string>
     <string name="health_rating">Health Rating :</string>
+    <string name="scan">Scan</string>
+    <string name="additives">Additives</string>
+    <string name="favourites">Favourites</string>
+    <string name="favourites_list_is_empty">You don\'t have any favourites yet</string>
 </resources>

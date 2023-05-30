@@ -1,6 +1,5 @@
 package app.suhasdissa.foode.backend.viewmodels
 
-import android.content.ClipboardManager
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,28 +14,26 @@ import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
 import kotlinx.coroutines.launch
 
-class AdditiveDetailViewModel(
-    private val additivesRepository: AdditivesRepository,
-    private val clipboard: ClipboardManager
-) : ViewModel() {
-    var additive: AdditivesEntity by mutableStateOf(
-        AdditivesEntity(0, "", "", "", "", 0, 0, 0)
-    )
+class MainAdditivesViewModel(private val additivesRepository: AdditivesRepository) : ViewModel() {
+    var additives: List<AdditivesEntity> by mutableStateOf(listOf())
+        private set
+    var favAdditives: List<AdditivesEntity> by mutableStateOf(listOf())
         private set
 
-    fun getClipboard(): ClipboardManager {
-        return clipboard
+    init {
+        getAdditives()
+        getFavouriteAdditives()
     }
 
-    fun getAdditive(id: Int) {
+    private fun getFavouriteAdditives() {
         viewModelScope.launch {
-            additive = additivesRepository.getAdditive(id)
+            favAdditives = additivesRepository.getFavourites()
         }
     }
 
-    fun setFavourite(favourite: Int) {
+    private fun getAdditives() {
         viewModelScope.launch {
-            additivesRepository.setFavourite(additive.id, favourite)
+            additives = additivesRepository.getAdditives()
         }
     }
 
@@ -44,12 +41,8 @@ class AdditiveDetailViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                val additivesRepository = application.container.additivesRepository
-                val clipboard = application.container.clipboardManager
-                AdditiveDetailViewModel(
-                    additivesRepository = additivesRepository,
-                    clipboard = clipboard
-                )
+                val songRepository = application.container.additivesRepository
+                MainAdditivesViewModel(additivesRepository = songRepository)
             }
         }
     }

@@ -13,5 +13,5 @@ data class AdditivesEntity(
     @ColumnInfo(name = "e_type") val eType: String,
     @ColumnInfo(name = "halal_status") val halalStatus: Int,
     @ColumnInfo(name = "favourite") val isFavourite: Int,
-    @ColumnInfo(name = "health_rating") val healthRating : Int
+    @ColumnInfo(name = "health_rating") val healthRating: Int
 )

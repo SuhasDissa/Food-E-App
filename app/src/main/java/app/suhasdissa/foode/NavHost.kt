@@ -8,12 +8,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.navDeepLink
 import app.suhasdissa.foode.ui.components.TwoPaneScreen
 import app.suhasdissa.foode.ui.screens.AboutScreen
 import app.suhasdissa.foode.ui.screens.AdditiveDetailScreen
-import app.suhasdissa.foode.ui.screens.HomeScreen
+import app.suhasdissa.foode.ui.screens.FoodFactScreen
 import app.suhasdissa.foode.ui.screens.SearchScreen
 import app.suhasdissa.foode.ui.screens.SettingsScreen
+import app.suhasdissa.foode.ui.screens.home.HomeScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
@@ -81,6 +83,16 @@ fun AppNavHost(
             val id = it.arguments?.getInt("AdditiveID")
             if (id != null) {
                 AdditiveDetailScreen(id)
+            }
+        }
+        composable(
+            route = FoodFactDetail.routeWithArgs,
+            arguments = FoodFactDetail.arguments,
+            deepLinks = listOf(navDeepLink { uriPattern = "foode://${FoodFactDetail.routeWithArgs}" })
+        ) {
+            val barcode = it.arguments?.getString("barcode")
+            if (barcode != null) {
+                FoodFactScreen(barcode)
             }
         }
     }

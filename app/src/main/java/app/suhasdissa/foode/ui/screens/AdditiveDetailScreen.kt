@@ -172,14 +172,17 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                             imageVector = Icons.Filled.SentimentDissatisfied,
                             contentDescription = stringResource(R.string.add_to_favourite)
                         )
+
                         2 -> Icon(
                             imageVector = Icons.Filled.SentimentNeutral,
                             contentDescription = stringResource(R.string.add_to_favourite)
                         )
+
                         3 -> Icon(
                             imageVector = Icons.Filled.SentimentSatisfied,
                             contentDescription = stringResource(R.string.add_to_favourite)
                         )
+
                         else -> Icon(
                             imageVector = Icons.Filled.QuestionMark,
                             contentDescription = stringResource(R.string.add_to_favourite)

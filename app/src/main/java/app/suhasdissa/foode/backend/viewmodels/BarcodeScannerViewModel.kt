@@ -10,27 +10,18 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import app.suhasdissa.foode.FoodeApplication
-import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
-import app.suhasdissa.foode.backend.repositories.AdditivesRepository
+import app.suhasdissa.foode.backend.models.Product
+import app.suhasdissa.foode.backend.repositories.OpenFoodFactRepository
 import kotlinx.coroutines.launch
 
-class MainAdditivesModel(private val additivesRepository: AdditivesRepository) : ViewModel() {
-    var additives: List<AdditivesEntity> by mutableStateOf(listOf())
-        private set
+class BarcodeScannerViewModel(private val openFoodFactRepository: OpenFoodFactRepository) :
+    ViewModel() {
 
-    var listFavourite by mutableStateOf(false)
+    var product by mutableStateOf<Product?>(null)
 
-    init {
-        getAdditives()
-    }
-
-    fun getAdditives() {
+    fun getProduct(barcode: String) {
         viewModelScope.launch {
-            if (listFavourite) {
-                additives = additivesRepository.getFavourites()
-            } else {
-                additives = additivesRepository.getAdditives()
-            }
+            product = openFoodFactRepository.getOnlineData(barcode)
         }
     }
 
@@ -38,8 +29,8 @@ class MainAdditivesModel(private val additivesRepository: AdditivesRepository) :
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                val songRepository = application.container.additivesRepository
-                MainAdditivesModel(additivesRepository = songRepository)
+                val openFoodFactRepository = application.container.openFoodFactRepository
+                BarcodeScannerViewModel(openFoodFactRepository = openFoodFactRepository)
             }
         }
     }
