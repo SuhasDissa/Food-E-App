@@ -32,4 +32,18 @@
     <string name="favourites">Favourites</string>
     <string name="favourites_list_is_empty">You don\'t have any favourites yet</string>
     <string name="product_image">Product Image</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="allergens">Allergens</string>
+    <string name="unknown_product_name">Unknown Product Name</string>
+    <string name="details">Details</string>
+    <string name="labels">Labels</string>
+    <string name="ingredients_origin">Ingredients Origin</string>
+    <string name="categories">Categories</string>
+    <string name="packaging">Packaging</string>
+    <string name="country_of_sale">Country Of Sale</string>
+    <string name="about_barcode">About Barcode</string>
+    <string name="barcode_content">Barcode Content</string>
+    <string name="overview">Overview</string>
+    <string name="food_product_information">Food Product Information</string>
+    <string name="barcode">Barcode:</string>
 </resources>

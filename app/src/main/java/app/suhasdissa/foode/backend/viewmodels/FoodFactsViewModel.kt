@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 sealed interface FoodFactUiState {
     data class Success(val product: Product) : FoodFactUiState
-    data class Error(val error:String) : FoodFactUiState
+    data class Error(val error: String) : FoodFactUiState
     object Loading : FoodFactUiState
 }
 
@@ -28,15 +28,14 @@ class FoodFactsViewModel(private val openFoodFactRepository: OpenFoodFactReposit
     fun getProduct(barcode: String) {
         viewModelScope.launch {
             foodFactUiState = FoodFactUiState.Loading
-            foodFactUiState = try{
+            foodFactUiState = try {
                 val product = openFoodFactRepository.getOnlineData(barcode)
                 product?.let {
                     FoodFactUiState.Success(it)
-                }?:FoodFactUiState.Error("Product Not Found")
-            }catch (_:retrofit2.HttpException){
+                } ?: FoodFactUiState.Error("Product Not Found")
+            } catch (_: retrofit2.HttpException) {
                 FoodFactUiState.Error("Product Not Found")
-            }
-            catch (e:Exception){
+            } catch (e: Exception) {
                 FoodFactUiState.Error(e.toString())
             }
         }
