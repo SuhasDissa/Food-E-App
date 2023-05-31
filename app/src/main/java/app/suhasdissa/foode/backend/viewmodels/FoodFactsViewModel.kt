@@ -14,14 +14,31 @@ import app.suhasdissa.foode.backend.models.Product
 import app.suhasdissa.foode.backend.repositories.OpenFoodFactRepository
 import kotlinx.coroutines.launch
 
-class BarcodeScannerViewModel(private val openFoodFactRepository: OpenFoodFactRepository) :
+sealed interface FoodFactUiState {
+    data class Success(val product: Product) : FoodFactUiState
+    data class Error(val error:String) : FoodFactUiState
+    object Loading : FoodFactUiState
+}
+
+class FoodFactsViewModel(private val openFoodFactRepository: OpenFoodFactRepository) :
     ViewModel() {
 
-    var product by mutableStateOf<Product?>(null)
+    var foodFactUiState: FoodFactUiState by mutableStateOf(FoodFactUiState.Loading)
 
     fun getProduct(barcode: String) {
         viewModelScope.launch {
-            product = openFoodFactRepository.getOnlineData(barcode)
+            foodFactUiState = FoodFactUiState.Loading
+            foodFactUiState = try{
+                val product = openFoodFactRepository.getOnlineData(barcode)
+                product?.let {
+                    FoodFactUiState.Success(it)
+                }?:FoodFactUiState.Error("Product Not Found")
+            }catch (_:retrofit2.HttpException){
+                FoodFactUiState.Error("Product Not Found")
+            }
+            catch (e:Exception){
+                FoodFactUiState.Error(e.toString())
+            }
         }
     }
 
@@ -30,7 +47,7 @@ class BarcodeScannerViewModel(private val openFoodFactRepository: OpenFoodFactRe
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
                 val openFoodFactRepository = application.container.openFoodFactRepository
-                BarcodeScannerViewModel(openFoodFactRepository = openFoodFactRepository)
+                FoodFactsViewModel(openFoodFactRepository = openFoodFactRepository)
             }
         }
     }

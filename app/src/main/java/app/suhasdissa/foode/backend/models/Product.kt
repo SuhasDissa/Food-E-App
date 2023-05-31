@@ -6,6 +6,7 @@ import openfoodfacts.github.scrachx.openfood.api.model.*
 
 @Serializable
 data class Product(
+    /*
     val images: Images? = null,
     val ingredients: List<Ingredient> = emptyList(),
 
@@ -183,7 +184,9 @@ data class Product(
 
     @SerialName("generic_name")
     val genericName: String? = null,
+     */
     val id: String? = null,
+    /*
     val _id: String? = null,
 
     @SerialName("image_front_small_url")
@@ -218,10 +221,10 @@ data class Product(
 
     @SerialName("image_thumb_url")
     val imageThumbUrl: String? = null,
-
+*/
     @SerialName("image_url")
     val imageUrl: String? = null,
-
+/*
     @SerialName("informers_tags")
     val informersTags: List<String> = emptyList(),
 
@@ -464,10 +467,10 @@ data class Product(
 
     @SerialName("producer_version_id")
     val producerVersionId: String? = null,
-
+*/
     @SerialName("product_name")
     val productName: String? = null,
-
+/*
     @SerialName("product_quantity")
     val productQuantity: String? = null,
 
@@ -549,8 +552,5 @@ data class Product(
     @SerialName("vitamins_tags")
     val vitaminsTags: List<String> = emptyList(),
     //var other: MutableMap<String, JsonElement> = LinkedHashMap(),
-) {
-//    fun setDetail(key: String, value: JsonElement) {
-//        other[key] = value
-//    }
-}
+*/
+)
