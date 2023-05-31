@@ -2,7 +2,6 @@ package app.suhasdissa.foode.backend.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonElement
 
 @Serializable
 data class Nutriments(
@@ -275,10 +274,5 @@ data class Nutriments(
 
     @SerialName("vitamin-d_unit")
     val vitaminDUnit: String? = null,
-
-    var other: MutableMap<String, JsonElement> = LinkedHashMap(),
 ) {
-    fun setDetail(key: String, value: JsonElement) {
-        other[key] = value
-    }
 }

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.api.model
+package app.suhasdissa.foode.backend.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

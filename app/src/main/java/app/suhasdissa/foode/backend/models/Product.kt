@@ -2,7 +2,6 @@ package app.suhasdissa.foode.backend.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import openfoodfacts.github.scrachx.openfood.api.model.*
 
 @Serializable
 data class Product(
@@ -13,10 +12,11 @@ data class Product(
     @SerialName("languages_codes")
     val languagesCodes: LanguagesCodes? = null,
 
+  */
     @SerialName("nutrient_levels")
     val nutrientLevels: NutrientLevels? = null,
     val nutriments: Nutriments? = null,
-
+/*
     @SerialName("selected_images")
     val selectedImages: SelectedImages? = null,
     val sources: List<Source> = emptyList(),
