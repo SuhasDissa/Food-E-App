@@ -28,4 +28,5 @@
     <string name="additives">Additives</string>
     <string name="favourites">Favourites</string>
     <string name="favourites_list_is_empty">You don\'t have any favourites yet</string>
+    <string name="product_image">Product Image</string>
 </resources>
