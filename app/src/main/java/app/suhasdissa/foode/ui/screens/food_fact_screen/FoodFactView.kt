@@ -55,15 +55,31 @@ fun ProductFactView(product: Product) {
                 style = MaterialTheme.typography.titleMedium
             )
         }
+        Tab(
+            selected = (pagerState.currentPage == 2),
+            onClick = {
+                scope.launch {
+                    pagerState.animateScrollToPage(
+                        2
+                    )
+                }
+            }) {
+            Text(
+                stringResource(R.string.nutrients),
+                Modifier.padding(10.dp),
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
     }
     HorizontalPager(
-        pageCount = 2,
+        pageCount = 3,
         state = pagerState,
         modifier = Modifier.fillMaxSize()
     ) { index ->
         when (index) {
             0 -> FoodFactOverview(product = product)
             1 -> FoodFactIngredients(product = product)
+            2 -> FoodFactNutrition(product = product)
         }
     }
 }

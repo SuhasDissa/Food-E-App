@@ -13,8 +13,8 @@ android {
         applicationId "app.suhasdissa.foode"
         minSdk 24
         targetSdk 33
-        versionCode 23
-        versionName "2.3"
+        versionCode 29
+        versionName "2.9"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -71,6 +71,8 @@ dependencies {
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.compose.ui:ui-tooling-preview'
     implementation 'androidx.compose.material3:material3'
+
+    debugImplementation 'androidx.compose.ui:ui-tooling'
 
     implementation 'androidx.compose.material3:material3-window-size-class:1.1.0'
 

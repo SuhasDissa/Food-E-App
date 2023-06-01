@@ -72,9 +72,9 @@ fun FoodFactOverview(product: Product) {
                                     .padding(horizontal = 8.dp)
                             )
                         }
-                        product.netWeightValue?.let { weight ->
+                        product.quantity?.let { weight ->
                             Text(
-                                text = weight + (product.netWeightUnit ?: ""),
+                                text = weight,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 8.dp)
@@ -122,7 +122,7 @@ fun FoodFactOverview(product: Product) {
                 style = MaterialTheme.typography.titleMedium
             )
         }
-        product.id?.let {
+        product.code?.let {
             item {
                 ItemCard(title = stringResource(R.string.barcode_content), subtitle = it)
             }

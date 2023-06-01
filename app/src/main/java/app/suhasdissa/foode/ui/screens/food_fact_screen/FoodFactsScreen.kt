@@ -34,7 +34,8 @@ fun FoodFactScreen(barcode: String) {
         Column(
             Modifier
                 .fillMaxSize()
-                .padding(paddingValues)) {
+                .padding(paddingValues)
+        ) {
             when (val state = foodFactsViewModel.foodFactUiState) {
                 is FoodFactUiState.Error -> {
                     Column(

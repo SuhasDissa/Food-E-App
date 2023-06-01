@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NutrientLevels(
-    private val fat: String? = null,
-    private val salt: String? = null,
+    val fat: String? = null,
+    val salt: String? = null,
     @SerialName("saturated-fat")
-    private val saturatedFat: String? = null,
-    private val sugars: String? = null,
+    val saturatedFat: String? = null,
+    val sugars: String? = null,
 )

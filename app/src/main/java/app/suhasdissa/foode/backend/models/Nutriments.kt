@@ -53,40 +53,40 @@ data class Nutriments(
 
     @SerialName("cholesterol_unit")
     val cholesterolUnit: String? = null,
-    val energy: Int = 0,
+    val energy: Float = 0f,
 
     @SerialName("energy-kcal")
-    val energyKcal: Int = 0,
+    val energyKcal: Float = 0f,
 
     @SerialName("energy-kj")
-    val energyKj: Int = 0,
+    val energyKj: Float = 0f,
 
     @SerialName("energy_value")
-    val energyValue: Int = 0,
+    val energyValue: Float = 0f,
 
     @SerialName("energy-kcal_value")
-    val energyKcalValue: Int = 0,
+    val energyKcalValue: Float = 0f,
 
     @SerialName("energy-kj_value")
-    val energyKjValue: Int = 0,
+    val energyKjValue: Float = 0f,
 
     @SerialName("energy_100g")
-    val energy100G: Int = 0,
+    val energy100G: Float = 0f,
 
     @SerialName("energy-kcal_100g")
-    val energyKcal100G: Int = 0,
+    val energyKcal100G: Float = 0f,
 
     @SerialName("energy-kj_100g")
-    val energyKj100G: Int = 0,
+    val energyKj100G: Float = 0f,
 
     @SerialName("energy_serving")
-    val energyServing: Int = 0,
+    val energyServing: Float = 0f,
 
     @SerialName("energy-kcal_serving")
-    val energyKcalServing: Double = 0.0,
+    val energyKcalServing: Float = 0f,
 
     @SerialName("energy-kj_serving")
-    val energyKjServing: Int = 0,
+    val energyKjServing: Float = 0f,
 
     @SerialName("energy_unit")
     val energyUnit: String? = null,
@@ -274,5 +274,32 @@ data class Nutriments(
 
     @SerialName("vitamin-d_unit")
     val vitaminDUnit: String? = null,
-) {
+)
+
+fun Nutriments.getAsTable(): NutritionTableData {
+    val tableHeading = Triple("Nutritional Composition", "For 100g", "Per Serving")
+    val tableData = listOf(
+        Triple("Energy (kJ)", "${this.energyKj100G} kJ", "${this.energyKjServing} kJ"),
+        Triple("Energy (kcal)", "${this.energyKcal100G} kcal", "${this.energyKcalServing} kcal"),
+        Triple("Fat", "${this.fat100G} ${this.fatUnit}", "${this.fatServing} ${this.fatUnit}"),
+        Triple(
+            "Carbohydrates",
+            "${this.carbohydrates100G} ${this.carbohydratesUnit}",
+            "${this.carbohydratesServing} ${this.carbohydratesUnit}"
+        ),
+        Triple(
+            "Fiber",
+            "${this.fiber100G} ${this.fiberUnit}",
+            "${this.fiberServing} ${this.fiberUnit}"
+        ),
+        Triple(
+            "Proteins",
+            "${this.proteins100G} ${this.proteinsUnit}",
+            "${this.proteinsServing} ${this.proteinsUnit}"
+        ),
+        Triple("Salt", "${this.salt100G} ${this.saltUnit}", "${this.saltServing} ${this.saltUnit}")
+
+    )
+    return NutritionTableData(tableHeading, tableData)
+
 }

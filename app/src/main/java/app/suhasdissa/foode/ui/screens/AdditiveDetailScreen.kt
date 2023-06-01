@@ -211,7 +211,7 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun AdditiveDetailBoxPreview() {
     AdditiveDetailBox(
