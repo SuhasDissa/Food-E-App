@@ -56,4 +56,14 @@
     <string name="moderate_quantity">Moderate Quantity</string>
     <string name="high_quantity">High Quantity</string>
     <string name="nutrients">Nutrients</string>
+    <string name="product_quality">Product Quality</string>
+    <string name="nutri_score">Nutri-Score</string>
+    <string name="nutri_score_label">Nutri Score Label</string>
+    <string name="nutritional_quality">Nutritional quality</string>
+    <string name="nova_group">NOVA Group</string>
+    <string name="food_process_status">Food process status</string>
+    <string name="nova_label">NOVA Label</string>
+    <string name="eco_score">Eco-Score</string>
+    <string name="environmental_impact">Environmental Impact</string>
+    <string name="eco_score_label">Eco Score Label</string>
 </resources>

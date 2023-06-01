@@ -28,3 +28,10 @@ object AdditiveDetail : Destination {
     val routeWithArgs = "$route/{AdditiveID}"
     val arguments = listOf(navArgument("AdditiveID") { type = NavType.IntType })
 }
+
+
+object FoodFactDetail : Destination {
+    override val route = "food_fact"
+    val routeWithArgs = "$route/{barcode}"
+    val arguments = listOf(navArgument("barcode") { type = NavType.StringType })
+}

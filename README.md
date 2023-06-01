@@ -16,6 +16,8 @@
 
 ---
 
+<details>
+  <summary>Screenshots</summary>
 <p align="center">
   <img src="https://github.com/SuhasDissa/Food-E-App/assets/64766434/22a304e3-0f0b-41a6-855f-7fd81bb8c7a9" width="30%" />
   <img src="https://github.com/SuhasDissa/Food-E-App/assets/64766434/4fb28dfb-25d5-4e81-b144-b89ebab1f31b" width="30%" />
@@ -25,6 +27,7 @@
   <img src="https://github.com/SuhasDissa/Food-E-App/assets/64766434/382e6e84-2d02-4e3f-8a88-12745977766d" width="45%" />
   <img src="https://github.com/SuhasDissa/Food-E-App/assets/64766434/d8d5a905-f4c1-4c0f-b584-e6bc145bb9d5" width="45%" />
 </p>
+</details>
 
 ## Features
 - A Collection of more than 150 Food Additives
@@ -40,3 +43,7 @@
 
 ## Translation
 [Crowdin Translate](https://crowdin.com/project/food-e-app)
+
+## For contributors
+
+[Read the Wiki Here](https://github.com/SuhasDissa/Food-E-App/wiki)

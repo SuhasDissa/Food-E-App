@@ -14,23 +14,26 @@ import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
 import kotlinx.coroutines.launch
 
-class MainAdditivesModel(private val additivesRepository: AdditivesRepository) : ViewModel() {
+class MainAdditivesViewModel(private val additivesRepository: AdditivesRepository) : ViewModel() {
     var additives: List<AdditivesEntity> by mutableStateOf(listOf())
         private set
-
-    var listFavourite by mutableStateOf(false)
+    var favAdditives: List<AdditivesEntity> by mutableStateOf(listOf())
+        private set
 
     init {
         getAdditives()
+        getFavouriteAdditives()
     }
 
-    fun getAdditives() {
+    private fun getFavouriteAdditives() {
         viewModelScope.launch {
-            if (listFavourite) {
-                additives = additivesRepository.getFavourites()
-            } else {
-                additives = additivesRepository.getAdditives()
-            }
+            favAdditives = additivesRepository.getFavourites()
+        }
+    }
+
+    private fun getAdditives() {
+        viewModelScope.launch {
+            additives = additivesRepository.getAdditives()
         }
     }
 
@@ -39,7 +42,7 @@ class MainAdditivesModel(private val additivesRepository: AdditivesRepository) :
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
                 val songRepository = application.container.additivesRepository
-                MainAdditivesModel(additivesRepository = songRepository)
+                MainAdditivesViewModel(additivesRepository = songRepository)
             }
         }
     }
