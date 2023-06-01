@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.models.Product
 import app.suhasdissa.foode.ui.components.ItemCard
+import app.suhasdissa.foode.ui.components.ItemCardImage
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
@@ -83,6 +84,45 @@ fun FoodFactOverview(product: Product) {
                     }
 
                 }
+            }
+        }
+        item {
+            Text(
+                text = stringResource(R.string.product_quality),
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+        product.nutriScore?.let {
+            item {
+                ItemCardImage(
+                    title = stringResource(R.string.nutri_score),
+                    subtitle = stringResource(R.string.nutritional_quality),
+                    imgUrl = "https://static.openfoodfacts.org/images/attributes/nutriscore-$it.svg",
+                    imageDescription = R.string.nutri_score_label,
+                    scoreValue = " $it"
+                )
+            }
+        }
+        product.novaGroups?.let {
+            item {
+                ItemCardImage(
+                    title = stringResource(R.string.nova_group),
+                    subtitle = stringResource(R.string.food_process_status),
+                    imgUrl = "https://static.openfoodfacts.org/images/attributes/nova-group-$it.svg",
+                    imageDescription = R.string.nova_label,
+                    scoreValue = " $it"
+                )
+            }
+        }
+        product.nutriScore?.let {
+            item {
+                ItemCardImage(
+                    title = stringResource(R.string.eco_score),
+                    subtitle = stringResource(R.string.environmental_impact),
+                    imgUrl = "https://static.openfoodfacts.org/images/attributes/ecoscore-$it.svg",
+                    imageDescription = R.string.eco_score_label,
+                    scoreValue = " $it"
+                )
             }
         }
         item {
