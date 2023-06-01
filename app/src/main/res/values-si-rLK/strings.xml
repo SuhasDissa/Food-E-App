@@ -43,4 +43,14 @@
     <string name="overview">Overview</string>
     <string name="food_product_information">Food Product Information</string>
     <string name="barcode">Barcode:</string>
+    <string name="nutrient_level_for_100g">Nutrient Level for 100g</string>
+    <string name="nutritional_facts">Nutritional Facts</string>
+    <string name="fat">Fat</string>
+    <string name="saturated_fat">Saturated Fat</string>
+    <string name="salt">Salt</string>
+    <string name="sugars">Sugars</string>
+    <string name="low_quantity">Low Quantity</string>
+    <string name="moderate_quantity">Moderate Quantity</string>
+    <string name="high_quantity">High Quantity</string>
+    <string name="nutrients">Nutrients</string>
 </resources>
