@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun ScanHistoryScreen() {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(text = "TODO: Barcode Scan History", color = MaterialTheme.colorScheme.tertiary)
     }
 

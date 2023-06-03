@@ -1,6 +1,5 @@
 package app.suhasdissa.foode.backend.viewmodels
 
-import android.content.ClipboardManager
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -11,32 +10,28 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import app.suhasdissa.foode.FoodeApplication
-import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
-import app.suhasdissa.foode.backend.repositories.AdditivesRepository
+import app.suhasdissa.foode.backend.database.entities.BarcodeEntity
+import app.suhasdissa.foode.backend.repositories.BarcodeHistoryRepository
 import kotlinx.coroutines.launch
 
-class AdditiveDetailViewModel(
-    private val additivesRepository: AdditivesRepository,
-    private val clipboard: ClipboardManager
-) : ViewModel() {
-    var additive: AdditivesEntity by mutableStateOf(
-        AdditivesEntity(0, "", "", "", "", 0, 0, 0)
-    )
+class BarcodeHistoryViewModel(private val barcodeHistoryRepository: BarcodeHistoryRepository) :
+    ViewModel() {
+    var history: List<BarcodeEntity> by mutableStateOf(listOf())
         private set
 
-    fun getClipboard(): ClipboardManager {
-        return clipboard
+    init {
+        getHistory()
     }
 
-    fun getAdditive(id: Int) {
+    private fun getHistory() {
         viewModelScope.launch {
-            additive = additivesRepository.getAdditive(id)
+            history = barcodeHistoryRepository.getAll()
         }
     }
 
-    fun setFavourite(favourite: Int) {
+    private fun addBarcode(barcode: BarcodeEntity) {
         viewModelScope.launch {
-            additivesRepository.setFavourite(additive.id, favourite)
+            barcodeHistoryRepository.saveBarcode(barcode)
         }
     }
 
@@ -44,10 +39,7 @@ class AdditiveDetailViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                AdditiveDetailViewModel(
-                    additivesRepository = application.container.additivesRepository,
-                    clipboard = application.container.clipboardManager
-                )
+                BarcodeHistoryViewModel(application.container.barcodeHistoryRepository)
             }
         }
     }

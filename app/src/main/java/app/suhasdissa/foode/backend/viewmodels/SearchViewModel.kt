@@ -32,8 +32,7 @@ class SearchViewModel(private val additivesRepository: AdditivesRepository) : Vi
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                val songRepository = application.container.additivesRepository
-                SearchViewModel(additivesRepository = songRepository)
+                SearchViewModel(application.container.additivesRepository)
             }
         }
     }

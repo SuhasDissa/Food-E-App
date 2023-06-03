@@ -45,8 +45,7 @@ class FoodFactsViewModel(private val openFoodFactRepository: OpenFoodFactReposit
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                val openFoodFactRepository = application.container.openFoodFactRepository
-                FoodFactsViewModel(openFoodFactRepository = openFoodFactRepository)
+                FoodFactsViewModel(application.container.openFoodFactRepository)
             }
         }
     }

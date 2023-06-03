@@ -41,8 +41,7 @@ class MainAdditivesViewModel(private val additivesRepository: AdditivesRepositor
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                val songRepository = application.container.additivesRepository
-                MainAdditivesViewModel(additivesRepository = songRepository)
+                MainAdditivesViewModel(application.container.additivesRepository)
             }
         }
     }

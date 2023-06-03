@@ -76,14 +76,17 @@ fun FoodFactIngredients(product: Product) {
         }
         product.allergens?.let {
             item {
-                ItemCard(title = stringResource(R.string.allergens), subtitle = it.replace("en:",""))
+                ItemCard(
+                    title = stringResource(R.string.allergens),
+                    subtitle = it.replace("en:", "")
+                )
             }
         }
         product.additivesTags.let {
             item {
                 ItemCard(
                     title = stringResource(R.string.additives),
-                    subtitle = it.joinToString(", ").replace("en:","")
+                    subtitle = it.joinToString(", ").replace("en:", "")
                 )
             }
         }

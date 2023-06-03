@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import app.suhasdissa.foode.utils.UpdateUtil
 import kotlinx.coroutines.launch
 
-class CheckUpdateViewModel() : ViewModel() {
+class CheckUpdateViewModel : ViewModel() {
     var latestVersion: Float? by mutableStateOf(null)
     val currentVersion = UpdateUtil.currentVersion
     var isUpdateAvailable by mutableStateOf(false)

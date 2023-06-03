@@ -16,11 +16,12 @@ import app.suhasdissa.foode.backend.models.NutritionTableData
 
 @Composable
 fun NutritionTable(table: NutritionTableData) {
-    Column() {
+    Column {
         Row(
             Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primary)) {
+                .background(MaterialTheme.colorScheme.primary)
+        ) {
             table.heading.let { col ->
                 Text(
                     col.first,
