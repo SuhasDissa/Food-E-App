@@ -87,7 +87,7 @@ fun BarcodeHistoryCard(
         onDismissRequest = { expanded = false }
     ) {
         DropdownMenuItem(
-            text = { Text("Remove Item") },
+            text = { Text(stringResource(R.string.remove_item)) },
             onClick = {
                 expanded = false
                 onClickRemove()

@@ -1,6 +1,5 @@
 package app.suhasdissa.foode.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
@@ -28,9 +27,7 @@ fun AboutScreen(
     val context = LocalContext.current
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
         TopAppBar(
-            title = { Text(stringResource(R.string.about_title)) },
-            modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer)
-        )
+            title = { Text(stringResource(R.string.about_title)) })
     }) { innerPadding ->
         Column(
             modifier

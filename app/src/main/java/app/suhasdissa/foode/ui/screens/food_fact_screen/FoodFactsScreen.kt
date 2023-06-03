@@ -1,6 +1,5 @@
 package app.suhasdissa.foode.ui.screens.food_fact_screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,8 +32,7 @@ fun FoodFactScreen(
     }
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         TopAppBar(
-            title = { Text(stringResource(R.string.food_product_information)) },
-            modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer)
+            title = { Text(stringResource(R.string.food_product_information)) }
         )
     }) { paddingValues ->
         Column(
