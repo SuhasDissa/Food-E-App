@@ -40,7 +40,7 @@ class FoodFactsViewModel(
                         addBarcode(
                             BarcodeEntity(
                                 code,
-                                it.genericName ?: "Unknown Product",
+                                it.productName ?: "Unknown Product",
                                 it.imageUrl ?: ""
                             )
                         )

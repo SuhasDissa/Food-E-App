@@ -79,19 +79,18 @@ fun BarcodeHistoryCard(
                         .padding(horizontal = 8.dp)
                 )
             }
-
-        }
-    }
-    DropdownMenu(
-        expanded = expanded,
-        onDismissRequest = { expanded = false }
-    ) {
-        DropdownMenuItem(
-            text = { Text(stringResource(R.string.remove_item)) },
-            onClick = {
-                expanded = false
-                onClickRemove()
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.remove_item)) },
+                    onClick = {
+                        expanded = false
+                        onClickRemove()
+                    }
+                )
             }
-        )
+        }
     }
 }

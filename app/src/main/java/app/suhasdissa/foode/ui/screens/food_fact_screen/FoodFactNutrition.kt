@@ -42,13 +42,13 @@ fun FoodFactNutrition(product: Product) {
                 }
             }
         }
-        item {
-            Text(
-                text = stringResource(R.string.nutrient_level_for_100g),
-                style = MaterialTheme.typography.titleMedium
-            )
-        }
         product.nutrientLevels?.let { nutrientLevels ->
+            item {
+                Text(
+                    text = stringResource(R.string.nutrient_level_for_100g),
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
             nutrientLevels.fat?.let {
                 item {
                     NutrientCard(

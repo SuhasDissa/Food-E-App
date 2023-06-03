@@ -24,7 +24,11 @@ fun ScanHistoryScreen(
         contentPadding = PaddingValues(vertical = 24.dp, horizontal = 16.dp)
     ) {
         items(items = barcodeHistoryViewModel.history) {
-            BarcodeHistoryCard(onClick = { onClickCard(it.barcode) }, onClickRemove = {barcodeHistoryViewModel.deleteItem(it)}, barcodeEntity = it)
+            BarcodeHistoryCard(
+                onClick = { onClickCard(it.barcode) },
+                onClickRemove = { barcodeHistoryViewModel.deleteItem(it) },
+                barcodeEntity = it
+            )
         }
     }
 
