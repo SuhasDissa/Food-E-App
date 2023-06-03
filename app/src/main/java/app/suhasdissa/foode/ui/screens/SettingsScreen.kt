@@ -1,5 +1,6 @@
 package app.suhasdissa.foode.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,7 +23,10 @@ fun SettingsScreen(
     onAboutClick: () -> Unit
 ) {
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
-        TopAppBar(title = { Text(stringResource(R.string.settings_title)) })
+        TopAppBar(
+            title = { Text(stringResource(R.string.settings_title)) },
+            modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer)
+        )
     }) { innerPadding ->
         LazyColumn(
             modifier

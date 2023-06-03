@@ -1,6 +1,7 @@
 package app.suhasdissa.foode.ui.screens
 
 import android.content.ClipData
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -50,7 +51,7 @@ fun AdditiveDetailScreen(
                     additiveViewModel.additive.eCode,
                     overflow = TextOverflow.Ellipsis
                 )
-            })
+            }, modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer))
         }, floatingActionButton = {
             Column {
                 var isFavourite by remember { mutableStateOf(additiveViewModel.additive.isFavourite) }
