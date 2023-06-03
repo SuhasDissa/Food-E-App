@@ -7,4 +7,6 @@ interface BarcodeHistoryRepository {
     suspend fun getAll(): List<BarcodeEntity>
 
     suspend fun saveBarcode(barcode: BarcodeEntity)
+
+    suspend fun delete(barcode: BarcodeEntity)
 }

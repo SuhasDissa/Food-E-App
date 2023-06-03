@@ -51,7 +51,9 @@ import app.suhasdissa.foode.R
 fun HomeScreen(
     onClickTextCard: (url: Int) -> Unit,
     onClickSettings: () -> Unit,
-    onClickSearch: () -> Unit
+    onClickSearch: () -> Unit,
+    onClickBarcodeCard: (barcode: String) -> Unit
+
 ) {
     var cameraPermission by remember { mutableStateOf(false) }
     val launcher = rememberLauncherForActivityResult(
@@ -149,7 +151,7 @@ fun HomeScreen(
                 FavouritesScreen(onClickTextCard = onClickTextCard)
             }
             composable(HomeScreen.Scan.route) {
-                ScanHistoryScreen()
+                ScanHistoryScreen(onClickCard = onClickBarcodeCard)
             }
         }
     }

@@ -29,9 +29,10 @@ class BarcodeHistoryViewModel(private val barcodeHistoryRepository: BarcodeHisto
         }
     }
 
-    private fun addBarcode(barcode: BarcodeEntity) {
+    fun deleteItem(barcode: BarcodeEntity) {
         viewModelScope.launch {
-            barcodeHistoryRepository.saveBarcode(barcode)
+            barcodeHistoryRepository.delete(barcode)
+            history = barcodeHistoryRepository.getAll()
         }
     }
 

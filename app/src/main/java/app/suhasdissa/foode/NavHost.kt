@@ -37,6 +37,8 @@ fun AppNavHost(
                         navController.navigateTo(SearchView.route)
                     }, onClickSettings = {
                         navController.navigateTo(Settings.route)
+                    }, onClickBarcodeCard = { barcode ->
+                        navController.navigateTo("${FoodFactDetail.route}/$barcode")
                     })
                 }, PaneTwo = {
                     AdditiveDetailScreen(additiveID)
@@ -48,6 +50,8 @@ fun AppNavHost(
                     navController.navigateTo(SearchView.route)
                 }, onClickSettings = {
                     navController.navigateTo(Settings.route)
+                }, onClickBarcodeCard = { barcode ->
+                    navController.navigateTo("${FoodFactDetail.route}/$barcode")
                 })
             }
         }

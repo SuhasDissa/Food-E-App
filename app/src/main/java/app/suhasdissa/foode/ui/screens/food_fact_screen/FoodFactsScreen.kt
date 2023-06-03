@@ -24,7 +24,9 @@ import app.suhasdissa.foode.backend.viewmodels.FoodFactsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FoodFactScreen(barcode: String) {
+fun FoodFactScreen(
+    barcode: String
+) {
     val foodFactsViewModel: FoodFactsViewModel = viewModel(factory = FoodFactsViewModel.Factory)
     LaunchedEffect(Unit) {
         foodFactsViewModel.getProduct(barcode)

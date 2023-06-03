@@ -10,7 +10,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import app.suhasdissa.foode.FoodeApplication
+import app.suhasdissa.foode.backend.database.entities.BarcodeEntity
 import app.suhasdissa.foode.backend.models.Product
+import app.suhasdissa.foode.backend.repositories.BarcodeHistoryRepository
 import app.suhasdissa.foode.backend.repositories.OpenFoodFactRepository
 import kotlinx.coroutines.launch
 
@@ -20,7 +22,10 @@ sealed interface FoodFactUiState {
     object Loading : FoodFactUiState
 }
 
-class FoodFactsViewModel(private val openFoodFactRepository: OpenFoodFactRepository) :
+class FoodFactsViewModel(
+    private val openFoodFactRepository: OpenFoodFactRepository,
+    private val barcodeHistoryRepository: BarcodeHistoryRepository
+) :
     ViewModel() {
 
     var foodFactUiState: FoodFactUiState by mutableStateOf(FoodFactUiState.Loading)
@@ -31,6 +36,15 @@ class FoodFactsViewModel(private val openFoodFactRepository: OpenFoodFactReposit
             foodFactUiState = try {
                 val product = openFoodFactRepository.getOnlineData(barcode)
                 product?.let {
+                    it.code?.let { code ->
+                        addBarcode(
+                            BarcodeEntity(
+                                code,
+                                it.genericName ?: "Unknown Product",
+                                it.imageUrl ?: ""
+                            )
+                        )
+                    }
                     FoodFactUiState.Success(it)
                 } ?: FoodFactUiState.Error("Product Not Found")
             } catch (_: retrofit2.HttpException) {
@@ -41,11 +55,20 @@ class FoodFactsViewModel(private val openFoodFactRepository: OpenFoodFactReposit
         }
     }
 
+    private fun addBarcode(barcode: BarcodeEntity) {
+        viewModelScope.launch {
+            barcodeHistoryRepository.saveBarcode(barcode)
+        }
+    }
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FoodeApplication)
-                FoodFactsViewModel(application.container.openFoodFactRepository)
+                FoodFactsViewModel(
+                    application.container.openFoodFactRepository,
+                    application.container.barcodeHistoryRepository
+                )
             }
         }
     }

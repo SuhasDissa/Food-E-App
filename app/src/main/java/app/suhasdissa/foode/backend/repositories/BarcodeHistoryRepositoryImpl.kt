@@ -12,4 +12,8 @@ class BarcodeHistoryRepositoryImpl(private val barcodeHistoryDao: BarcodeHistory
     override suspend fun saveBarcode(barcode: BarcodeEntity) {
         barcodeHistoryDao.insert(barcode)
     }
+
+    override suspend fun delete(barcode: BarcodeEntity) {
+        barcodeHistoryDao.delete(barcode)
+    }
 }

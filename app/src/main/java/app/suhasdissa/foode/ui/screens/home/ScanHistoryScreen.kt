@@ -1,17 +1,31 @@
 package app.suhasdissa.foode.ui.screens.home
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import app.suhasdissa.foode.backend.viewmodels.BarcodeHistoryViewModel
+import app.suhasdissa.foode.ui.components.BarcodeHistoryCard
 
 @Composable
-fun ScanHistoryScreen() {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "TODO: Barcode Scan History", color = MaterialTheme.colorScheme.tertiary)
+fun ScanHistoryScreen(
+    onClickCard: (barcode: String) -> Unit,
+    barcodeHistoryViewModel: BarcodeHistoryViewModel = viewModel(factory = BarcodeHistoryViewModel.Factory)
+) {
+    LazyColumn(
+        Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(vertical = 24.dp, horizontal = 16.dp)
+    ) {
+        items(items = barcodeHistoryViewModel.history) {
+            BarcodeHistoryCard(onClick = { onClickCard(it.barcode) }, onClickRemove = {barcodeHistoryViewModel.deleteItem(it)}, barcodeEntity = it)
+        }
     }
 
 }

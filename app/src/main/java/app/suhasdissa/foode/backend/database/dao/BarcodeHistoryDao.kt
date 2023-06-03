@@ -10,4 +10,7 @@ interface BarcodeHistoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(barcode: BarcodeEntity)
+
+    @Delete
+    fun delete(barcode: BarcodeEntity)
 }
