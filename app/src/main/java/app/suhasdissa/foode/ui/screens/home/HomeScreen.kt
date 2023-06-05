@@ -1,17 +1,18 @@
 package app.suhasdissa.foode.ui.screens.home
 
 import android.Manifest
-import android.R.attr.value
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
@@ -30,8 +31,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -44,7 +45,7 @@ import app.suhasdissa.foode.BarcodeScannerActivity
 import app.suhasdissa.foode.R
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
 fun HomeScreen(
     onClickTextCard: (url: Int) -> Unit,
@@ -62,9 +63,7 @@ fun HomeScreen(
     val navController = rememberNavController()
     var currentScreen by remember { mutableStateOf<HomeScreen>(HomeScreen.Additives) }
     val items = listOf(
-        HomeScreen.Additives,
-        HomeScreen.Favourites,
-        HomeScreen.Scan
+        HomeScreen.Additives, HomeScreen.Favourites, HomeScreen.Scan
     )
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
@@ -87,8 +86,7 @@ fun HomeScreen(
                     if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
                         context.startActivity(
                             Intent(
-                                context,
-                                BarcodeScannerActivity::class.java
+                                context, BarcodeScannerActivity::class.java
                             )
                         )
                     } else {
@@ -97,7 +95,7 @@ fun HomeScreen(
                     }
                 }) {
                     Icon(
-                        imageVector = Icons.Filled.QrCodeScanner,
+                        painter = painterResource(R.drawable.barcode_icon),
                         stringResource(R.string.scan)
                     )
                 }
@@ -112,55 +110,124 @@ fun HomeScreen(
                 }
             }
         }
-    },
-        bottomBar = {
-            NavigationBar {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
-                val currentDestination = navBackStackEntry?.destination
-                items.forEach { screen ->
-                    NavigationBarItem(
-                        icon = { Icon(screen.icon, contentDescription = null) },
-                        label = { Text(stringResource(screen.resourceId)) },
-                        selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
-                        onClick = {
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
+    }, bottomBar = {
+        NavigationBar {
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentDestination = navBackStackEntry?.destination
+            items.forEach { screen ->
+                NavigationBarItem(icon = screen.icon,
+                    label = { Text(stringResource(screen.resourceId)) },
+                    selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                    onClick = {
+                        navController.navigate(screen.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
                             }
-                            currentScreen = screen
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                    )
-                }
+                        currentScreen = screen
+                    })
             }
         }
-    ) { innerPadding ->
+    }) { innerPadding ->
         NavHost(
             navController,
             startDestination = HomeScreen.Additives.route,
             Modifier.padding(innerPadding)
         ) {
-            composable(HomeScreen.Additives.route) {
+            composable(HomeScreen.Additives.route, enterTransition = {
+                when (initialState.destination.route) {
+                    HomeScreen.Favourites.route -> slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        animationSpec = tween(300)
+                    )
+
+                    HomeScreen.Scan.route -> slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        animationSpec = tween(300)
+                    )
+
+                    else -> null
+                }
+            }, exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(300)
+                )
+            }) {
                 AdditiveScreen(onClickTextCard = onClickTextCard)
             }
-            composable(HomeScreen.Favourites.route) {
+            composable(HomeScreen.Favourites.route, enterTransition = {
+                when (initialState.destination.route) {
+                    HomeScreen.Additives.route -> slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Left,
+                        animationSpec = tween(300)
+                    )
+
+                    HomeScreen.Scan.route -> slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        animationSpec = tween(300)
+                    )
+
+                    else -> null
+                }
+            }, exitTransition = {
+                when (targetState.destination.route) {
+                    HomeScreen.Additives.route -> slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        animationSpec = tween(300)
+                    )
+
+                    HomeScreen.Scan.route -> slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Left,
+                        animationSpec = tween(300)
+                    )
+
+                    else -> null
+                }
+            }) {
                 FavouritesScreen(onClickTextCard = onClickTextCard)
             }
-            composable(HomeScreen.Scan.route) {
+            composable(HomeScreen.Scan.route, enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(300)
+                )
+            }, exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(300)
+                )
+            }) {
                 ScanHistoryScreen(onClickCard = onClickBarcodeCard)
             }
         }
     }
 }
 
-sealed class HomeScreen(val icon: ImageVector, val route: String, @StringRes val resourceId: Int) {
-    object Additives :
-        HomeScreen(Icons.Filled.Book, "all_additives", R.string.additives)
+sealed class HomeScreen(
+    val icon: @Composable () -> Unit,
+    val route: String,
+    @StringRes val resourceId: Int
+) {
+    object Additives : HomeScreen(
+        { Icon(imageVector = Icons.Filled.Book, contentDescription = null) },
+        "all_additives",
+        R.string.additives
+    )
 
-    object Favourites :
-        HomeScreen(Icons.Filled.Star, "fav_additives", R.string.favourites)
+    object Favourites : HomeScreen({
+        Icon(
+            imageVector = Icons.Filled.Star,
+            contentDescription = null
+        )
+    }, "fav_additives", R.string.favourites)
 
-    object Scan : HomeScreen(Icons.Filled.QrCodeScanner, "scan_history", R.string.scan)
+    object Scan : HomeScreen({
+        Icon(
+            painter = painterResource(id = R.drawable.barcode_icon),
+            contentDescription = null
+        )
+    }, "scan_history", R.string.scan)
 }

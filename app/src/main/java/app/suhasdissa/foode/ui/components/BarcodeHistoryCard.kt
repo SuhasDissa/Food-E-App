@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import app.suhasdissa.foode.R
@@ -55,6 +56,7 @@ fun BarcodeHistoryCard(
                     .data(barcodeEntity.imageUrl)
                     .crossfade(true).build(),
                 contentDescription = stringResource(R.string.product_image),
+                error = painterResource(id = R.drawable.broken_egg_icon),
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier
                     .size(100.dp)

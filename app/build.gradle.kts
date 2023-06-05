@@ -80,24 +80,21 @@ dependencies {
 
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
-    implementation("androidx.navigation:navigation-compose:2.5.3")
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.28.0")
+    implementation("androidx.navigation:navigation-compose:2.7.0-alpha01")
     implementation("androidx.compose.material:material-icons-extended:1.4.3")
 
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.3.0")
     implementation("io.coil-kt:coil-svg:2.3.0")
-    implementation("com.google.accompanist:accompanist-pager:0.28.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.5.0")
 
     //Room
-    val room_version = "2.5.1"
+    val roomVersion = "2.5.1"
 
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")

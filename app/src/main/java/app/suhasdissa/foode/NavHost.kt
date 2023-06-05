@@ -1,6 +1,5 @@
 package app.suhasdissa.foode
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,6 +7,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import app.suhasdissa.foode.ui.components.TwoPaneScreen
 import app.suhasdissa.foode.ui.screens.AboutScreen
@@ -16,15 +17,12 @@ import app.suhasdissa.foode.ui.screens.SearchScreen
 import app.suhasdissa.foode.ui.screens.SettingsScreen
 import app.suhasdissa.foode.ui.screens.food_fact_screen.FoodFactScreen
 import app.suhasdissa.foode.ui.screens.home.HomeScreen
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppNavHost(
     navController: NavHostController, modifier: Modifier = Modifier, isLargeScreen: Boolean
 ) {
-    AnimatedNavHost(
+    NavHost(
         navController = navController, startDestination = Home.route, modifier = modifier
     ) {
         composable(route = Home.route) {

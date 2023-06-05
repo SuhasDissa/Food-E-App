@@ -22,48 +22,42 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProductFactView(product: Product) {
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState { 3 }
     val scope = rememberCoroutineScope()
     TabRow(selectedTabIndex = pagerState.currentPage, Modifier.fillMaxWidth()) {
-        Tab(
-            selected = (pagerState.currentPage == 0),
-            onClick = {
-                scope.launch {
-                    pagerState.animateScrollToPage(
-                        0
-                    )
-                }
-            }) {
+        Tab(selected = (pagerState.currentPage == 0), onClick = {
+            scope.launch {
+                pagerState.animateScrollToPage(
+                    0
+                )
+            }
+        }) {
             Text(
                 stringResource(R.string.overview),
                 Modifier.padding(10.dp),
                 style = MaterialTheme.typography.titleMedium
             )
         }
-        Tab(
-            selected = (pagerState.currentPage == 1),
-            onClick = {
-                scope.launch {
-                    pagerState.animateScrollToPage(
-                        1
-                    )
-                }
-            }) {
+        Tab(selected = (pagerState.currentPage == 1), onClick = {
+            scope.launch {
+                pagerState.animateScrollToPage(
+                    1
+                )
+            }
+        }) {
             Text(
                 stringResource(R.string.ingredients),
                 Modifier.padding(10.dp),
                 style = MaterialTheme.typography.titleMedium
             )
         }
-        Tab(
-            selected = (pagerState.currentPage == 2),
-            onClick = {
-                scope.launch {
-                    pagerState.animateScrollToPage(
-                        2
-                    )
-                }
-            }) {
+        Tab(selected = (pagerState.currentPage == 2), onClick = {
+            scope.launch {
+                pagerState.animateScrollToPage(
+                    2
+                )
+            }
+        }) {
             Text(
                 stringResource(R.string.nutrients),
                 Modifier.padding(10.dp),
@@ -72,9 +66,7 @@ fun ProductFactView(product: Product) {
         }
     }
     HorizontalPager(
-        pageCount = 3,
-        state = pagerState,
-        modifier = Modifier.fillMaxSize()
+        state = pagerState, modifier = Modifier.fillMaxSize()
     ) { index ->
         when (index) {
             0 -> FoodFactOverview(product = product)

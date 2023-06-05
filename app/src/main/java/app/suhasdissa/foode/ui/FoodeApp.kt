@@ -1,6 +1,5 @@
 package app.suhasdissa.foode.ui
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -8,13 +7,12 @@ import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import app.suhasdissa.foode.AppNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun FoodeApp(windowSizeClass: WindowSizeClass) {
-    val navController = rememberAnimatedNavController()
+    val navController = rememberNavController()
     Surface(
         modifier = Modifier
             .fillMaxSize(),
