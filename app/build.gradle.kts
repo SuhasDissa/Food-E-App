@@ -14,7 +14,7 @@ android {
         minSdk = 24
         targetSdk = 33
         versionCode = 30
-        versionName = "30"
+        versionName = "3.0"
 
         javaCompileOptions {
             annotationProcessorOptions {
