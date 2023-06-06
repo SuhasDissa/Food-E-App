@@ -24,9 +24,9 @@
     <string name="halal_status_halal">Halal</string>
     <string name="halal_status_doubtful">Zweifelhaft</string>
     <string name="health_rating">Gesundheitseinstufung:</string>
-    <string name="scan">Scan</string>
-    <string name="additives">Additives</string>
-    <string name="favourites">Favourites</string>
+    <string name="scan">Scannen</string>
+    <string name="additives">Zusatzstoffe</string>
+    <string name="favourites">Favoriten</string>
     <string name="favourites_list_is_empty">You don\'t have any favourites yet</string>
     <string name="product_image">Product Image</string>
     <string name="ingredients">Ingredients</string>
