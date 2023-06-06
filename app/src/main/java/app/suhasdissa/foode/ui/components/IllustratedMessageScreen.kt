@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -22,7 +23,7 @@ fun IllustratedMessageScreen(
     @DrawableRes image: Int, @StringRes contentDescription: Int, modifier: Modifier = Modifier
 ) {
     Box(
-        contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize()
+        contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().alpha(0.3f)
     ) {
         Image(
             modifier = Modifier.size(350.dp),
