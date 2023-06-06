@@ -9,7 +9,10 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
@@ -34,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -77,37 +81,34 @@ fun HomeScreen(
         })
     }, floatingActionButton = {
         val context = LocalContext.current
-        when (currentScreen) {
-            HomeScreen.Scan -> {
-                FloatingActionButton(onClick = {
-                    val permission = Manifest.permission.CAMERA
-                    val permissionCheckResult =
-                        ContextCompat.checkSelfPermission(context, permission)
-                    if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
-                        context.startActivity(
-                            Intent(
-                                context, BarcodeScannerActivity::class.java
-                            )
+
+        Column {
+            FloatingActionButton(onClick = {
+                val permission = Manifest.permission.CAMERA
+                val permissionCheckResult = ContextCompat.checkSelfPermission(context, permission)
+                if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
+                    context.startActivity(
+                        Intent(
+                            context, BarcodeScannerActivity::class.java
                         )
-                    } else {
-                        cameraPermission = false
-                        launcher.launch(permission)
-                    }
-                }) {
-                    Icon(
-                        painter = painterResource(R.drawable.barcode_icon),
-                        stringResource(R.string.scan)
                     )
+                } else {
+                    cameraPermission = false
+                    launcher.launch(permission)
                 }
+            }) {
+                Icon(
+                    painter = painterResource(R.drawable.barcode_icon),
+                    stringResource(R.string.scan)
+                )
             }
 
-            else -> {
-                FloatingActionButton(onClick = { onClickSearch() }) {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        stringResource(R.string.search_icon_hint)
-                    )
-                }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            FloatingActionButton(onClick = { onClickSearch() }) {
+                Icon(
+                    imageVector = Icons.Filled.Search, stringResource(R.string.search_icon_hint)
+                )
             }
         }
     }, bottomBar = {
@@ -152,8 +153,7 @@ fun HomeScreen(
                 }
             }, exitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(300)
+                    AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300)
                 )
             }) {
                 AdditiveScreen(onClickTextCard = onClickTextCard)
@@ -191,13 +191,11 @@ fun HomeScreen(
             }
             composable(HomeScreen.Scan.route, enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(300)
+                    AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300)
                 )
             }, exitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(300)
+                    AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(300)
                 )
             }) {
                 ScanHistoryScreen(onClickCard = onClickBarcodeCard)
@@ -207,9 +205,7 @@ fun HomeScreen(
 }
 
 sealed class HomeScreen(
-    val icon: @Composable () -> Unit,
-    val route: String,
-    @StringRes val resourceId: Int
+    val icon: @Composable () -> Unit, val route: String, @StringRes val resourceId: Int
 ) {
     object Additives : HomeScreen(
         { Icon(imageVector = Icons.Filled.Book, contentDescription = null) },
@@ -219,15 +215,13 @@ sealed class HomeScreen(
 
     object Favourites : HomeScreen({
         Icon(
-            imageVector = Icons.Filled.Star,
-            contentDescription = null
+            imageVector = Icons.Filled.Star, contentDescription = null
         )
     }, "fav_additives", R.string.favourites)
 
     object Scan : HomeScreen({
         Icon(
-            painter = painterResource(id = R.drawable.barcode_icon),
-            contentDescription = null
+            painter = painterResource(id = R.drawable.barcode_icon), contentDescription = null
         )
-    }, "scan_history", R.string.scan)
+    }, "scan_history", R.string.scan_history)
 }

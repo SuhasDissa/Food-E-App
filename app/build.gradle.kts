@@ -13,8 +13,8 @@ android {
         applicationId = "app.suhasdissa.foode"
         minSdk = 24
         targetSdk = 33
-        versionCode = 29
-        versionName = "2.9"
+        versionCode = 30
+        versionName = "30"
 
         javaCompileOptions {
             annotationProcessorOptions {
