@@ -21,7 +21,7 @@
     <string name="list_is_empty">Список пуст</string>
     <string name="latest_version">Последняя версия :</string>
     <string name="current_version">"Текущая версия :"</string>
-    <string name="halal_status_halal">Безопасно</string>
+    <string name="halal_status_halal">Халяль</string>
     <string name="halal_status_doubtful">Сомнительно</string>
     <string name="health_rating">Рейтинг здоровья:</string>
     <string name="scan">Сканировать</string>
@@ -56,13 +56,13 @@
     <string name="product_quality">Качество продукта</string>
     <string name="nutri_score">Nutri-Score</string>
     <string name="nutri_score_label">Nutri Score метка</string>
-    <string name="nutritional_quality">Nutritional quality</string>
-    <string name="nova_group">NOVA Group</string>
-    <string name="food_process_status">Food process status</string>
-    <string name="nova_label">NOVA Label</string>
+    <string name="nutritional_quality">Качество питания</string>
+    <string name="nova_group">Группа NOVA</string>
+    <string name="food_process_status">Статус пищевого процесса</string>
+    <string name="nova_label">Метка NOVA</string>
     <string name="eco_score">Eco-Score</string>
-    <string name="environmental_impact">Environmental Impact</string>
-    <string name="eco_score_label">Eco Score Label</string>
-    <string name="remove_item">Remove Item</string>
-    <string name="scan_history">History</string>
+    <string name="environmental_impact">Воздействие на окружающую среду</string>
+    <string name="eco_score_label">Eco Score метка</string>
+    <string name="remove_item">Удалить элемент</string>
+    <string name="scan_history">История</string>
 </resources>
