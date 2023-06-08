@@ -68,4 +68,6 @@
     <string name="eco_score_label">Eco Score Label</string>
     <string name="remove_item">Remove Item</string>
     <string name="scan_history">History</string>
+    <string name="product_not_found">Product Not Found</string>
+    <string name="something_went_wrong">Something Went Wrong</string>
 </resources>

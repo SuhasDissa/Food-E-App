@@ -19,14 +19,14 @@ import kotlinx.coroutines.launch
 sealed interface FoodFactUiState {
     data class Success(val product: Product) : FoodFactUiState
     data class Error(val error: String) : FoodFactUiState
+    object ProductNotFound : FoodFactUiState
     object Loading : FoodFactUiState
 }
 
 class FoodFactsViewModel(
     private val openFoodFactRepository: OpenFoodFactRepository,
     private val barcodeHistoryRepository: BarcodeHistoryRepository
-) :
-    ViewModel() {
+) : ViewModel() {
 
     var foodFactUiState: FoodFactUiState by mutableStateOf(FoodFactUiState.Loading)
 
@@ -39,16 +39,14 @@ class FoodFactsViewModel(
                     it.code?.let { code ->
                         addBarcode(
                             BarcodeEntity(
-                                code,
-                                it.productName ?: "Unknown Product",
-                                it.imageUrl ?: ""
+                                code, it.productName ?: "Unknown Product", it.imageUrl ?: ""
                             )
                         )
                     }
                     FoodFactUiState.Success(it)
-                } ?: FoodFactUiState.Error("Product Not Found")
+                } ?: FoodFactUiState.ProductNotFound
             } catch (_: retrofit2.HttpException) {
-                FoodFactUiState.Error("Product Not Found")
+                FoodFactUiState.ProductNotFound
             } catch (e: Exception) {
                 FoodFactUiState.Error(e.toString())
             }

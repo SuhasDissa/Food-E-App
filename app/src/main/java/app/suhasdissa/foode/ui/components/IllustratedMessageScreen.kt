@@ -23,7 +23,9 @@ fun IllustratedMessageScreen(
     @DrawableRes image: Int, @StringRes contentDescription: Int, modifier: Modifier = Modifier
 ) {
     Box(
-        contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().alpha(0.3f)
+        contentAlignment = Alignment.Center, modifier = modifier
+            .fillMaxSize()
+            .alpha(0.3f)
     ) {
         Image(
             modifier = Modifier.size(350.dp),
