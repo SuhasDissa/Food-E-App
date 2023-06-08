@@ -68,4 +68,20 @@
     <string name="eco_score_label">Eco Score Label</string>
     <string name="remove_item">Remove Item</string>
     <string name="scan_history">History</string>
+    <string name="product_not_found">Product Not Found</string>
+    <string name="something_went_wrong">Something Went Wrong</string>
+    <string name="health_rating_bad">Health Rating Bad</string>
+    <string name="health_rating_normal">Health Rating Normal</string>
+    <string name="health_rating_good">Health Rating Good</string>
+    <string name="health_rating_unknown">Health Rating Unknown</string>
+    <string name="nutritional_composition">Nutritional Composition</string>
+    <string name="for_100g">For 100g</string>
+    <string name="per_serving">Per Serving</string>
+    <string name="energy_kj">Energy (kJ)</string>
+    <string name="energy_kcal">Energy (kcal)</string>
+    <string name="carbohydrates">Carbohydrates</string>
+    <string name="fiber">Fiber</string>
+    <string name="proteins">Proteins</string>
+    <string name="halal_description">Halal is an Arabic word that means \"permissible\" or \"lawful\". In the context of food, halal refers to food that is prepared and handled in accordance with Islamic law.</string>
+    <string name="learn_more_button">Learn More</string>
 </resources>
