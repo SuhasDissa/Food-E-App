@@ -1,0 +1,2 @@
+An app to get information about artificial additives found in Processed foods. You can search for additives by names or by E Codes (aka INS codes)
+This app also has a barcode scanner to scan food barcodes and get their nutritional details from OpenFoodFacts database
