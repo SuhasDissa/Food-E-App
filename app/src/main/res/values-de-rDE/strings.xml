@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="developer_heading">Entwickler:</string>
-    <string name="avatar_description">Entwickler-Avatar</string>
-    <string name="github_icon_hint">GitHub Symbol</string>
-    <string name="twitter_icon_hint">Twitter Symbol</string>
-    <string name="update_description">Auf Updates prüfen:</string>
-    <string name="update_btn">UPDATE</string>
     <string name="search_for_additives">Suche nach Zusatzstoffen oder E-Nummer</string>
     <string name="no_results">Keine Zusatzstoffe oder E-Nummern gefunden</string>
     <string name="about_title">Über</string>
     <string name="settings_title">Einstellungen</string>
     <string name="search_icon_hint">Suche</string>
     <string name="search_bar_text">Suche</string>
-    <string name="developer_contact">Entwicklerkontakt</string>
     <string name="halal_status">Halal Status</string>
     <string name="select_an_additive">Wähle ein Zusatzstoff aus</string>
     <string name="copy_text_to_clipboard">Text in die Zwischenablage kopieren</string>
     <string name="add_to_favourite">Zu Favoriten hinzufügen</string>
     <string name="remove_from_favourite">Aus Favoriten entfernen</string>
     <string name="list_is_empty">Keine Einträge vorhanden</string>
-    <string name="latest_version">Neueste Version:</string>
     <string name="current_version">"Installierte Version: "</string>
     <string name="halal_status_halal">Halal</string>
-    <string name="halal_status_doubtful">Zweifelhaft</string>
     <string name="health_rating">Gesundheitseinstufung:</string>
     <string name="scan">Scannen</string>
     <string name="additives">Zusatzstoffe</string>
@@ -42,7 +33,6 @@
     <string name="barcode_content">Barcode Inhalt</string>
     <string name="overview">Übersicht</string>
     <string name="food_product_information">Informationen zu Lebensmittelprodukten</string>
-    <string name="barcode">Barcode:</string>
     <string name="nutrient_level_for_100g">Nährstoffwerte pro 100 g</string>
     <string name="nutritional_facts">Nährwertangaben</string>
     <string name="fat">Fett</string>

@@ -11,7 +11,6 @@ import kotlinx.coroutines.launch
 class CheckUpdateViewModel : ViewModel() {
     var latestVersion: Float? by mutableStateOf(null)
     val currentVersion = UpdateUtil.currentVersion
-    var isUpdateAvailable by mutableStateOf(false)
 
     init {
         getLatestRelease()
@@ -20,13 +19,6 @@ class CheckUpdateViewModel : ViewModel() {
     private fun getLatestRelease() {
         viewModelScope.launch {
             latestVersion = UpdateUtil.getLatestVersion()
-            isUpdateAvailable = checkUpdate()
         }
-    }
-
-    private fun checkUpdate(): Boolean {
-        return latestVersion?.let {
-            it > currentVersion
-        } ?: false
     }
 }

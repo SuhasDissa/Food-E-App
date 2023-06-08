@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="developer_heading">Developer:</string>
-    <string name="avatar_description">Developer Avatar</string>
-    <string name="github_icon_hint">GitHub icon</string>
-    <string name="twitter_icon_hint">Twitter icon</string>
-    <string name="update_description">Check Update:</string>
-    <string name="update_btn">UPDATE</string>
     <string name="search_for_additives">Search For Additives or E-number</string>
     <string name="no_results">No additives or E-number match the given search</string>
     <string name="about_title">About</string>
     <string name="settings_title">ସେଟିଂ</string>
     <string name="search_icon_hint">Search</string>
     <string name="search_bar_text">Search</string>
-    <string name="developer_contact">Developer Contact</string>
     <string name="halal_status">Halal Status</string>
     <string name="select_an_additive">Select an Additive</string>
     <string name="copy_text_to_clipboard">Copy Text To Clipboard</string>
     <string name="add_to_favourite">ପସନ୍ଦିଆରେ ଯୋଡ଼ନ୍ତୁ</string>
     <string name="remove_from_favourite">ପସନ୍ଦିଆରୁ ଅପସାରଣ କରନ୍ତୁ</string>
     <string name="list_is_empty">ତାଲିକା ଖାଲି ଅଛି</string>
-    <string name="latest_version">ସଦ୍ୟତମ ସଂସ୍କରଣ :</string>
     <string name="current_version">"ଚଳିତ ସଂସ୍କରଣ :"</string>
     <string name="halal_status_halal">Halal</string>
-    <string name="halal_status_doubtful">Doubtful</string>
     <string name="health_rating">Health Rating :</string>
     <string name="scan">Scan</string>
     <string name="additives">Additives</string>
@@ -42,7 +33,6 @@
     <string name="barcode_content">Barcode Content</string>
     <string name="overview">Overview</string>
     <string name="food_product_information">Food Product Information</string>
-    <string name="barcode">Barcode:</string>
     <string name="nutrient_level_for_100g">Nutrient Level for 100g</string>
     <string name="nutritional_facts">Nutritional Facts</string>
     <string name="fat">Fat</string>

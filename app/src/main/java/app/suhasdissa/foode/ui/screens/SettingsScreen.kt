@@ -34,7 +34,7 @@ fun SettingsScreen(
             item {
                 SettingItem(
                     title = stringResource(R.string.about_title),
-                    description = stringResource(R.string.developer_contact),
+                    description = stringResource(R.string.about_setting_description),
                     onClick = { onAboutClick() },
                     icon = Icons.Outlined.Info
                 )
