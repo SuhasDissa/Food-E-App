@@ -47,8 +47,7 @@ fun AdditiveDetailScreen(
         Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
             TopAppBar(title = {
                 Text(
-                    additiveViewModel.additive.eCode,
-                    overflow = TextOverflow.Ellipsis
+                    additiveViewModel.additive.eCode, overflow = TextOverflow.Ellipsis
                 )
             })
         }, floatingActionButton = {
@@ -152,43 +151,45 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                 }
             }
         }
-        item {
-            Card(
-                modifier.fillMaxWidth()
-            ) {
-                Row(
-                    modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+        if(additive.healthRating!=0) {
+            item {
+                Card(
+                    modifier.fillMaxWidth()
                 ) {
-                    Text(
-                        stringResource(R.string.health_rating),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-
-                    when (additive.healthRating) {
-                        1 -> Icon(
-                            imageVector = Icons.Filled.SentimentDissatisfied,
-                            contentDescription = stringResource(R.string.add_to_favourite)
+                    Row(
+                        modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            stringResource(R.string.health_rating),
+                            style = MaterialTheme.typography.bodyLarge
                         )
 
-                        2 -> Icon(
-                            imageVector = Icons.Filled.SentimentNeutral,
-                            contentDescription = stringResource(R.string.add_to_favourite)
-                        )
+                        when (additive.healthRating) {
+                            1 -> Icon(
+                                imageVector = Icons.Filled.SentimentDissatisfied,
+                                contentDescription = stringResource(R.string.health_rating_bad)
+                            )
 
-                        3 -> Icon(
-                            imageVector = Icons.Filled.SentimentSatisfied,
-                            contentDescription = stringResource(R.string.add_to_favourite)
-                        )
+                            2 -> Icon(
+                                imageVector = Icons.Filled.SentimentNeutral,
+                                contentDescription = stringResource(R.string.health_rating_normal)
+                            )
 
-                        else -> Icon(
-                            imageVector = Icons.Filled.QuestionMark,
-                            contentDescription = stringResource(R.string.add_to_favourite)
-                        )
+                            3 -> Icon(
+                                imageVector = Icons.Filled.SentimentSatisfied,
+                                contentDescription = stringResource(R.string.health_rating_good)
+                            )
+
+                            else -> Icon(
+                                imageVector = Icons.Filled.QuestionMark,
+                                contentDescription = stringResource(R.string.health_rating_unknown)
+                            )
+                        }
+
                     }
-
                 }
             }
         }
