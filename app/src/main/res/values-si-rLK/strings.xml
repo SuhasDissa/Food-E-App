@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="developer_heading">සංවර්ධක:</string>
-    <string name="avatar_description">සංවර්ධක චායාරූපය</string>
-    <string name="github_icon_hint">GitHub අයිකනය</string>
-    <string name="twitter_icon_hint">Twitter අයිකනය</string>
-    <string name="update_description">යාවත්කාලින පරික්ෂා කරන්න:</string>
-    <string name="update_btn">යාවත්කාලින කරන්න</string>
     <string name="search_for_additives">රසකාරක/වර්ණක හො E-කේතය සොයන්න</string>
     <string name="no_results">දී ඇති සෙවුම් පද සදහා රසකාරක/වර්ණක නොමැත</string>
     <string name="about_title">පිලිබද</string>
     <string name="settings_title">සැකසුම්</string>
     <string name="search_icon_hint">සොයන්න</string>
     <string name="search_bar_text">සොයන්න</string>
-    <string name="developer_contact">සංවර්ධක සමග සම්බන්ද වීම</string>
     <string name="halal_status">හලාල් තත්ත්වය</string>
     <string name="select_an_additive">රසකාරකයක් / වර්ණකයක් තෝරන්න</string>
     <string name="copy_text_to_clipboard">පසුරු පුවරුවට පිටපත් කරන්න</string>
     <string name="add_to_favourite">ප්‍රියතමයන් වෙත එක් කරන්න</string>
     <string name="remove_from_favourite">ප්‍රියතමයන් වෙතින් ඉවත් කරන්න</string>
     <string name="list_is_empty">ලැයිස්තුව හිස්ය</string>
-    <string name="latest_version">නවතම අනුවාදය :</string>
-    <string name="current_version">"වත්මන් අනුවාදය :"</string>
+    <string name="current_version">"Current Version"</string>
     <string name="halal_status_halal">හලාල්</string>
-    <string name="halal_status_doubtful">සැක සහිතය</string>
     <string name="health_rating">Health Rating :</string>
     <string name="scan">Scan</string>
     <string name="additives">Additives</string>
@@ -42,7 +33,6 @@
     <string name="barcode_content">Barcode Content</string>
     <string name="overview">Overview</string>
     <string name="food_product_information">Food Product Information</string>
-    <string name="barcode">Barcode:</string>
     <string name="nutrient_level_for_100g">Nutrient Level for 100g</string>
     <string name="nutritional_facts">Nutritional Facts</string>
     <string name="fat">Fat</string>
@@ -81,4 +71,10 @@
     <string name="proteins">Proteins</string>
     <string name="halal_description">Halal is an Arabic word that means \"permissible\" or \"lawful\". In the context of food, halal refers to food that is prepared and handled in accordance with Islamic law.</string>
     <string name="learn_more_button">Learn More</string>
+    <string name="about_setting_description">Version, Releases, Contact</string>
+    <string name="readme">README</string>
+    <string name="check_repo_and_readme">Check the GitHub repository and README</string>
+    <string name="latest_release">Latest release</string>
+    <string name="github_issue">GitHub issue</string>
+    <string name="github_issue_description">Submit an issue for bug report or feature request</string>
 </resources>
