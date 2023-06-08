@@ -32,12 +32,12 @@ object UpdateUtil {
     }
 
     fun getCurrentVersion(context: Context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            currentVersion = context.packageManager.getPackageInfo(
+        currentVersion = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.packageManager.getPackageInfo(
                 context.packageName, PackageManager.PackageInfoFlags.of(0)
             ).versionName.toFloat()
         } else {
-            currentVersion = context.packageManager.getPackageInfo(
+            context.packageManager.getPackageInfo(
                 context.packageName, 0
             ).versionName.toFloat()
         }

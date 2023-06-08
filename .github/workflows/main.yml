@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: 17
       - name: Build APK
-        run: bash ./gradlew assembleRelease --stacktrace
+        run: bash ./gradlew assembleReleaseGithub --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:

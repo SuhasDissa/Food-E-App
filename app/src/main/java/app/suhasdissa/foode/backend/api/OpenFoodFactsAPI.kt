@@ -2,7 +2,6 @@ package app.suhasdissa.foode.backend.api
 
 import app.suhasdissa.foode.backend.models.OpenFoodFactsResponse
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
@@ -12,7 +11,6 @@ import retrofit2.http.Path
 
 private val json = Json { ignoreUnknownKeys = true }
 
-@OptIn(ExperimentalSerializationApi::class)
 private val retrofit = Retrofit.Builder()
     .baseUrl("https://world.openfoodfacts.org/")
     .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
