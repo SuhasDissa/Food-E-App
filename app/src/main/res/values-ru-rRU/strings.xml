@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="developer_heading">Разработчик:</string>
-    <string name="avatar_description">Аватар разработчика</string>
-    <string name="github_icon_hint">Иконка GitHub</string>
-    <string name="twitter_icon_hint">Иконка Twitter</string>
-    <string name="update_description">Проверить обновления:</string>
-    <string name="update_btn">ОБНОВИТЬ</string>
     <string name="search_for_additives">Поиск добавок или E-номера</string>
     <string name="no_results">Ни одна добавка или E-номер не соответствует заданному запросу</string>
     <string name="about_title">Информация</string>
     <string name="settings_title">Настройки</string>
     <string name="search_icon_hint">Поиск</string>
     <string name="search_bar_text">Поиск</string>
-    <string name="developer_contact">Контакты разработчика</string>
     <string name="halal_status">Статус безопасности</string>
     <string name="select_an_additive">Выберите добавку</string>
     <string name="copy_text_to_clipboard">Копировать текст в буфер обмена</string>
     <string name="add_to_favourite">Добавить в избранное</string>
     <string name="remove_from_favourite">Удалить из избранного</string>
     <string name="list_is_empty">Список пуст</string>
-    <string name="latest_version">Последняя версия :</string>
-    <string name="current_version">"Текущая версия :"</string>
+    <string name="current_version">"Current Version"</string>
     <string name="halal_status_halal">Халяль</string>
-    <string name="halal_status_doubtful">Сомнительно</string>
     <string name="health_rating">Рейтинг здоровья:</string>
     <string name="scan">Сканировать</string>
     <string name="additives">Добавки</string>
@@ -42,7 +33,6 @@
     <string name="barcode_content">Содержание штрих-кода</string>
     <string name="overview">Общие сведения</string>
     <string name="food_product_information">Информация о продукте питания</string>
-    <string name="barcode">Штрих-код:</string>
     <string name="nutrient_level_for_100g">Питательная ценность на 100г</string>
     <string name="nutritional_facts">Пищевые факты</string>
     <string name="fat">Жиры</string>
@@ -81,4 +71,10 @@
     <string name="proteins">Proteins</string>
     <string name="halal_description">Halal is an Arabic word that means \"permissible\" or \"lawful\". In the context of food, halal refers to food that is prepared and handled in accordance with Islamic law.</string>
     <string name="learn_more_button">Learn More</string>
+    <string name="about_setting_description">Version, Releases, Contact</string>
+    <string name="readme">README</string>
+    <string name="check_repo_and_readme">Check the GitHub repository and README</string>
+    <string name="latest_release">Latest release</string>
+    <string name="github_issue">GitHub issue</string>
+    <string name="github_issue_description">Submit an issue for bug report or feature request</string>
 </resources>
