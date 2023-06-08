@@ -64,4 +64,5 @@
     <string name="environmental_impact">Environmental Impact</string>
     <string name="eco_score_label">Eco Score Label</string>
     <string name="remove_item">Remove Item</string>
+    <string name="scan_history">History</string>
 </resources>
