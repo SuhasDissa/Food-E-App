@@ -16,14 +16,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
       - name: Setup JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
+          distribution: 'temurin'
           java-version: 17
+          cache: "gradle"
       - name: Build APK
         run: bash ./gradlew assembleReleaseGithub --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
           name: release
-          path: app/build/outputs/apk/release/
+          path: app/build/outputs/apk/releaseGithub/
