@@ -82,4 +82,6 @@
     <string name="carbohydrates">Carbohydrates</string>
     <string name="fiber">Fiber</string>
     <string name="proteins">Proteins</string>
+    <string name="halal_description">Halal is an Arabic word that means \"permissible\" or \"lawful\". In the context of food, halal refers to food that is prepared and handled in accordance with Islamic law.</string>
+    <string name="learn_more_button">Learn More</string>
 </resources>

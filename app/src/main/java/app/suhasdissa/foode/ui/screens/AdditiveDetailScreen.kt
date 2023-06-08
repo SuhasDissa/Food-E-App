@@ -1,10 +1,14 @@
 package app.suhasdissa.foode.ui.screens
 
 import android.content.ClipData
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.QuestionMark
 import androidx.compose.material.icons.filled.SentimentDissatisfied
@@ -21,7 +25,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,6 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.viewmodels.AdditiveDetailViewModel
+import app.suhasdissa.foode.utils.openBrowser
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -128,30 +137,72 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                 }
             }
         }
-        item {
-            Card(
-                modifier.fillMaxWidth()
-            ) {
-                Row(
+        if (additive.halalStatus == 1) {
+            item {
+                Card(
                     modifier
                         .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(
-                        stringResource(R.string.halal_status),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Text(
-                        when (additive.halalStatus) {
-                            1 -> stringResource(R.string.halal_status_halal)
-                            else -> stringResource(R.string.halal_status_doubtful)
-                        }, style = MaterialTheme.typography.bodyLarge
-                    )
+                    Column {
+                        var isExpanded by remember { mutableStateOf(false) }
+                        Row(
+                            modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                                .clickable { isExpanded = !isExpanded },
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                stringResource(R.string.halal_status),
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(Modifier.weight(1f))
+                            Image(
+                                modifier = Modifier.size(64.dp),
+                                painter = painterResource(id = R.drawable.halal_certified_stamp),
+                                contentDescription = stringResource(
+                                    id = R.string.halal_status_halal
+                                )
+                            )
+                            Icon(
+                                imageVector = Icons.Default.ArrowDropDown,
+                                contentDescription = null
+                            )
+                        }
+                        AnimatedVisibility(
+                            isExpanded
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                val context = LocalContext.current
+                                Text(
+                                    stringResource(R.string.halal_description),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontStyle = FontStyle.Italic
+                                )
+                                OutlinedButton(onClick = {
+                                    openBrowser(
+                                        context,
+                                        "https://en.wikipedia.org/wiki/Halal"
+                                    )
+                                }) {
+                                    Text(
+                                        stringResource(R.string.learn_more_button),
+                                        style = MaterialTheme.typography.bodySmall
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        if(additive.healthRating!=0) {
+        if (additive.healthRating != 0) {
             item {
                 Card(
                     modifier.fillMaxWidth()
@@ -164,7 +215,8 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                     ) {
                         Text(
                             stringResource(R.string.health_rating),
-                            style = MaterialTheme.typography.bodyLarge
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Bold
                         )
 
                         when (additive.healthRating) {
@@ -222,7 +274,7 @@ fun AdditiveDetailBoxPreview() {
             eType = "Test",
             title = "Test Additive",
             info = "lorem ipsum fewa gewa gewar ywhg wrqa bhewar aewrab awegad awtaweg f awega ga werqwetaw ",
-            halalStatus = 0,
+            halalStatus = 1,
             isFavourite = 0,
             healthRating = 0
         )

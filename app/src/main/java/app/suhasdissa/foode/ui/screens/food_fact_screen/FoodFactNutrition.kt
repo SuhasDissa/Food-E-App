@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import app.suhasdissa.foode.R
@@ -34,11 +35,12 @@ fun FoodFactNutrition(product: Product) {
                 )
             }
             item {
+                val context = LocalContext.current
                 ElevatedCard(
                     Modifier
                         .fillMaxWidth()
                 ) {
-                    NutritionTable(table = nutriments.getAsTable())
+                    NutritionTable(table = nutriments.getAsTable(context))
                 }
             }
         }
