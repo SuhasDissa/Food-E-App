@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="search_for_additives">රසකාරක/වර්ණක හො E-කේතය සොයන්න</string>
-    <string name="no_results">දී ඇති සෙවුම් පද සදහා රසකාරක/වර්ණක නොමැත</string>
+    <string name="search_for_additives">ආකලන හො E-කේතය සොයන්න</string>
+    <string name="no_results">දී ඇති සෙවුම් පද සදහා ආකලන නොමැත</string>
     <string name="about_title">පිලිබද</string>
     <string name="settings_title">සැකසුම්</string>
     <string name="search_icon_hint">සොයන්න</string>
     <string name="search_bar_text">සොයන්න</string>
     <string name="halal_status">හලාල් තත්ත්වය</string>
-    <string name="select_an_additive">රසකාරකයක් / වර්ණකයක් තෝරන්න</string>
+    <string name="select_an_additive">ආකලන තෝරන්න</string>
     <string name="copy_text_to_clipboard">පසුරු පුවරුවට පිටපත් කරන්න</string>
     <string name="add_to_favourite">ප්‍රියතමයන් වෙත එක් කරන්න</string>
     <string name="remove_from_favourite">ප්‍රියතමයන් වෙතින් ඉවත් කරන්න</string>
@@ -16,7 +16,7 @@
     <string name="halal_status_halal">හලාල්</string>
     <string name="health_rating">සෞඛ්‍යය මට්ටම :</string>
     <string name="scan">ස්කෑන් කරන්න</string>
-    <string name="additives">රසකාරක / වර්ණක</string>
+    <string name="additives">ආකලන</string>
     <string name="favourites">ප්‍රියතමයන්</string>
     <string name="favourites_list_is_empty">ඔබට තවම කිසිම ප්‍රියතමයන් නැත</string>
     <string name="product_image">නිෂ්පාදනයේ රූපය</string>
