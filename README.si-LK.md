@@ -1,9 +1,9 @@
 <div align="center">
   <img width="150" src="/logo.png" alt="App icon">
   <h1 align="center">Food-E App</h1>
-  <b>Food-E</b> is a food additives database app.
-  Contains comprehensive information about each additive.
-  App is using the <a href="https://github.com/SuhasDissa/E-Number-Database">E-Number-Database</a><br><br>
+  <b>Food-E</b> යනු ආහාර ආකලන දත්ත සමුදා යෙදුමකි.
+  එක් එක් ආකලන පිළිබඳ සවිස්තරාත්මක තොරතුරු අඩංගු වේ.
+  යෙදුම <a href="https://github.com/SuhasDissa/E-Number-Database">E-Number-Database</a> භාවිතා කරයි<br><br>
 </div>
 
 <div align="center">
@@ -29,11 +29,11 @@
 </p>
 </details>
 
-## ✨ Features
-- A Collection of more than 150 Food Additives
-- Search by additive name or E-number
-- Detailed info about each additive
-- Support for Large Screen tablets
+## ✨ විශේෂාංග
+- ආහාර ආකලන 150 කට වැඩි එකතුවක්
+- ආකලන නම හෝ E-අංකය මගින් සොයන්න
+- එක් එක් ආකලන පිළිබඳ සවිස්තරාත්මක තොරතුරු
+- විශාල තිර ටැබ්ලට් සඳහා සහාය
 
 ## 📲 Installation
 
@@ -41,13 +41,13 @@
     alt="Get it on GitHub"
     height="80" />](https://github.com/SuhasDissa/Food-E-App/releases/latest)
 
-## ⭐ Star History
+## ⭐ තරු ඉතිහාසය
 
 [![Star History Chart](https://api.star-history.com/svg?repos=SuhasDissa/Food-E-App&type=Timeline)](https://star-history.com/#SuhasDissa/Food-E-App&Timeline)
 
-## 🧾 Translation
-[Crowdin Translate](https://crowdin.com/project/food-e-app)
+## 🧾පරිවර්තනය
+[Crowdin පරිවර්තනය](https://crowdin.com/project/food-e-app)
 
-## For contributors
+## දායකයින් සඳහා
 
-[Read the Wiki Here](https://github.com/SuhasDissa/Food-E-App/wiki)
+[විකිය කියවන්න](https://github.com/SuhasDissa/Food-E-App/wiki)
