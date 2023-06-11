@@ -17,7 +17,7 @@
 ---
 
 <details>
-  <summary>Screenshots</summary>
+  <summary>  Screenshots</summary>
 <p align="center">
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" />
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" />
@@ -29,19 +29,23 @@
 </p>
 </details>
 
-## Features
+## ✨ Features
 - A Collection of more than 150 Food Additives
 - Search by additive name or E-number
 - Detailed info about each additive
 - Support for Large Screen tablets
 
-## Installation
+## 📲 Installation
 
 [<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png"
     alt="Get it on GitHub"
     height="80">](https://github.com/SuhasDissa/Food-E-App/releases/latest)
 
-## Translation
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=SuhasDissa/Food-E-App&type=Timeline)](https://star-history.com/#SuhasDissa/Food-E-App&Timeline)
+
+## 🧾 Translation
 [Crowdin Translate](https://crowdin.com/project/food-e-app)
 
 ## For contributors
