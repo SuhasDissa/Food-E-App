@@ -8,7 +8,8 @@
 -dontwarn org.openjsse.**
 
 # Reflection access
--keepclassmembernames class com.budiyev.android.codescanner.CodeScanner {
+-keep class com.budiyev.android.codescanner.CodeScanner {
     private com.budiyev.android.codescanner.DecoderWrapper mDecoderWrapper;
     private android.view.SurfaceHolder mSurfaceHolder;
 }
+-keep public enum com.google.zxing.BarcodeFormat
