@@ -96,7 +96,9 @@ fun AppNavHost(
         ) {
             val barcode = it.arguments?.getString("barcode")
             if (barcode != null) {
-                FoodFactScreen(barcode)
+                FoodFactScreen(barcode, onCLickAdditiveCard = { id ->
+                    navController.navigateTo("${AdditiveDetail.route}/$id")
+                })
             }
         }
     }

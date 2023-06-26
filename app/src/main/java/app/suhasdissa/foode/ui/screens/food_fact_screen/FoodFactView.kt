@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProductFactView(product: Product) {
+fun ProductFactView(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
     val pagerState = rememberPagerState { 3 }
     val scope = rememberCoroutineScope()
     TabRow(selectedTabIndex = pagerState.currentPage, Modifier.fillMaxWidth()) {
@@ -70,7 +70,7 @@ fun ProductFactView(product: Product) {
     ) { index ->
         when (index) {
             0 -> FoodFactOverview(product = product)
-            1 -> FoodFactIngredients(product = product)
+            1 -> FoodFactIngredients(product = product, onCLickAdditiveCard)
             2 -> FoodFactNutrition(product = product)
         }
     }
