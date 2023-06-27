@@ -25,7 +25,7 @@ class MainAdditivesViewModel(private val additivesRepository: AdditivesRepositor
         getFavouriteAdditives()
     }
 
-    private fun getFavouriteAdditives() {
+    fun getFavouriteAdditives() {
         viewModelScope.launch {
             favAdditives = additivesRepository.getFavourites()
         }
