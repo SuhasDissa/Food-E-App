@@ -4,21 +4,34 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.models.Product
@@ -62,12 +75,13 @@ fun FoodFactIngredients(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
             item {
                 ItemCard(
                     title = stringResource(R.string.allergens),
-                    subtitle = it.replace("en:", "")
+                    subtitle = it.replace(Regex("[a-z]{2}:"), "")
                 )
             }
         }
         if (foodFactsViewModel.eachAdditive.isNotEmpty()) {
             item {
+                var showMoreInfoDialog by remember { mutableStateOf(false) }
                 ElevatedCard(
                     Modifier
                         .fillMaxWidth()
@@ -77,11 +91,20 @@ fun FoodFactIngredients(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
                             .fillMaxWidth()
                             .padding(16.dp)
                     ) {
-                        Text(
-                            "Additives",
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
-                        )
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                stringResource(R.string.additives),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                            IconButton(onClick = { showMoreInfoDialog = true }) {
+                                Icon(Icons.Outlined.Info, stringResource(R.string.show_more_info))
+                            }
+                        }
                         Spacer(modifier = Modifier.height(8.dp))
                         foodFactsViewModel.eachAdditive.forEach { pair ->
                             if (pair.second != null) {
@@ -95,6 +118,21 @@ fun FoodFactIngredients(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
                                 AdditiveCardStack(mainText = pair.first.uppercase(), subText = "")
                             }
 
+                        }
+                    }
+                }
+                if (showMoreInfoDialog) {
+                    Dialog(onDismissRequest = { showMoreInfoDialog = false }) {
+                        Card {
+                            Column(
+                                Modifier
+                                    .width(200.dp)
+                                    .padding(16.dp)) {
+                                Text(
+                                    text = product.additivesTags.joinToString(", ")
+                                        .replace(Regex("[a-z]{2}:"), "")
+                                )
+                            }
                         }
                     }
                 }

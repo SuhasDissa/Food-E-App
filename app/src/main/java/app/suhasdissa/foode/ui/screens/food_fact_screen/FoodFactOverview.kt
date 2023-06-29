@@ -155,7 +155,7 @@ fun FoodFactOverview(product: Product) {
         }
         product.countries?.let {
             item {
-                ItemCard(title = stringResource(R.string.country_of_sale), subtitle = it)
+                ItemCard(title = stringResource(R.string.country_of_sale), subtitle = it.replace(Regex("[a-z]{2}:"),""))
             }
         }
         item {
