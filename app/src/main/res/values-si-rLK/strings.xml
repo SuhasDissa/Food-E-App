@@ -77,4 +77,5 @@
     <string name="latest_release">නවතම අනුවාදය</string>
     <string name="github_issue">GitHub ගැටළු</string>
     <string name="github_issue_description">දෝෂ වාර්තාව හෝ විශේෂාංග ඉල්ලීම සඳහා ගැටලුවක් ඉදිරිපත් කරන්න</string>
+    <string name="show_more_info">Show More Info</string>
 </resources>
