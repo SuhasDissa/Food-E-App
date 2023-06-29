@@ -77,4 +77,5 @@
     <string name="latest_release">Neuste Version</string>
     <string name="github_issue">GitHub Issue</string>
     <string name="github_issue_description">Einen Fehler oder Funktionsanfrage melden</string>
+    <string name="show_more_info">Show More Info</string>
 </resources>
