@@ -130,7 +130,8 @@ fun FoodFactIngredients(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
                                     .padding(16.dp)) {
                                 Text(
                                     text = product.additivesTags.joinToString(", ")
-                                        .replace(Regex("[a-z]{2}:"), "")
+                                        .replace(Regex("[enfrs]{2}:"), ""),
+                                    style = MaterialTheme.typography.titleMedium
                                 )
                             }
                         }
