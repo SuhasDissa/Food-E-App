@@ -24,7 +24,7 @@ import app.suhasdissa.foode.ui.components.ProductNotFoundScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FoodFactScreen(
-    barcode: String
+    barcode: String, onCLickAdditiveCard: (Int) -> Unit
 ) {
     val foodFactsViewModel: FoodFactsViewModel = viewModel(factory = FoodFactsViewModel.Factory)
     LaunchedEffect(Unit) {
@@ -60,7 +60,7 @@ fun FoodFactScreen(
                 }
 
                 is FoodFactUiState.Success -> {
-                    ProductFactView(product = state.product)
+                    ProductFactView(product = state.product, onCLickAdditiveCard)
                 }
             }
         }

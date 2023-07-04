@@ -9,10 +9,13 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Search
@@ -32,6 +35,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -45,15 +49,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import app.suhasdissa.foode.BarcodeScannerActivity
+import app.suhasdissa.foode.Destination
+import app.suhasdissa.foode.FoodFactSearch
 import app.suhasdissa.foode.R
+import app.suhasdissa.foode.SearchView
+import app.suhasdissa.foode.Settings
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     onClickTextCard: (url: Int) -> Unit,
-    onClickSettings: () -> Unit,
-    onClickSearch: () -> Unit,
+    onNavigate: (destination: Destination) -> Unit,
     onClickBarcodeCard: (barcode: String) -> Unit
 
 ) {
@@ -71,7 +78,7 @@ fun HomeScreen(
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         TopAppBar(title = { Text(stringResource(R.string.app_name)) }, actions = {
-            IconButton(onClick = { onClickSettings() }) {
+            IconButton(onClick = { onNavigate(Settings) }) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
                     contentDescription = stringResource(R.string.settings_title)
@@ -81,7 +88,7 @@ fun HomeScreen(
     }, floatingActionButton = {
         val context = LocalContext.current
 
-        Column {
+        Column(horizontalAlignment = Alignment.End) {
             FloatingActionButton(onClick = {
                 val permission = Manifest.permission.CAMERA
                 val permissionCheckResult = ContextCompat.checkSelfPermission(context, permission)
@@ -103,12 +110,22 @@ fun HomeScreen(
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-
-            FloatingActionButton(onClick = { onClickSearch() }) {
-                Icon(
-                    imageVector = Icons.Filled.Search, stringResource(R.string.search_icon_hint)
-                )
+            Row {
+                FloatingActionButton(onClick = { onNavigate(FoodFactSearch) }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.open_food_fact_icon),
+                        stringResource(R.string.search_food_product),
+                        Modifier.size(24.dp),
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+                FloatingActionButton(onClick = { onNavigate(SearchView) }) {
+                    Icon(
+                        imageVector = Icons.Filled.Search, stringResource(R.string.search_icon_hint)
+                    )
+                }
             }
+
         }
     }, bottomBar = {
         NavigationBar {

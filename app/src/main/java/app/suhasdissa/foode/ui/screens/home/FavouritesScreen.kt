@@ -3,6 +3,7 @@ package app.suhasdissa.foode.ui.screens.home
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
@@ -15,6 +16,9 @@ fun FavouritesScreen(
     additiveListViewModel: MainAdditivesViewModel = viewModel(factory = MainAdditivesViewModel.Factory),
     onClickTextCard: (url: Int) -> Unit
 ) {
+    LaunchedEffect(Unit) {
+        additiveListViewModel.getFavouriteAdditives()
+    }
     Column(
         Modifier.fillMaxSize()
     ) {

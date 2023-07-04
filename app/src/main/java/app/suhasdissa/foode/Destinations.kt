@@ -35,3 +35,7 @@ object FoodFactDetail : Destination {
     val routeWithArgs = "$route/{barcode}"
     val arguments = listOf(navArgument("barcode") { type = NavType.StringType })
 }
+
+object FoodFactSearch : Destination {
+    override val route = "food_fact_search"
+}

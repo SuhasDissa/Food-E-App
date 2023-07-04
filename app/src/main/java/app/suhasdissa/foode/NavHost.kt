@@ -16,6 +16,7 @@ import app.suhasdissa.foode.ui.screens.AdditiveDetailScreen
 import app.suhasdissa.foode.ui.screens.SearchScreen
 import app.suhasdissa.foode.ui.screens.SettingsScreen
 import app.suhasdissa.foode.ui.screens.food_fact_screen.FoodFactScreen
+import app.suhasdissa.foode.ui.screens.food_fact_search.FoodFactSearchScreen
 import app.suhasdissa.foode.ui.screens.home.HomeScreen
 
 @Composable
@@ -31,10 +32,8 @@ fun AppNavHost(
                 TwoPaneScreen(PaneOne = {
                     HomeScreen(onClickTextCard = {
                         additiveID = it
-                    }, onClickSearch = {
-                        navController.navigateTo(SearchView.route)
-                    }, onClickSettings = {
-                        navController.navigateTo(Settings.route)
+                    }, onNavigate = { destination ->
+                        navController.navigateTo(destination.route)
                     }, onClickBarcodeCard = { barcode ->
                         navController.navigateTo("${FoodFactDetail.route}/$barcode")
                     })
@@ -44,14 +43,17 @@ fun AppNavHost(
             } else {
                 HomeScreen(onClickTextCard = { id ->
                     navController.navigateTo("${AdditiveDetail.route}/$id")
-                }, onClickSearch = {
-                    navController.navigateTo(SearchView.route)
-                }, onClickSettings = {
-                    navController.navigateTo(Settings.route)
+                }, onNavigate = {
+                    navController.navigateTo(it.route)
                 }, onClickBarcodeCard = { barcode ->
                     navController.navigateTo("${FoodFactDetail.route}/$barcode")
                 })
             }
+        }
+        composable(route = FoodFactSearch.route) {
+            FoodFactSearchScreen(onClickCard = { barcode ->
+                navController.navigateTo("${FoodFactDetail.route}/$barcode")
+            })
         }
         composable(route = Settings.route) {
             if (isLargeScreen) {
@@ -96,7 +98,9 @@ fun AppNavHost(
         ) {
             val barcode = it.arguments?.getString("barcode")
             if (barcode != null) {
-                FoodFactScreen(barcode)
+                FoodFactScreen(barcode, onCLickAdditiveCard = { id ->
+                    navController.navigateTo("${AdditiveDetail.route}/$id")
+                })
             }
         }
     }
