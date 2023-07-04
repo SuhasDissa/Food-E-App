@@ -77,7 +77,7 @@ class FoodFactsViewModel(
 
     private fun searchEach(additives: List<String>) {
         viewModelScope.launch {
-            val additiveRegex = Regex("[eE][\\d]+")
+            val additiveRegex = Regex("[eE][\\d]+[abcdefABCDEF]?")
             var result = additiveRegex.find(additives.joinToString(" "))
             eachAdditive.clear()
             while (result != null) {
