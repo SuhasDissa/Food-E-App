@@ -127,7 +127,8 @@ fun FoodFactIngredients(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
                             Column(
                                 Modifier
                                     .width(200.dp)
-                                    .padding(16.dp)) {
+                                    .padding(16.dp)
+                            ) {
                                 Text(
                                     text = product.additivesTags.joinToString(", ")
                                         .replace(Regex("[enfrs]{2}:"), ""),

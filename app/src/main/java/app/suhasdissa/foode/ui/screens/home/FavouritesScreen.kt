@@ -16,7 +16,7 @@ fun FavouritesScreen(
     additiveListViewModel: MainAdditivesViewModel = viewModel(factory = MainAdditivesViewModel.Factory),
     onClickTextCard: (url: Int) -> Unit
 ) {
-    LaunchedEffect(Unit){
+    LaunchedEffect(Unit) {
         additiveListViewModel.getFavouriteAdditives()
     }
     Column(
