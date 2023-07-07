@@ -28,7 +28,7 @@ interface ApiService {
     @Headers("User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
     @GET("cgi/search.pl?search_simple=1&action=process&fields=code,product_name,brands,image_thumb_url&json=1")
     suspend fun searchProduct(
-        @Query("search_terms") q: String
+        @Query("search_terms",encoded = true) q: String
     ): OpenFoodFactsSearchResponse
 }
 

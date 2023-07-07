@@ -1,5 +1,6 @@
 package app.suhasdissa.foode.backend.viewmodels
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -13,9 +14,11 @@ import app.suhasdissa.foode.FoodeApplication
 import app.suhasdissa.foode.backend.models.Products
 import app.suhasdissa.foode.backend.repositories.BarcodeHistoryRepository
 import app.suhasdissa.foode.backend.repositories.OpenFoodFactRepository
+import app.suhasdissa.foode.backend.viewmodels.states.FFSearchError
 import app.suhasdissa.foode.backend.viewmodels.states.FFSearchState
 import app.suhasdissa.foode.utils.toBarcodeEntity
 import kotlinx.coroutines.launch
+import java.net.SocketTimeoutException
 
 class FFSearchViewModel(
     private val openFoodFactRepository: OpenFoodFactRepository,
@@ -37,8 +40,11 @@ class FFSearchViewModel(
                 } else {
                     FFSearchState.NotFound
                 }
+            } catch (_: SocketTimeoutException) {
+                FFSearchState.Error(FFSearchError.Timeout)
             } catch (e: Exception) {
-                FFSearchState.Error(e.toString())
+                Log.e("SearchError", e.toString())
+                FFSearchState.Error(FFSearchError.Unknown)
             }
         }
     }

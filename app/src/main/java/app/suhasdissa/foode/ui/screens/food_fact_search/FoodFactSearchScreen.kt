@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.viewmodels.FFSearchViewModel
+import app.suhasdissa.foode.backend.viewmodels.states.FFSearchError
 import app.suhasdissa.foode.backend.viewmodels.states.FFSearchState
 import app.suhasdissa.foode.ui.components.FoodProductCard
 import app.suhasdissa.foode.ui.components.IllustratedMessageScreen
@@ -96,7 +97,10 @@ fun FoodFactSearchScreen(
             is FFSearchState.Error -> {
                 IllustratedMessageScreen(
                     image = R.drawable.broken_egg_icon,
-                    message = R.string.something_went_wrong
+                    message = when (searchState.e) {
+                        FFSearchError.Timeout -> R.string.timeout_error
+                        FFSearchError.Unknown -> R.string.something_went_wrong
+                    }
                 )
 
             }
