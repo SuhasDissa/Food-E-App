@@ -7,14 +7,14 @@ plugins {
 
 android {
     namespace = "app.suhasdissa.foode"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "app.suhasdissa.foode"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 32
-        versionName = "3.2"
+        targetSdk = 34
+        versionCode = 33
+        versionName = "3.3"
 
         javaCompileOptions {
             annotationProcessorOptions {
