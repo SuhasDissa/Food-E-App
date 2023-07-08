@@ -83,4 +83,5 @@
     <string name="search_food_product">Serch Food Product</string>
     <string name="clear_search">Clear Search</string>
     <string name="couldnt_find_product">Couldn\'t find any products</string>
+    <string name="timeout_error">Timeout Error</string>
 </resources>
