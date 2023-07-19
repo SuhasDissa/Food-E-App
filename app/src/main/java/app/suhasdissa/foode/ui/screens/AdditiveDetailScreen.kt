@@ -37,34 +37,41 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.viewmodels.AdditiveDetailViewModel
+import app.suhasdissa.foode.backend.viewmodels.states.TranslationState
 import app.suhasdissa.foode.utils.openBrowser
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdditiveDetailScreen(
     id: Int,
-    additiveViewModel: AdditiveDetailViewModel = viewModel(factory = AdditiveDetailViewModel.Factory)
+    additiveViewModel: AdditiveDetailViewModel = viewModel(
+        factory = AdditiveDetailViewModel.Factory
+    )
 ) {
     LaunchedEffect(id) {
         if (id != 0) additiveViewModel.getAdditive(id)
     }
-    if (additiveViewModel.additive.id == 0) {
+    if (additiveViewModel.additive == null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(stringResource(R.string.select_an_additive))
         }
-    } else {
+    }
+    additiveViewModel.additive?.let { additive ->
         Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
             TopAppBar(title = {
                 Text(
-                    additiveViewModel.additive.eCode, overflow = TextOverflow.Ellipsis
+                    additive.eCode,
+                    overflow = TextOverflow.Ellipsis
                 )
             })
         }, floatingActionButton = {
             Column {
-                var isFavourite by remember { mutableStateOf(additiveViewModel.additive.isFavourite) }
+                var isFavourite by remember {
+                    mutableStateOf(additive.isFavourite)
+                }
                 FloatingActionButton(onClick = {
                     val copyText =
-                        "${additiveViewModel.additive.eCode} : ${additiveViewModel.additive.title}\n\nHalal Status : ${additiveViewModel.additive.halalStatus}\n\n${additiveViewModel.additive.info}"
+                        "${additive.eCode} : ${additive.title}\n\nHalal Status : ${additive.halalStatus}\n\n${additive.info}"
                     val clip: ClipData = ClipData.newPlainText("Additive Details", copyText)
                     additiveViewModel.getClipboard().setPrimaryClip(clip)
                 }) {
@@ -106,15 +113,22 @@ fun AdditiveDetailScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-
-                AdditiveDetailBox(additive = additiveViewModel.additive)
+                val translation = when (val state = additiveViewModel.translationState) {
+                    is TranslationState.Success -> state.translation
+                    else -> null
+                }
+                AdditiveDetailBox(additive = additive, translation = translation)
             }
         }
     }
 }
 
 @Composable
-fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) {
+fun AdditiveDetailBox(
+    modifier: Modifier = Modifier,
+    additive: AdditivesEntity,
+    translation: String?
+) {
     LazyColumn(
         modifier
             .fillMaxSize()
@@ -240,7 +254,6 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                                 contentDescription = stringResource(R.string.health_rating_unknown)
                             )
                         }
-
                     }
                 }
             }
@@ -255,8 +268,10 @@ fun AdditiveDetailBox(modifier: Modifier = Modifier, additive: AdditivesEntity) 
                         .padding(16.dp)
                 ) {
                     SelectionContainer(modifier.fillMaxWidth()) {
-                        Text(additive.info, style = MaterialTheme.typography.bodyLarge)
-
+                        Text(
+                            translation ?: additive.info,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
                     }
                 }
             }
@@ -273,10 +288,11 @@ fun AdditiveDetailBoxPreview() {
             eCode = "E100",
             eType = "Test",
             title = "Test Additive",
-            info = "lorem ipsum fewa gewa gewar ywhg wrqa bhewar aewrab awegad awtaweg f awega ga werqwetaw ",
+            info = "lorem ipsum fewa gewa gewar ywhg ",
             halalStatus = 1,
             isFavourite = 0,
             healthRating = 0
-        )
+        ),
+        translation = null
     )
 }

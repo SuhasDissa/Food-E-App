@@ -11,7 +11,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private val json = Json { ignoreUnknownKeys = true }
+val json = Json { ignoreUnknownKeys = true }
 
 private val retrofit = Retrofit.Builder()
     .baseUrl("https://world.openfoodfacts.org/")
@@ -19,16 +19,22 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ApiService {
-    @Headers("User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
+    @Headers(
+        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+    )
     @GET("api/v2/product/{barcode}")
     suspend fun getProductData(
         @Path("barcode") barcode: String
     ): OpenFoodFactsResponse
 
-    @Headers("User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
-    @GET("cgi/search.pl?search_simple=1&action=process&fields=code,product_name,brands,image_thumb_url&json=1")
+    @Headers(
+        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+    )
+    @GET(
+        "cgi/search.pl?search_simple=1&action=process&fields=code,product_name,brands,image_thumb_url&json=1"
+    )
     suspend fun searchProduct(
-        @Query("search_terms",encoded = true) q: String
+        @Query("search_terms", encoded = true) q: String
     ): OpenFoodFactsSearchResponse
 }
 
