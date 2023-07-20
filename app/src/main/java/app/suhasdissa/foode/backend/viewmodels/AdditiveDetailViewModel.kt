@@ -16,8 +16,8 @@ import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
 import app.suhasdissa.foode.backend.repositories.TranslationRepository
 import app.suhasdissa.foode.backend.viewmodels.states.TranslationState
-import kotlinx.coroutines.launch
 import java.util.Locale
+import kotlinx.coroutines.launch
 
 class AdditiveDetailViewModel(
     private val additivesRepository: AdditivesRepository,
@@ -32,38 +32,26 @@ class AdditiveDetailViewModel(
     private val languageCode: String = Locale.getDefault().language
     private var supportedLanguages = listOf<String>()
 
-    var translatable by mutableStateOf(false)
-        private set
-
-    init {
-        getLanguages()
-    }
-
-    private fun getLanguages() {
+    private fun getTranslation(query: String) {
         viewModelScope.launch {
             if (languageCode == "en") {
                 translationState = TranslationState.NotTranslated
                 return@launch
             }
-            try {
-                supportedLanguages = transtationRepository.getLanguages().map { it.code }
-            } catch (e: Exception) {
-                Log.e("Translate Error", e.toString())
-                translationState = TranslationState.Error
-                return@launch
+            translationState = TranslationState.Loading
+            if (supportedLanguages.isEmpty()) {
+                try {
+                    supportedLanguages = transtationRepository.getLanguages().map { it.code }
+                } catch (e: Exception) {
+                    Log.e("Translate Error", e.toString())
+                    translationState = TranslationState.Error
+                    return@launch
+                }
             }
             if (!supportedLanguages.contains(languageCode)) {
                 translationState = TranslationState.NotSupported
                 return@launch
             }
-            translatable = true
-        }
-    }
-
-    private fun getTranslation(query: String) {
-        if (!translatable) return
-        viewModelScope.launch {
-            translationState = TranslationState.Loading
             translationState = try {
                 val translation = transtationRepository.getTranslation(languageCode, query)
                 TranslationState.Success(translation)
