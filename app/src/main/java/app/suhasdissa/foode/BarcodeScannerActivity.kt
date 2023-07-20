@@ -37,7 +37,7 @@ class BarcodeScannerActivity : ComponentActivity() {
             // Callbacks
             decodeCallback = DecodeCallback {
                 val intent = Intent(Intent.ACTION_VIEW).apply {
-                    data = "foode://${FoodFactDetail.route}/$it".toUri()
+                    data = "foode://${Destination.FoodFactDetail.route}/$it".toUri()
                 }
                 startActivity(intent)
             }
