@@ -10,7 +10,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 
 private val lingvaRetrofit = Retrofit.Builder()
-    .baseUrl("https://lingva.ml/")
+    .baseUrl("https://lingva.lunar.icu/")
     .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
     .build()
 
