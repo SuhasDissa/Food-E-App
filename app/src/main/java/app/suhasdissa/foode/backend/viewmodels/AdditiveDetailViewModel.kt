@@ -1,6 +1,7 @@
 package app.suhasdissa.foode.backend.viewmodels
 
 import android.content.ClipboardManager
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,13 +17,16 @@ import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
 import app.suhasdissa.foode.backend.repositories.TranslationRepository
 import app.suhasdissa.foode.backend.viewmodels.states.TranslationState
+import app.suhasdissa.foode.utils.autoTranslateKey
+import app.suhasdissa.foode.utils.preferences
 import java.util.Locale
 import kotlinx.coroutines.launch
 
 class AdditiveDetailViewModel(
     private val additivesRepository: AdditivesRepository,
     private val clipboard: ClipboardManager,
-    private val transtationRepository: TranslationRepository
+    private val transtationRepository: TranslationRepository,
+    private val preferences: SharedPreferences
 ) : ViewModel() {
     var additive: AdditivesEntity? by mutableStateOf(null)
         private set
@@ -33,11 +37,12 @@ class AdditiveDetailViewModel(
     private var supportedLanguages = listOf<String>()
 
     private fun getTranslation(query: String) {
+        val autoTranslate = preferences.getBoolean(autoTranslateKey, false)
+        if (!autoTranslate || languageCode == "en") {
+            translationState = TranslationState.NotTranslated
+            return
+        }
         viewModelScope.launch {
-            if (languageCode == "en") {
-                translationState = TranslationState.NotTranslated
-                return@launch
-            }
             translationState = TranslationState.Loading
             if (supportedLanguages.isEmpty()) {
                 try {
@@ -88,7 +93,8 @@ class AdditiveDetailViewModel(
                 AdditiveDetailViewModel(
                     additivesRepository = application.container.additivesRepository,
                     clipboard = application.container.clipboardManager,
-                    transtationRepository = application.container.translationRepository
+                    transtationRepository = application.container.translationRepository,
+                    preferences = application.preferences
                 )
             }
         }
