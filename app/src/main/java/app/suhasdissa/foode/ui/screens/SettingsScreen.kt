@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import app.suhasdissa.foode.Destination
 import app.suhasdissa.foode.R
 import app.suhasdissa.foode.ui.components.SettingItem
 
@@ -19,11 +20,12 @@ import app.suhasdissa.foode.ui.components.SettingItem
 @Composable
 fun SettingsScreen(
     modifier: Modifier = Modifier,
-    onAboutClick: () -> Unit
+    onNavigate: (Destination) -> Unit
 ) {
     Scaffold(modifier = modifier.fillMaxSize(), topBar = {
         TopAppBar(
-            title = { Text(stringResource(R.string.settings_title)) })
+            title = { Text(stringResource(R.string.settings_title)) }
+        )
     }) { innerPadding ->
         LazyColumn(
             modifier
@@ -35,7 +37,7 @@ fun SettingsScreen(
                 SettingItem(
                     title = stringResource(R.string.about_title),
                     description = stringResource(R.string.about_setting_description),
-                    onClick = { onAboutClick() },
+                    onClick = { onNavigate(Destination.About) },
                     icon = Icons.Outlined.Info
                 )
             }

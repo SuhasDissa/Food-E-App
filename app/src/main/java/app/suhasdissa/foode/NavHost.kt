@@ -24,9 +24,9 @@ fun AppNavHost(
     navController: NavHostController, modifier: Modifier = Modifier, isLargeScreen: Boolean
 ) {
     NavHost(
-        navController = navController, startDestination = Home.route, modifier = modifier
+        navController = navController, startDestination = Destination.Home.route, modifier = modifier
     ) {
-        composable(route = Home.route) {
+        composable(route = Destination.Home.route) {
             var additiveID by remember { mutableStateOf(0) }
             if (isLargeScreen) {
                 TwoPaneScreen(PaneOne = {
@@ -35,41 +35,42 @@ fun AppNavHost(
                     }, onNavigate = { destination ->
                         navController.navigateTo(destination.route)
                     }, onClickBarcodeCard = { barcode ->
-                        navController.navigateTo("${FoodFactDetail.route}/$barcode")
+                        navController.navigateTo("${Destination.FoodFactDetail.route}/$barcode")
                     })
                 }, PaneTwo = {
                     AdditiveDetailScreen(additiveID)
                 })
             } else {
                 HomeScreen(onClickTextCard = { id ->
-                    navController.navigateTo("${AdditiveDetail.route}/$id")
+                    navController.navigateTo("${Destination.AdditiveDetail.route}/$id")
                 }, onNavigate = {
                     navController.navigateTo(it.route)
                 }, onClickBarcodeCard = { barcode ->
-                    navController.navigateTo("${FoodFactDetail.route}/$barcode")
+                    navController.navigateTo("${Destination.FoodFactDetail.route}/$barcode")
                 })
             }
         }
-        composable(route = FoodFactSearch.route) {
+        composable(route = Destination.FoodFactSearch.route) {
             FoodFactSearchScreen(onClickCard = { barcode ->
-                navController.navigateTo("${FoodFactDetail.route}/$barcode")
+                navController.navigateTo("${Destination.FoodFactDetail.route}/$barcode")
             })
         }
-        composable(route = Settings.route) {
+        composable(route = Destination.Settings.route) {
+
             if (isLargeScreen) {
                 TwoPaneScreen(PaneOne = {
-                    SettingsScreen(onAboutClick = { })
+                    SettingsScreen(onNavigate = {})
                 }, PaneTwo = { AboutScreen() })
             } else {
-                SettingsScreen(onAboutClick = {
-                    navController.navigateTo(About.route)
+                SettingsScreen(onNavigate = {destination->
+                    navController.navigateTo(destination.route)
                 })
             }
         }
-        composable(route = About.route) {
+        composable(route = Destination.About.route) {
             AboutScreen()
         }
-        composable(route = SearchView.route) {
+        composable(route = Destination.SearchView.route) {
             var additiveID by remember { mutableStateOf(0) }
             if (isLargeScreen) {
                 TwoPaneScreen(PaneOne = {
@@ -77,12 +78,12 @@ fun AppNavHost(
                 }, PaneTwo = { AdditiveDetailScreen(additiveID) })
             } else {
                 SearchScreen(onClickTextCard = { id ->
-                    navController.navigateTo("${AdditiveDetail.route}/$id")
+                    navController.navigateTo("${Destination.AdditiveDetail.route}/$id")
                 })
             }
         }
         composable(
-            route = AdditiveDetail.routeWithArgs, arguments = AdditiveDetail.arguments
+            route = Destination.AdditiveDetail.routeWithArgs, arguments = Destination.AdditiveDetail.arguments
         ) {
             val id = it.arguments?.getInt("AdditiveID")
             if (id != null) {
@@ -90,16 +91,16 @@ fun AppNavHost(
             }
         }
         composable(
-            route = FoodFactDetail.routeWithArgs,
-            arguments = FoodFactDetail.arguments,
+            route = Destination.FoodFactDetail.routeWithArgs,
+            arguments = Destination.FoodFactDetail.arguments,
             deepLinks = listOf(navDeepLink {
-                uriPattern = "foode://${FoodFactDetail.routeWithArgs}"
+                uriPattern = "foode://${Destination.FoodFactDetail.routeWithArgs}"
             })
         ) {
             val barcode = it.arguments?.getString("barcode")
             if (barcode != null) {
                 FoodFactScreen(barcode, onCLickAdditiveCard = { id ->
-                    navController.navigateTo("${AdditiveDetail.route}/$id")
+                    navController.navigateTo("${Destination.AdditiveDetail.route}/$id")
                 })
             }
         }

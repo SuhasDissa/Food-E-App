@@ -50,11 +50,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import app.suhasdissa.foode.BarcodeScannerActivity
 import app.suhasdissa.foode.Destination
-import app.suhasdissa.foode.FoodFactSearch
 import app.suhasdissa.foode.R
-import app.suhasdissa.foode.SearchView
-import app.suhasdissa.foode.Settings
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -73,12 +69,14 @@ fun HomeScreen(
     val navController = rememberNavController()
     var currentScreen by remember { mutableStateOf<HomeScreen>(HomeScreen.Additives) }
     val items = listOf(
-        HomeScreen.Additives, HomeScreen.Favourites, HomeScreen.Scan
+        HomeScreen.Additives,
+        HomeScreen.Favourites,
+        HomeScreen.Scan
     )
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         TopAppBar(title = { Text(stringResource(R.string.app_name)) }, actions = {
-            IconButton(onClick = { onNavigate(Settings) }) {
+            IconButton(onClick = { onNavigate(Destination.Settings) }) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
                     contentDescription = stringResource(R.string.settings_title)
@@ -95,7 +93,8 @@ fun HomeScreen(
                 if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
                     context.startActivity(
                         Intent(
-                            context, BarcodeScannerActivity::class.java
+                            context,
+                            BarcodeScannerActivity::class.java
                         )
                     )
                 } else {
@@ -111,30 +110,33 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
             Row {
-                FloatingActionButton(onClick = { onNavigate(FoodFactSearch) }) {
+                FloatingActionButton(onClick = { onNavigate(Destination.FoodFactSearch) }) {
                     Icon(
                         painter = painterResource(id = R.drawable.open_food_fact_icon),
                         stringResource(R.string.search_food_product),
-                        Modifier.size(24.dp),
+                        Modifier.size(24.dp)
                     )
                 }
                 Spacer(modifier = Modifier.width(8.dp))
-                FloatingActionButton(onClick = { onNavigate(SearchView) }) {
+                FloatingActionButton(onClick = { onNavigate(Destination.SearchView) }) {
                     Icon(
-                        imageVector = Icons.Filled.Search, stringResource(R.string.search_icon_hint)
+                        imageVector = Icons.Filled.Search,
+                        stringResource(R.string.search_icon_hint)
                     )
                 }
             }
-
         }
     }, bottomBar = {
         NavigationBar {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination
             items.forEach { screen ->
-                NavigationBarItem(icon = screen.icon,
+                NavigationBarItem(
+                    icon = screen.icon,
                     label = { Text(stringResource(screen.resourceId)) },
-                    selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                    selected = currentDestination?.hierarchy?.any {
+                        it.route == screen.route
+                    } == true,
                     onClick = {
                         navController.navigate(screen.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
@@ -144,7 +146,8 @@ fun HomeScreen(
                             restoreState = true
                         }
                         currentScreen = screen
-                    })
+                    }
+                )
             }
         }
     }) { innerPadding ->
@@ -169,7 +172,8 @@ fun HomeScreen(
                 }
             }, exitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300)
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(300)
                 )
             }) {
                 AdditiveScreen(onClickTextCard = onClickTextCard)
@@ -207,11 +211,13 @@ fun HomeScreen(
             }
             composable(HomeScreen.Scan.route, enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300)
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(300)
                 )
             }, exitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(300)
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(300)
                 )
             }) {
                 ScanHistoryScreen(onClickCard = onClickBarcodeCard)
@@ -221,7 +227,9 @@ fun HomeScreen(
 }
 
 sealed class HomeScreen(
-    val icon: @Composable () -> Unit, val route: String, @StringRes val resourceId: Int
+    val icon: @Composable () -> Unit,
+    val route: String,
+    @StringRes val resourceId: Int
 ) {
     object Additives : HomeScreen(
         { Icon(imageVector = Icons.Filled.Book, contentDescription = null) },
@@ -231,13 +239,15 @@ sealed class HomeScreen(
 
     object Favourites : HomeScreen({
         Icon(
-            imageVector = Icons.Filled.Star, contentDescription = null
+            imageVector = Icons.Filled.Star,
+            contentDescription = null
         )
     }, "fav_additives", R.string.favourites)
 
     object Scan : HomeScreen({
         Icon(
-            painter = painterResource(id = R.drawable.barcode_icon), contentDescription = null
+            painter = painterResource(id = R.drawable.barcode_icon),
+            contentDescription = null
         )
     }, "scan_history", R.string.scan_history)
 }
