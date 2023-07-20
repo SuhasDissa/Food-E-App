@@ -15,7 +15,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.FoodEApp"
-        tools:targetApi="33">
+        tools:targetApi="33"
+        android:localeConfig="@xml/locales_config">
         <activity
             android:name=".BarcodeScannerActivity"
             android:exported="true"

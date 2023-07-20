@@ -21,7 +21,6 @@ android {
                 arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
             }
         }
-
     }
     signingConfigs {
         create("release") {
@@ -53,7 +52,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-
     }
 
     compileOptions {
@@ -90,18 +88,16 @@ dependencies {
 
     implementation("androidx.compose.material3:material3-window-size-class:1.1.0")
 
-
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("androidx.navigation:navigation-compose:2.7.0-alpha01")
     implementation("androidx.compose.material:material-icons-extended:1.4.3")
 
-
-    //Coil
+    // Coil
     implementation("io.coil-kt:coil-compose:2.3.0")
     implementation("io.coil-kt:coil-svg:2.3.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
 
-    //Room
+    // Room
     val roomVersion = "2.5.1"
 
     implementation("androidx.room:room-runtime:$roomVersion")
