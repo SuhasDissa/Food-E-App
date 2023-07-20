@@ -5,4 +5,5 @@ sealed interface TranslationState {
     object Error : TranslationState
     object Loading : TranslationState
     object NotTranslated : TranslationState
+    object NotSupported : TranslationState
 }

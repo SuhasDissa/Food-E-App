@@ -16,10 +16,12 @@ import androidx.compose.material.icons.filled.SentimentNeutral
 import androidx.compose.material.icons.filled.SentimentSatisfied
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarOutline
+import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -38,6 +40,7 @@ import app.suhasdissa.foode.R
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.viewmodels.AdditiveDetailViewModel
 import app.suhasdissa.foode.backend.viewmodels.states.TranslationState
+import app.suhasdissa.foode.ui.components.TranslationStateDialog
 import app.suhasdissa.foode.utils.openBrowser
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,11 +54,20 @@ fun AdditiveDetailScreen(
     LaunchedEffect(id) {
         if (id != 0) additiveViewModel.getAdditive(id)
     }
+    var showTranslationState by remember { mutableStateOf(false) }
     if (additiveViewModel.additive == null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(stringResource(R.string.select_an_additive))
         }
     }
+
+    if (showTranslationState) {
+        TranslationStateDialog(
+            state = additiveViewModel.translationState,
+            onDismissRequest = { showTranslationState = false }
+        )
+    }
+
     additiveViewModel.additive?.let { additive ->
         Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
             TopAppBar(title = {
@@ -63,11 +75,20 @@ fun AdditiveDetailScreen(
                     additive.eCode,
                     overflow = TextOverflow.Ellipsis
                 )
+            }, actions = {
+                IconButton(onClick = { showTranslationState = true }) {
+                    Icon(
+                        imageVector = Icons.Default.Translate,
+                        contentDescription = stringResource(
+                            id = R.string.translation_state
+                        )
+                    )
+                }
             })
         }, floatingActionButton = {
             Column {
                 var isFavourite by remember {
-                    mutableStateOf(additive.isFavourite)
+                    mutableIntStateOf(additive.isFavourite)
                 }
                 FloatingActionButton(onClick = {
                     val copyText =
@@ -113,11 +134,10 @@ fun AdditiveDetailScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-                val translation = when (val state = additiveViewModel.translationState) {
-                    is TranslationState.Success -> state.translation
-                    else -> null
-                }
-                AdditiveDetailBox(additive = additive, translation = translation)
+                AdditiveDetailBox(
+                    additive = additive,
+                    translation = additiveViewModel.translationState
+                )
             }
         }
     }
@@ -127,7 +147,7 @@ fun AdditiveDetailScreen(
 fun AdditiveDetailBox(
     modifier: Modifier = Modifier,
     additive: AdditivesEntity,
-    translation: String?
+    translation: TranslationState
 ) {
     LazyColumn(
         modifier
@@ -267,9 +287,16 @@ fun AdditiveDetailBox(
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
+                    if (translation is TranslationState.Loading) {
+                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                    }
+                    val translatedText = when (translation) {
+                        is TranslationState.Success -> translation.translation
+                        else -> null
+                    }
                     SelectionContainer(modifier.fillMaxWidth()) {
                         Text(
-                            translation ?: additive.info,
+                            translatedText ?: additive.info,
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }
@@ -293,6 +320,6 @@ fun AdditiveDetailBoxPreview() {
             isFavourite = 0,
             healthRating = 0
         ),
-        translation = null
+        translation = TranslationState.NotTranslated
     )
 }

@@ -32,7 +32,7 @@ class AdditiveDetailViewModel(
     private val languageCode: String = Locale.getDefault().language
     private var supportedLanguages = listOf<String>()
 
-    var translatable by mutableStateOf((languageCode != "en"))
+    var translatable by mutableStateOf(false)
         private set
 
     init {
@@ -40,13 +40,23 @@ class AdditiveDetailViewModel(
     }
 
     private fun getLanguages() {
-        if (!translatable) return
         viewModelScope.launch {
-            runCatching {
-                supportedLanguages = transtationRepository.getLanguages().map { it.code }
+            if (languageCode == "en") {
+                translationState = TranslationState.NotTranslated
+                return@launch
             }
-            translatable =
-                supportedLanguages.isNotEmpty() && supportedLanguages.contains(languageCode)
+            try {
+                supportedLanguages = transtationRepository.getLanguages().map { it.code }
+            } catch (e: Exception) {
+                Log.e("Translate Error", e.toString())
+                translationState = TranslationState.Error
+                return@launch
+            }
+            if (!supportedLanguages.contains(languageCode)) {
+                translationState = TranslationState.NotSupported
+                return@launch
+            }
+            translatable = true
         }
     }
     private fun getTranslation(query: String) {
