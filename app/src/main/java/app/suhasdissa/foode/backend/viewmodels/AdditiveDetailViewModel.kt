@@ -36,7 +36,7 @@ class AdditiveDetailViewModel(
     private val languageCode: String = Locale.getDefault().language
     private var supportedLanguages = listOf<String>()
 
-    private fun getTranslation(query: String) {
+    private fun getTranslation(title: String, description: String) {
         val autoTranslate = preferences.getBoolean(autoTranslateKey, false)
         if (!autoTranslate || languageCode == "en") {
             translationState = TranslationState.NotTranslated
@@ -58,8 +58,11 @@ class AdditiveDetailViewModel(
                 return@launch
             }
             translationState = try {
-                val translation = transtationRepository.getTranslation(languageCode, query)
-                TranslationState.Success(translation)
+                val titleTrans = transtationRepository.getTranslation(languageCode, title)
+                val descriptionTrans =
+                    transtationRepository.getTranslation(languageCode, description)
+                additive = additive?.copy(info = descriptionTrans, title = titleTrans)
+                TranslationState.Success
             } catch (e: Exception) {
                 Log.e("Translate Error", e.toString())
                 TranslationState.Error
@@ -75,7 +78,7 @@ class AdditiveDetailViewModel(
         viewModelScope.launch {
             additive = additivesRepository.getAdditive(id)
             additive?.let { additive ->
-                getTranslation(additive.info)
+                getTranslation(additive.title, additive.info)
             }
         }
     }

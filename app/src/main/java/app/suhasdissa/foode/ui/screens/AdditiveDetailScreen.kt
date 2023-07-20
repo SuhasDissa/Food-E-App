@@ -32,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -134,9 +135,11 @@ fun AdditiveDetailScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
+                if (additiveViewModel.translationState is TranslationState.Loading) {
+                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                }
                 AdditiveDetailBox(
-                    additive = additive,
-                    translation = additiveViewModel.translationState
+                    additive = additive
                 )
             }
         }
@@ -146,8 +149,7 @@ fun AdditiveDetailScreen(
 @Composable
 fun AdditiveDetailBox(
     modifier: Modifier = Modifier,
-    additive: AdditivesEntity,
-    translation: TranslationState
+    additive: AdditivesEntity
 ) {
     LazyColumn(
         modifier
@@ -166,7 +168,13 @@ fun AdditiveDetailBox(
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
-                    Text(additive.title, style = MaterialTheme.typography.titleLarge)
+                    Text(
+                        additive.title,
+                        modifier = Modifier.fillMaxWidth(),
+                        style = MaterialTheme.typography.titleLarge.merge(
+                            textDirection = TextDirection.ContentOrLtr
+                        )
+                    )
                     Text(additive.eCode, style = MaterialTheme.typography.titleSmall)
                 }
             }
@@ -287,17 +295,12 @@ fun AdditiveDetailBox(
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
-                    if (translation is TranslationState.Loading) {
-                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-                    }
-                    val translatedText = when (translation) {
-                        is TranslationState.Success -> translation.translation
-                        else -> null
-                    }
                     SelectionContainer(modifier.fillMaxWidth()) {
                         Text(
-                            translatedText ?: additive.info,
-                            style = MaterialTheme.typography.bodyLarge
+                            additive.info,
+                            style = MaterialTheme.typography.bodyLarge.merge(
+                                textDirection = TextDirection.ContentOrLtr
+                            )
                         )
                     }
                 }
@@ -319,7 +322,6 @@ fun AdditiveDetailBoxPreview() {
             halalStatus = 1,
             isFavourite = 0,
             healthRating = 0
-        ),
-        translation = TranslationState.NotTranslated
+        )
     )
 }
