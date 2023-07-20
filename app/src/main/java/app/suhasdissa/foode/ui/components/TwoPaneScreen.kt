@@ -27,7 +27,5 @@ fun TwoPaneScreen(
         ) {
             PaneTwo()
         }
-
     }
-
 }

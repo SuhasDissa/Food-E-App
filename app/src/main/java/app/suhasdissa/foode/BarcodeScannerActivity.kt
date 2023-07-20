@@ -44,7 +44,8 @@ class BarcodeScannerActivity : ComponentActivity() {
             errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
                 runOnUiThread {
                     Toast.makeText(
-                        this@BarcodeScannerActivity, "Camera initialization error: ${it.message}",
+                        this@BarcodeScannerActivity,
+                        "Camera initialization error: ${it.message}",
                         Toast.LENGTH_LONG
                     ).show()
                 }

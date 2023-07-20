@@ -66,7 +66,8 @@ fun ProductFactView(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
         }
     }
     HorizontalPager(
-        state = pagerState, modifier = Modifier.fillMaxSize()
+        state = pagerState,
+        modifier = Modifier.fillMaxSize()
     ) { index ->
         when (index) {
             0 -> FoodFactOverview(product = product)

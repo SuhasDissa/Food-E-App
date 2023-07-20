@@ -13,10 +13,12 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun MessageScreen(@StringRes message: Int, modifier: Modifier = Modifier) {
     Box(
-        contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize()
+        contentAlignment = Alignment.Center,
+        modifier = modifier.fillMaxSize()
     ) {
         Text(
-            stringResource(message), style = MaterialTheme.typography.bodyLarge
+            stringResource(message),
+            style = MaterialTheme.typography.bodyLarge
         )
     }
 }

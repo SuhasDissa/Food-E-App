@@ -27,10 +27,13 @@ import app.suhasdissa.foode.R
 
 @Composable
 fun IllustratedMessageScreen(
-    @DrawableRes image: Int, @StringRes contentDescription: Int, modifier: Modifier = Modifier
+    @DrawableRes image: Int,
+    @StringRes contentDescription: Int,
+    modifier: Modifier = Modifier
 ) {
     Box(
-        contentAlignment = Alignment.Center, modifier = modifier
+        contentAlignment = Alignment.Center,
+        modifier = modifier
             .fillMaxSize()
             .alpha(0.3f)
     ) {
@@ -92,11 +95,11 @@ fun IllustratedMessageScreen(
     }
 }
 
-
 @Composable
 @Preview(showBackground = true)
 private fun IllustratedMsgScreenPreview() {
     IllustratedMessageScreen(
-        image = R.drawable.empty_barcode_list_icon, contentDescription = R.string.list_is_empty
+        image = R.drawable.empty_barcode_list_icon,
+        contentDescription = R.string.list_is_empty
     )
 }

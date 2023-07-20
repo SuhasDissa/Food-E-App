@@ -24,7 +24,8 @@ import app.suhasdissa.foode.ui.components.ProductNotFoundScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FoodFactScreen(
-    barcode: String, onCLickAdditiveCard: (Int) -> Unit
+    barcode: String,
+    onCLickAdditiveCard: (Int) -> Unit
 ) {
     val foodFactsViewModel: FoodFactsViewModel = viewModel(factory = FoodFactsViewModel.Factory)
     LaunchedEffect(Unit) {

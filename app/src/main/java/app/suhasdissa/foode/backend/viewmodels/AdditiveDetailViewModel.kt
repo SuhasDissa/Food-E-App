@@ -16,8 +16,8 @@ import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
 import app.suhasdissa.foode.backend.repositories.TranslationRepository
 import app.suhasdissa.foode.backend.viewmodels.states.TranslationState
-import java.util.Locale
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class AdditiveDetailViewModel(
     private val additivesRepository: AdditivesRepository,
@@ -59,6 +59,7 @@ class AdditiveDetailViewModel(
             translatable = true
         }
     }
+
     private fun getTranslation(query: String) {
         if (!translatable) return
         viewModelScope.launch {

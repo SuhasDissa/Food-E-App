@@ -95,7 +95,6 @@ fun FoodFactNutrition(product: Product) {
                     )
                 }
             }
-
         }
     }
 }

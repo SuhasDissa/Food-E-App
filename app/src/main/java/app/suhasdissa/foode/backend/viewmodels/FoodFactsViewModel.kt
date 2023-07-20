@@ -56,7 +56,9 @@ class FoodFactsViewModel(
                     it.code?.let { code ->
                         addBarcode(
                             BarcodeEntity(
-                                code, it.productName ?: "Unknown Product", it.imageUrl ?: ""
+                                code,
+                                it.productName ?: "Unknown Product",
+                                it.imageUrl ?: ""
                             )
                         )
                     }
@@ -89,7 +91,6 @@ class FoodFactsViewModel(
     }
 
     private fun formatAllergens(text: String) {
-
         viewModelScope.launch {
             val boldRegex = Regex("<[^</>]+>([^</>]+)</[^</>]+>")
             var results: MatchResult? = boldRegex.find(text)

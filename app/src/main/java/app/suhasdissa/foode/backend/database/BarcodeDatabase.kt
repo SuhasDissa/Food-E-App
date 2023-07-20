@@ -19,7 +19,9 @@ abstract class BarcodeDatabase : RoomDatabase() {
         fun getDatabase(context: Context): BarcodeDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext, BarcodeDatabase::class.java, "barcode_database"
+                    context.applicationContext,
+                    BarcodeDatabase::class.java,
+                    "barcode_database"
                 ).fallbackToDestructiveMigration()
                     .allowMainThreadQueries().build()
                 INSTANCE = instance

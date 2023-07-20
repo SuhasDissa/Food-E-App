@@ -46,7 +46,8 @@ fun BarcodeHistoryCard(
     ElevatedCard(
         Modifier.combinedClickable(
             onClick = { onClick() },
-            onLongClick = { expanded = true })
+            onLongClick = { expanded = true }
+        )
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()

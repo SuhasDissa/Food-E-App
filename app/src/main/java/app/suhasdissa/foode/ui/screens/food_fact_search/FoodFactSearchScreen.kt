@@ -102,7 +102,6 @@ fun FoodFactSearchScreen(
                         FFSearchError.Unknown -> R.string.something_went_wrong
                     }
                 )
-
             }
 
             is FFSearchState.NotFound -> {

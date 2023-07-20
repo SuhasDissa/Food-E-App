@@ -33,7 +33,8 @@ fun NutrientCard(title: String, nutrientLevel: String, nutrientAmount: String) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(16.dp), verticalAlignment = Alignment.CenterVertically
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
                 Modifier
@@ -56,7 +57,6 @@ fun NutrientCard(title: String, nutrientLevel: String, nutrientAmount: String) {
                 )
             }
             Row(Modifier.weight(1f), horizontalArrangement = Arrangement.SpaceBetween) {
-
                 Text(
                     nutrientAmount,
                     style = MaterialTheme.typography.bodyMedium,

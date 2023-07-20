@@ -76,7 +76,6 @@ fun FoodProductCard(
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp)
                 )
-
             }
         }
     }

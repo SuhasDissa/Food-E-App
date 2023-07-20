@@ -12,7 +12,9 @@ import app.suhasdissa.foode.ui.components.MessageScreen
 
 @Composable
 fun AdditiveScreen(
-    additiveListViewModel: MainAdditivesViewModel = viewModel(factory = MainAdditivesViewModel.Factory),
+    additiveListViewModel: MainAdditivesViewModel = viewModel(
+        factory = MainAdditivesViewModel.Factory
+    ),
     onClickTextCard: (url: Int) -> Unit
 ) {
     Column(
@@ -21,7 +23,9 @@ fun AdditiveScreen(
     ) {
         if (additiveListViewModel.additives.isNotEmpty()) {
             CardGrid(
-                additiveListViewModel.additives, Modifier, onClickTextCard
+                additiveListViewModel.additives,
+                Modifier,
+                onClickTextCard
             )
         } else {
             MessageScreen(message = R.string.list_is_empty)

@@ -24,7 +24,6 @@ class SearchViewModel(private val additivesRepository: AdditivesRepository) : Vi
             searchState = SearchState.Success(
                 additivesRepository.search("%$searchQuery%")
             )
-
         }
     }
 

@@ -10,7 +10,9 @@ import app.suhasdissa.foode.utils.UpdateUtil
 class FoodeApplication : Application() {
     private val database by lazy { ENumberDatabase.getDatabase(this) }
     private val barcode_database by lazy { BarcodeDatabase.getDatabase(this) }
-    private val clipboard by lazy { getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager }
+    private val clipboard by lazy {
+        getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    }
     lateinit var container: AppContainer
 
     override fun onCreate() {

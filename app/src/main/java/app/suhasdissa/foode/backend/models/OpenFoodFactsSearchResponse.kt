@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class OpenFoodFactsSearchResponse(
-    @SerialName("products") var products: ArrayList<Products> = arrayListOf(),
+    @SerialName("products") var products: ArrayList<Products> = arrayListOf()
 )
 
 @Serializable

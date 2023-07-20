@@ -19,7 +19,9 @@ abstract class ENumberDatabase : RoomDatabase() {
         fun getDatabase(context: Context): ENumberDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext, ENumberDatabase::class.java, "database"
+                    context.applicationContext,
+                    ENumberDatabase::class.java,
+                    "database"
                 ).createFromAsset("databases/database.db")
                     .fallbackToDestructiveMigration()
                     .allowMainThreadQueries().build()

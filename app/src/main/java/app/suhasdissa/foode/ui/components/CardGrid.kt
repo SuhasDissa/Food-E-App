@@ -28,6 +28,5 @@ fun CardGrid(
                 subText = item.title
             )
         }
-
     }
 }

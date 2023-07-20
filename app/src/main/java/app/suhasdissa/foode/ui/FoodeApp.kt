@@ -23,6 +23,5 @@ fun FoodeApp(windowSizeClass: WindowSizeClass) {
             modifier = Modifier,
             isLargeScreen = (windowSizeClass.widthSizeClass != WindowWidthSizeClass.Compact)
         )
-
     }
 }

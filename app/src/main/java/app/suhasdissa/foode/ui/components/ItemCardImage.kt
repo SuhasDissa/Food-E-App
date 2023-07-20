@@ -65,7 +65,6 @@ fun ItemCardImage(
                 contentDescription = stringResource(imageDescription) + scoreValue,
                 contentScale = ContentScale.Fit
             )
-
         }
     }
 }

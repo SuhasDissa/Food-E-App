@@ -84,7 +84,6 @@ fun FoodFactOverview(product: Product) {
                             )
                         }
                     }
-
                 }
             }
         }

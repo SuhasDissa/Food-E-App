@@ -61,5 +61,5 @@ data class Product(
     val quantity: String? = null,
 
     @SerialName("serving_size")
-    val servingSize: String? = null,
+    val servingSize: String? = null
 )

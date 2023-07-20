@@ -17,7 +17,9 @@ import app.suhasdissa.foode.ui.components.IllustratedMessageScreen
 @Composable
 fun ScanHistoryScreen(
     onClickCard: (barcode: String) -> Unit,
-    barcodeHistoryViewModel: BarcodeHistoryViewModel = viewModel(factory = BarcodeHistoryViewModel.Factory)
+    barcodeHistoryViewModel: BarcodeHistoryViewModel = viewModel(
+        factory = BarcodeHistoryViewModel.Factory
+    )
 ) {
     if (barcodeHistoryViewModel.history.isNotEmpty()) {
         LazyColumn(

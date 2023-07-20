@@ -112,12 +112,12 @@ fun FoodFactIngredients(product: Product, onCLickAdditiveCard: (Int) -> Unit) {
                                     AdditiveCardStack(
                                         this.eCode,
                                         this.title,
-                                        onClick = { onCLickAdditiveCard(this.id) })
+                                        onClick = { onCLickAdditiveCard(this.id) }
+                                    )
                                 }
                             } else {
                                 AdditiveCardStack(mainText = pair.first.uppercase(), subText = "")
                             }
-
                         }
                     }
                 }

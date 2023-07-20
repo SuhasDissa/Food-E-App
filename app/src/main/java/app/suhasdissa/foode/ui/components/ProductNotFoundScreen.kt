@@ -23,7 +23,8 @@ import app.suhasdissa.foode.R
 
 @Composable
 fun ProductNotFoundScreen(
-    barcode: String, modifier: Modifier = Modifier
+    barcode: String,
+    modifier: Modifier = Modifier
 ) {
     Column(
         Modifier.fillMaxSize(),

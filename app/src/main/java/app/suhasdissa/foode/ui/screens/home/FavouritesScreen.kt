@@ -13,7 +13,9 @@ import app.suhasdissa.foode.ui.components.IllustratedMessageScreen
 
 @Composable
 fun FavouritesScreen(
-    additiveListViewModel: MainAdditivesViewModel = viewModel(factory = MainAdditivesViewModel.Factory),
+    additiveListViewModel: MainAdditivesViewModel = viewModel(
+        factory = MainAdditivesViewModel.Factory
+    ),
     onClickTextCard: (url: Int) -> Unit
 ) {
     LaunchedEffect(Unit) {
@@ -24,7 +26,9 @@ fun FavouritesScreen(
     ) {
         if (additiveListViewModel.favAdditives.isNotEmpty()) {
             CardGrid(
-                additiveListViewModel.favAdditives, Modifier, onClickTextCard
+                additiveListViewModel.favAdditives,
+                Modifier,
+                onClickTextCard
             )
         } else {
             IllustratedMessageScreen(

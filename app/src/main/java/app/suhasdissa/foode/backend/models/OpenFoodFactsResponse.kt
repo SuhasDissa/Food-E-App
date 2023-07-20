@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class OpenFoodFactsResponse(
     val product: Product? = null,
     val code: String? = null,
-    val status: Int = 0, // Boolean
+    val status: Int = 0 // Boolean
 )

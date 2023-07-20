@@ -189,41 +189,49 @@ data class Nutriments(
 
     @SerialName("vitamin-d_serving") val vitaminDServing: Float = 0f,
 
-    @SerialName("vitamin-d_unit") val vitaminDUnit: String? = null,
+    @SerialName("vitamin-d_unit") val vitaminDUnit: String? = null
 )
 
 fun Nutriments.getAsTable(context: Context): NutritionTableData {
     val tableHeading = Triple(
-        context.getString(R.string.nutritional_composition), context.getString(
+        context.getString(R.string.nutritional_composition),
+        context.getString(
             R.string.for_100g
-        ), context.getString(R.string.per_serving)
+        ),
+        context.getString(R.string.per_serving)
     )
     val tableData = listOf(
         Triple(
             context.getString(R.string.energy_kj),
             "${this.energyKj100G} kJ",
             "${this.energyKjServing} kJ"
-        ), Triple(
+        ),
+        Triple(
             context.getString(R.string.energy_kcal),
             "${this.energyKcal100G} kcal",
             "${this.energyKcalServing} kcal"
-        ), Triple(
+        ),
+        Triple(
             context.getString(R.string.fat),
             "${this.fat100G} ${this.fatUnit}",
             "${this.fatServing} ${this.fatUnit}"
-        ), Triple(
+        ),
+        Triple(
             context.getString(R.string.carbohydrates),
             "${this.carbohydrates100G} ${this.carbohydratesUnit}",
             "${this.carbohydratesServing} ${this.carbohydratesUnit}"
-        ), Triple(
+        ),
+        Triple(
             context.getString(R.string.fiber),
             "${this.fiber100G} ${this.fiberUnit}",
             "${this.fiberServing} ${this.fiberUnit}"
-        ), Triple(
+        ),
+        Triple(
             context.getString(R.string.proteins),
             "${this.proteins100G} ${this.proteinsUnit}",
             "${this.proteinsServing} ${this.proteinsUnit}"
-        ), Triple(
+        ),
+        Triple(
             context.getString(R.string.salt),
             "${this.salt100G} ${this.saltUnit}",
             "${this.saltServing} ${this.saltUnit}"
@@ -231,5 +239,4 @@ fun Nutriments.getAsTable(context: Context): NutritionTableData {
 
     )
     return NutritionTableData(tableHeading, tableData)
-
 }

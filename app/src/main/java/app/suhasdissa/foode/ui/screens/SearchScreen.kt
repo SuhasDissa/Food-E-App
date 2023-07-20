@@ -70,7 +70,9 @@ fun SearchScreen(
                 MessageScreen(R.string.no_results, modifier)
             } else {
                 CardGrid(
-                    searchState.additives, modifier, onClickTextCard
+                    searchState.additives,
+                    modifier,
+                    onClickTextCard
                 )
             }
         }

@@ -21,10 +21,14 @@ import app.suhasdissa.foode.ui.screens.home.HomeScreen
 
 @Composable
 fun AppNavHost(
-    navController: NavHostController, modifier: Modifier = Modifier, isLargeScreen: Boolean
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+    isLargeScreen: Boolean
 ) {
     NavHost(
-        navController = navController, startDestination = Destination.Home.route, modifier = modifier
+        navController = navController,
+        startDestination = Destination.Home.route,
+        modifier = modifier
     ) {
         composable(route = Destination.Home.route) {
             var additiveID by remember { mutableStateOf(0) }
@@ -56,13 +60,12 @@ fun AppNavHost(
             })
         }
         composable(route = Destination.Settings.route) {
-
             if (isLargeScreen) {
                 TwoPaneScreen(PaneOne = {
                     SettingsScreen(onNavigate = {})
                 }, PaneTwo = { AboutScreen() })
             } else {
-                SettingsScreen(onNavigate = {destination->
+                SettingsScreen(onNavigate = { destination ->
                     navController.navigateTo(destination.route)
                 })
             }
@@ -83,7 +86,8 @@ fun AppNavHost(
             }
         }
         composable(
-            route = Destination.AdditiveDetail.routeWithArgs, arguments = Destination.AdditiveDetail.arguments
+            route = Destination.AdditiveDetail.routeWithArgs,
+            arguments = Destination.AdditiveDetail.arguments
         ) {
             val id = it.arguments?.getInt("AdditiveID")
             if (id != null) {
@@ -93,9 +97,11 @@ fun AppNavHost(
         composable(
             route = Destination.FoodFactDetail.routeWithArgs,
             arguments = Destination.FoodFactDetail.arguments,
-            deepLinks = listOf(navDeepLink {
-                uriPattern = "foode://${Destination.FoodFactDetail.routeWithArgs}"
-            })
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "foode://${Destination.FoodFactDetail.routeWithArgs}"
+                }
+            )
         ) {
             val barcode = it.arguments?.getString("barcode")
             if (barcode != null) {

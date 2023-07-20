@@ -22,7 +22,8 @@ import app.suhasdissa.foode.utils.openBrowser
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(
-    modifier: Modifier = Modifier, updateViewModel: CheckUpdateViewModel = viewModel()
+    modifier: Modifier = Modifier,
+    updateViewModel: CheckUpdateViewModel = viewModel()
 ) {
     val context = LocalContext.current
 
@@ -48,7 +49,8 @@ fun AboutScreen(
                     description = "${updateViewModel.latestVersion}",
                     onClick = {
                         openBrowser(
-                            context, "https://github.com/SuhasDissa/Food-E-App/releases/latest"
+                            context,
+                            "https://github.com/SuhasDissa/Food-E-App/releases/latest"
                         )
                     },
                     icon = Icons.Default.NewReleases
@@ -60,7 +62,8 @@ fun AboutScreen(
                     description = stringResource(R.string.github_issue_description),
                     onClick = {
                         openBrowser(
-                            context, "https://github.com/SuhasDissa/Food-E-App/issues"
+                            context,
+                            "https://github.com/SuhasDissa/Food-E-App/issues"
                         )
                     },
                     icon = Icons.Default.ContactSupport
@@ -72,13 +75,13 @@ fun AboutScreen(
                     description = "${updateViewModel.currentVersion}",
                     onClick = {
                         openBrowser(
-                            context, "https://github.com/SuhasDissa/Food-E-App/issues"
+                            context,
+                            "https://github.com/SuhasDissa/Food-E-App/issues"
                         )
                     },
                     icon = Icons.Default.Info
                 )
             }
-
         }
     }
 }

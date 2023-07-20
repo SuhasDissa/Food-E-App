@@ -12,9 +12,11 @@ sealed class Destination(val route: String) {
         val routeWithArgs = "$route/{AdditiveID}"
         val arguments = listOf(navArgument("AdditiveID") { type = NavType.IntType })
     }
+
     object FoodFactDetail : Destination("food_fact") {
         val routeWithArgs = "$route/{barcode}"
         val arguments = listOf(navArgument("barcode") { type = NavType.StringType })
     }
+
     object FoodFactSearch : Destination("food_fact_search")
 }

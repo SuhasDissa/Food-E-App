@@ -12,10 +12,14 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextCard(
-    modifier: Modifier = Modifier, clickAction: () -> Unit, mainText: String, subText: String
+    modifier: Modifier = Modifier,
+    clickAction: () -> Unit,
+    mainText: String,
+    subText: String
 ) {
     ElevatedCard(
-        onClick = { clickAction() }, modifier = modifier
+        onClick = { clickAction() },
+        modifier = modifier
             .padding(8.dp)
             .fillMaxWidth()
 

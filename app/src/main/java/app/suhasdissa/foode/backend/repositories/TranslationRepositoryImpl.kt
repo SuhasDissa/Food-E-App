@@ -3,7 +3,7 @@ package app.suhasdissa.foode.backend.repositories
 import app.suhasdissa.foode.backend.api.LingvaTranslateAPI
 import app.suhasdissa.foode.backend.models.lingva.Language
 
-class TranslationRepositoryImpl() : TranslationRepository {
+class TranslationRepositoryImpl : TranslationRepository {
     override suspend fun getLanguages(): List<Language> {
         return LingvaTranslateAPI.retrofitService.getLanguages().languages
     }

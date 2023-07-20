@@ -9,5 +9,5 @@ data class NutrientLevels(
     val salt: String? = null,
     @SerialName("saturated-fat")
     val saturatedFat: String? = null,
-    val sugars: String? = null,
+    val sugars: String? = null
 )
