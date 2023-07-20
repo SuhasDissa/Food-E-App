@@ -6,26 +6,27 @@
   යෙදුම <a href="https://github.com/SuhasDissa/E-Number-Database">E-Number-Database</a> භාවිතා කරයි<br><br>
 </div>
 
-<div align="center">
-
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/SuhasDissa/Food-E-App?include_prereleases)
-![GitHub](https://img.shields.io/github/license/Suhasdissa/Food-E-App)
-![GitHub Repo stars](https://img.shields.io/github/stars/Suhasdissa/Food-E-App)
-
+ <div align="center">
+    <img alt="License" src="https://img.shields.io/github/license/SuhasDissa/Food-E-App?color=c3e7ff&style=flat-square">
+    <img alt="Downloads" src="https://img.shields.io/github/downloads/SuhasDissa/Food-E-App/total.svg?color=c3e7ff&style=flat-square">
+    <img alt="Last commit" src="https://img.shields.io/github/last-commit/SuhasDissa/Food-E-App?color=c3e7ff&style=flat-square">
+    <img alt="Repo size" src="https://img.shields.io/github/repo-size/SuhasDissa/Food-E-App?color=c3e7ff&style=flat-square">
+    <img alt="Stars" src="https://img.shields.io/github/stars/SuhasDissa/Food-E-App?color=c3e7ff&style=flat-square">
+    <br>
 </div>
 
 ---
 
 <details>
-  <summary>  Screenshots</summary>
+  <summary>  </summary>
 <p align="center">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="30%" />
+  <img src="" width="30%" />
+  <img src="" width="30%" />
+  <img src="" width="30%" />
 </p>
 <p align="center">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="30%" />
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width="30%" />
+  <img src="" width="30%" />
+  <img src="" width="30%" />
 </p>
 </details>
 

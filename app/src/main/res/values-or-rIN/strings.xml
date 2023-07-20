@@ -82,4 +82,12 @@
     <string name="search_food_product">Serch Food Product</string>
     <string name="clear_search">Clear Search</string>
     <string name="couldnt_find_product">Couldn\'t find any products</string>
+    <string name="timeout_error">Timeout Error</string>
+    <string name="translation_state">Translation State</string>
+    <string name="error">Error</string>
+    <string name="loading">Loading</string>
+    <string name="not_translated">Not Translated</string>
+    <string name="translation_success">Translation Success</string>
+    <string name="ok">OK</string>
+    <string name="language_not_supported">Language Not Supported</string>
 </resources>
