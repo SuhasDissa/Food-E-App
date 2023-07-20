@@ -6,18 +6,28 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SettingItem(title: String, description: String, icon: ImageVector?, onClick: () -> Unit) {
+fun SettingItem(
+    title: String,
+    description: String,
+    icon: ImageVector?,
+    TrailingContent: @Composable () -> Unit = {},
+    onClick: () -> Unit
+) {
     Surface(
         modifier = Modifier.clickable { onClick() }
     ) {
@@ -51,10 +61,24 @@ fun SettingItem(title: String, description: String, icon: ImageVector?, onClick:
                 Text(
                     text = description,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
+            TrailingContent()
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SettingItemPreview() {
+    SettingItem(
+        title = "Setting Item",
+        description = "Settings description goes here",
+        icon = Icons.Default.Settings,
+        TrailingContent = {
+            Switch(checked = false, onCheckedChange = {})
+        }
+    ) {
     }
 }
