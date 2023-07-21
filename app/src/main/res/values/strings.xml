@@ -80,7 +80,7 @@
     <string name="github_issue_description">Submit an issue for bug report or feature request</string>
     <string name="show_more_info">Show More Info</string>
     <string name="search_for_food_product">Search For A food Product</string>
-    <string name="search_food_product">Serch Food Product</string>
+    <string name="search_food_product">Search Food Product</string>
     <string name="clear_search">Clear Search</string>
     <string name="couldnt_find_product">Couldn\'t find any products</string>
     <string name="timeout_error">Timeout Error</string>
