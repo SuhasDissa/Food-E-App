@@ -8,6 +8,14 @@ on:
         - ".github/**"
     branches:
       - main
+  pull_request:
+    paths-ignore:
+        - "README*.md"
+        - "app/src/res/**"
+        - ".github/**"
+    branches:
+    - main
+  workflow_dispatch:
 
 jobs:
   apk:
