@@ -1,253 +1,106 @@
 package app.suhasdissa.foode.ui.screens.home
 
-import android.Manifest
-import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.StringRes
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import app.suhasdissa.foode.BarcodeScannerActivity
 import app.suhasdissa.foode.Destination
 import app.suhasdissa.foode.R
+import app.suhasdissa.foode.navigateTo
+import app.suhasdissa.foode.ui.components.NavDrawerContent
+import app.suhasdissa.foode.ui.screens.additives.MainAdditivesScreen
+import app.suhasdissa.foode.ui.screens.food_fact_screen.MainBarcodeHistoryScreen
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     onClickTextCard: (url: Int) -> Unit,
-    onNavigate: (destination: Destination) -> Unit,
+    onNavigate: (Destination) -> Unit,
     onClickBarcodeCard: (barcode: String) -> Unit
 
 ) {
-    var cameraPermission by remember { mutableStateOf(false) }
-    val launcher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) {
-        cameraPermission = it
-    }
     val navController = rememberNavController()
-    var currentScreen by remember { mutableStateOf<HomeScreen>(HomeScreen.Additives) }
-    val items = listOf(
-        HomeScreen.Additives,
-        HomeScreen.Favourites,
-        HomeScreen.Scan
-    )
-
-    Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
-        TopAppBar(title = { Text(stringResource(R.string.app_name)) }, actions = {
-            IconButton(onClick = { onNavigate(Destination.Settings) }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = stringResource(R.string.settings_title)
-                )
-            }
-        })
-    }, floatingActionButton = {
-        val context = LocalContext.current
-
-        Column(horizontalAlignment = Alignment.End) {
-            FloatingActionButton(onClick = {
-                val permission = Manifest.permission.CAMERA
-                val permissionCheckResult = ContextCompat.checkSelfPermission(context, permission)
-                if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
-                    context.startActivity(
-                        Intent(
-                            context,
-                            BarcodeScannerActivity::class.java
-                        )
-                    )
+    val drawerState = rememberDrawerState(DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
+    var currentDestination by remember {
+        mutableStateOf<Destination>(Destination.Additives)
+    }
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        gesturesEnabled = drawerState.isOpen,
+        drawerContent = {
+            NavDrawerContent(currentDestination = currentDestination, onDestinationSelected = {
+                scope.launch {
+                    drawerState.close()
+                }
+                if (it == Destination.Settings) {
+                    onNavigate(it)
                 } else {
-                    cameraPermission = false
-                    launcher.launch(permission)
+                    navController.navigateTo(it.route)
+                    currentDestination = it
                 }
-            }) {
-                Icon(
-                    painter = painterResource(R.drawable.barcode_icon),
-                    stringResource(R.string.scan)
-                )
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-            Row {
-                FloatingActionButton(onClick = { onNavigate(Destination.FoodFactSearch) }) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.open_food_fact_icon),
-                        stringResource(R.string.search_food_product),
-                        Modifier.size(24.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-                FloatingActionButton(onClick = { onNavigate(Destination.SearchView) }) {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        stringResource(R.string.search_icon_hint)
-                    )
-                }
-            }
+            })
         }
-    }, bottomBar = {
-        NavigationBar {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentDestination = navBackStackEntry?.destination
-            items.forEach { screen ->
-                NavigationBarItem(
-                    icon = screen.icon,
-                    label = { Text(stringResource(screen.resourceId)) },
-                    selected = currentDestination?.hierarchy?.any {
-                        it.route == screen.route
-                    } == true,
-                    onClick = {
-                        navController.navigate(screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                        currentScreen = screen
+    ) {
+        Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+            CenterAlignedTopAppBar(navigationIcon = {
+                IconButton(onClick = {
+                    scope.launch {
+                        drawerState.open()
                     }
-                )
-            }
-        }
-    }) { innerPadding ->
-        NavHost(
-            navController,
-            startDestination = HomeScreen.Additives.route,
-            Modifier.padding(innerPadding)
-        ) {
-            composable(HomeScreen.Additives.route, enterTransition = {
-                when (initialState.destination.route) {
-                    HomeScreen.Favourites.route -> slideIntoContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Right,
-                        animationSpec = tween(300)
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.Menu,
+                        contentDescription = "Open Navigation Drawer"
                     )
-
-                    HomeScreen.Scan.route -> slideIntoContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Right,
-                        animationSpec = tween(300)
-                    )
-
-                    else -> null
                 }
-            }, exitTransition = {
-                slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(300)
+            }, title = {
+                Text(
+                    stringResource(id = R.string.app_name),
+                    color = MaterialTheme.colorScheme.primary
                 )
-            }) {
-                AdditiveScreen(onClickTextCard = onClickTextCard)
-            }
-            composable(HomeScreen.Favourites.route, enterTransition = {
-                when (initialState.destination.route) {
-                    HomeScreen.Additives.route -> slideIntoContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Left,
-                        animationSpec = tween(300)
-                    )
-
-                    HomeScreen.Scan.route -> slideIntoContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Right,
-                        animationSpec = tween(300)
-                    )
-
-                    else -> null
+            })
+        }) { paddingValues ->
+            NavHost(
+                navController,
+                startDestination = Destination.Additives.route,
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
+                enterTransition = { EnterTransition.None },
+                exitTransition = { ExitTransition.None }
+            ) {
+                composable(Destination.Additives.route) {
+                    MainAdditivesScreen(onNavigate, onClickTextCard)
                 }
-            }, exitTransition = {
-                when (targetState.destination.route) {
-                    HomeScreen.Additives.route -> slideOutOfContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Right,
-                        animationSpec = tween(300)
-                    )
-
-                    HomeScreen.Scan.route -> slideOutOfContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Left,
-                        animationSpec = tween(300)
-                    )
-
-                    else -> null
+                composable(Destination.FoodFacts.route) {
+                    MainBarcodeHistoryScreen(onNavigate, onClickBarcodeCard)
                 }
-            }) {
-                FavouritesScreen(onClickTextCard = onClickTextCard)
-            }
-            composable(HomeScreen.Scan.route, enterTransition = {
-                slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(300)
-                )
-            }, exitTransition = {
-                slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(300)
-                )
-            }) {
-                ScanHistoryScreen(onClickCard = onClickBarcodeCard)
             }
         }
     }
-}
-
-sealed class HomeScreen(
-    val icon: @Composable () -> Unit,
-    val route: String,
-    @StringRes val resourceId: Int
-) {
-    object Additives : HomeScreen(
-        { Icon(imageVector = Icons.Filled.Book, contentDescription = null) },
-        "all_additives",
-        R.string.additives
-    )
-
-    object Favourites : HomeScreen({
-        Icon(
-            imageVector = Icons.Filled.Star,
-            contentDescription = null
-        )
-    }, "fav_additives", R.string.favourites)
-
-    object Scan : HomeScreen({
-        Icon(
-            painter = painterResource(id = R.drawable.barcode_icon),
-            contentDescription = null
-        )
-    }, "scan_history", R.string.scan_history)
 }

@@ -91,4 +91,7 @@
     <string name="translation_success">Translation Success</string>
     <string name="ok">OK</string>
     <string name="language_not_supported">Language Not Supported</string>
+    <string name="scan_food_product">Scan Food Product</string>
+    <string name="food_products">Food Products</string>
+    <string name="add_product_to_fav">Add Product to Favourites</string>
 </resources>

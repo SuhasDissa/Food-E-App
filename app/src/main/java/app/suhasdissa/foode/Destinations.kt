@@ -19,4 +19,7 @@ sealed class Destination(val route: String) {
     }
 
     object FoodFactSearch : Destination("food_fact_search")
+
+    object Additives : Destination("main_additives")
+    object FoodFacts : Destination("main_foodfacts")
 }
