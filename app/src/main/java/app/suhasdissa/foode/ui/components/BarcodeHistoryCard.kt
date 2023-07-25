@@ -11,16 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -37,16 +31,13 @@ import coil.request.ImageRequest
 @Composable
 fun BarcodeHistoryCard(
     onClick: () -> Unit,
-    onClickRemove: () -> Unit,
+    onLongPress: () -> Unit,
     barcodeEntity: BarcodeEntity
 ) {
-    var expanded by remember {
-        mutableStateOf(false)
-    }
     ElevatedCard(
         Modifier.combinedClickable(
             onClick = { onClick() },
-            onLongClick = { expanded = true }
+            onLongClick = { onLongPress() }
         )
     ) {
         Row(
@@ -80,18 +71,6 @@ fun BarcodeHistoryCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp)
-                )
-            }
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.remove_item)) },
-                    onClick = {
-                        expanded = false
-                        onClickRemove()
-                    }
                 )
             }
         }

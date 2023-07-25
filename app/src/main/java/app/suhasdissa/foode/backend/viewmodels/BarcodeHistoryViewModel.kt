@@ -19,20 +19,27 @@ class BarcodeHistoryViewModel(private val barcodeHistoryRepository: BarcodeHisto
     var history: List<BarcodeEntity> by mutableStateOf(listOf())
         private set
 
-    init {
-        getHistory()
-    }
+    var favHistory: List<BarcodeEntity> by mutableStateOf(listOf())
+        private set
 
-    private fun getHistory() {
+    fun getHistory() {
         viewModelScope.launch {
             history = barcodeHistoryRepository.getAll()
+            favHistory = history.filter { it.isFavourite }
         }
     }
 
     fun deleteItem(barcode: BarcodeEntity) {
         viewModelScope.launch {
             barcodeHistoryRepository.delete(barcode)
-            history = barcodeHistoryRepository.getAll()
+            getHistory()
+        }
+    }
+
+    fun toggleFavourite(barcode: BarcodeEntity) {
+        viewModelScope.launch {
+            barcodeHistoryRepository.saveBarcode(barcode.toggleLike())
+            getHistory()
         }
     }
 

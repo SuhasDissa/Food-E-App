@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Book
+import androidx.compose.material.icons.filled.EmojiFoodBeverage
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.FloatingActionButton
@@ -38,7 +38,12 @@ fun MainAdditivesScreen(onNavigate: (Destination) -> Unit, onClickTextCard: (url
     }, bottomBar = {
         NavigationBar {
             NavigationBarItem(
-                icon = { Icon(imageVector = Icons.Filled.Book, contentDescription = null) },
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.EmojiFoodBeverage,
+                        contentDescription = null
+                    )
+                },
                 label = { Text(stringResource(R.string.additives)) },
                 selected = pagerState.currentPage == 0,
                 onClick = {

@@ -16,10 +16,8 @@ android {
         versionCode = 34
         versionName = "3.4"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
-            }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
         }
     }
     signingConfigs {

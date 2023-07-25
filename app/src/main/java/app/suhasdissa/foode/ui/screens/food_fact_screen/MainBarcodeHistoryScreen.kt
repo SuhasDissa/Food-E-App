@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Book
+import androidx.compose.material.icons.filled.EmojiFoodBeverage
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.FloatingActionButton
@@ -42,7 +42,12 @@ fun MainBarcodeHistoryScreen(
     }, bottomBar = {
         NavigationBar {
             NavigationBarItem(
-                icon = { Icon(imageVector = Icons.Filled.Book, contentDescription = null) },
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.EmojiFoodBeverage,
+                        contentDescription = null
+                    )
+                },
                 label = { Text(stringResource(R.string.food_products)) },
                 selected = pagerState.currentPage == 0,
                 onClick = {
@@ -73,8 +78,8 @@ fun MainBarcodeHistoryScreen(
             modifier = Modifier.fillMaxSize().padding(innerPadding)
         ) { index ->
             when (index) {
-                0 -> ScanHistoryScreen(onClickCard = onClickBarcodeCard)
-                1 -> ScanHistoryScreen(onClickCard = onClickBarcodeCard)
+                0 -> ScanHistoryScreen(onClickCard = onClickBarcodeCard, showFavourite = false)
+                1 -> ScanHistoryScreen(onClickCard = onClickBarcodeCard, showFavourite = true)
             }
         }
     }
