@@ -13,8 +13,8 @@ android {
         applicationId = "app.suhasdissa.foode"
         minSdk = 24
         targetSdk = 34
-        versionCode = 34
-        versionName = "3.4"
+        versionCode = 35
+        versionName = "3.5"
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
