@@ -1,5 +1,6 @@
 package app.suhasdissa.foode.ui.components
 
+import android.view.SoundEffectConstants
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -34,9 +36,13 @@ fun BarcodeHistoryCard(
     onLongPress: () -> Unit,
     barcodeEntity: BarcodeEntity
 ) {
+    val view = LocalView.current
     ElevatedCard(
         Modifier.combinedClickable(
-            onClick = { onClick() },
+            onClick = {
+                view.playSoundEffect(SoundEffectConstants.CLICK)
+                onClick()
+            },
             onLongClick = { onLongPress() }
         )
     ) {

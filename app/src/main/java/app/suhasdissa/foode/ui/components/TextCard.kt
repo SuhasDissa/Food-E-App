@@ -1,5 +1,6 @@
 package app.suhasdissa.foode.ui.components
 
+import android.view.SoundEffectConstants
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -7,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -17,8 +19,12 @@ fun TextCard(
     mainText: String,
     subText: String
 ) {
+    val view = LocalView.current
     ElevatedCard(
-        onClick = { clickAction() },
+        onClick = {
+            view.playSoundEffect(SoundEffectConstants.CLICK)
+            clickAction()
+        },
         modifier = modifier
             .padding(8.dp)
             .fillMaxWidth()

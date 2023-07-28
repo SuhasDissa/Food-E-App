@@ -3,9 +3,9 @@ package app.suhasdissa.foode.ui.components
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.view.SoundEffectConstants
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -48,13 +49,13 @@ fun NavDrawerContent(
         cameraPermission = it
     }
     val context = LocalContext.current
+    val view = LocalView.current
     ModalDrawerSheet(modifier = Modifier.width(250.dp)) {
         Spacer(Modifier.height(48.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
                 modifier = Modifier.size(96.dp),
@@ -78,6 +79,7 @@ fun NavDrawerContent(
             label = { Text(text = stringResource(id = R.string.additives)) },
             selected = currentDestination == Destination.Additives,
             onClick = {
+                view.playSoundEffect(SoundEffectConstants.CLICK)
                 onDestinationSelected(Destination.Additives)
             }
         )
@@ -92,6 +94,7 @@ fun NavDrawerContent(
             label = { Text(text = stringResource(id = R.string.food_products)) },
             selected = currentDestination == Destination.FoodFacts,
             onClick = {
+                view.playSoundEffect(SoundEffectConstants.CLICK)
                 onDestinationSelected(Destination.FoodFacts)
             }
         )
@@ -106,6 +109,7 @@ fun NavDrawerContent(
             label = { Text(text = stringResource(id = R.string.scan_food_product)) },
             selected = false,
             onClick = {
+                view.playSoundEffect(SoundEffectConstants.CLICK)
                 val permission = Manifest.permission.CAMERA
                 val permissionCheckResult =
                     ContextCompat.checkSelfPermission(context, permission)
@@ -133,6 +137,7 @@ fun NavDrawerContent(
             label = { Text(text = stringResource(id = R.string.settings_title)) },
             selected = false,
             onClick = {
+                view.playSoundEffect(SoundEffectConstants.CLICK)
                 onDestinationSelected(Destination.Settings)
             }
         )

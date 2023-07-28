@@ -1,5 +1,6 @@
 package app.suhasdissa.foode.ui.screens.additives
 
+import android.view.SoundEffectConstants
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import app.suhasdissa.foode.Destination
 import app.suhasdissa.foode.R
@@ -27,9 +29,13 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainAdditivesScreen(onNavigate: (Destination) -> Unit, onClickTextCard: (url: Int) -> Unit) {
     val scope = rememberCoroutineScope()
+    val view = LocalView.current
     val pagerState = rememberPagerState { 2 }
     Scaffold(modifier = Modifier.fillMaxSize(), floatingActionButton = {
-        FloatingActionButton(onClick = { onNavigate(Destination.SearchView) }) {
+        FloatingActionButton(onClick = {
+            view.playSoundEffect(SoundEffectConstants.CLICK)
+            onNavigate(Destination.SearchView)
+        }) {
             Icon(
                 imageVector = Icons.Filled.Search,
                 stringResource(R.string.search_icon_hint)
@@ -47,6 +53,7 @@ fun MainAdditivesScreen(onNavigate: (Destination) -> Unit, onClickTextCard: (url
                 label = { Text(stringResource(R.string.additives)) },
                 selected = pagerState.currentPage == 0,
                 onClick = {
+                    view.playSoundEffect(SoundEffectConstants.CLICK)
                     scope.launch {
                         pagerState.animateScrollToPage(
                             0
@@ -59,6 +66,7 @@ fun MainAdditivesScreen(onNavigate: (Destination) -> Unit, onClickTextCard: (url
                 label = { Text(stringResource(R.string.favourites)) },
                 selected = pagerState.currentPage == 1,
                 onClick = {
+                    view.playSoundEffect(SoundEffectConstants.CLICK)
                     scope.launch {
                         pagerState.animateScrollToPage(
                             1

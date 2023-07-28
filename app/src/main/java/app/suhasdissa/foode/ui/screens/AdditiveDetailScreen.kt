@@ -1,6 +1,7 @@
 package app.suhasdissa.foode.ui.screens
 
 import android.content.ClipData
+import android.view.SoundEffectConstants
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -28,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -52,6 +54,7 @@ fun AdditiveDetailScreen(
         factory = AdditiveDetailViewModel.Factory
     )
 ) {
+    val view = LocalView.current
     LaunchedEffect(id) {
         if (id != 0) additiveViewModel.getAdditive(id)
     }
@@ -77,7 +80,10 @@ fun AdditiveDetailScreen(
                     overflow = TextOverflow.Ellipsis
                 )
             }, actions = {
-                IconButton(onClick = { showTranslationState = true }) {
+                IconButton(onClick = {
+                    view.playSoundEffect(SoundEffectConstants.CLICK)
+                    showTranslationState = true
+                }) {
                     Icon(
                         imageVector = Icons.Default.Translate,
                         contentDescription = stringResource(
@@ -92,6 +98,7 @@ fun AdditiveDetailScreen(
                     mutableIntStateOf(additive.isFavourite)
                 }
                 FloatingActionButton(onClick = {
+                    view.playSoundEffect(SoundEffectConstants.CLICK)
                     val copyText =
                         "${additive.eCode} : ${additive.title}\n\nHalal Status : ${additive.halalStatus}\n\n${additive.info}"
                     val clip: ClipData = ClipData.newPlainText("Additive Details", copyText)
@@ -104,6 +111,7 @@ fun AdditiveDetailScreen(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 FloatingActionButton(onClick = {
+                    view.playSoundEffect(SoundEffectConstants.CLICK)
                     when (isFavourite) {
                         0 -> {
                             isFavourite = 1
