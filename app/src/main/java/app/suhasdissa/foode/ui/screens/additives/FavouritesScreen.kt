@@ -3,7 +3,8 @@ package app.suhasdissa.foode.ui.screens.additives
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
@@ -18,15 +19,13 @@ fun FavouritesScreen(
     ),
     onClickTextCard: (url: Int) -> Unit
 ) {
-    LaunchedEffect(Unit) {
-        additiveListViewModel.getFavouriteAdditives()
-    }
+    val favAdditives by additiveListViewModel.favAdditives.collectAsState()
     Column(
         Modifier.fillMaxSize()
     ) {
-        if (additiveListViewModel.favAdditives.isNotEmpty()) {
+        if (favAdditives.isNotEmpty()) {
             CardGrid(
-                additiveListViewModel.favAdditives,
+                favAdditives,
                 Modifier,
                 onClickTextCard
             )

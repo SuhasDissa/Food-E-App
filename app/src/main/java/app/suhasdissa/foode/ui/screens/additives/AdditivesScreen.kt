@@ -3,6 +3,8 @@ package app.suhasdissa.foode.ui.screens.additives
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.suhasdissa.foode.R
@@ -17,13 +19,14 @@ fun AdditiveScreen(
     ),
     onClickTextCard: (url: Int) -> Unit
 ) {
+    val additives by additiveListViewModel.additives.collectAsState()
     Column(
         Modifier
             .fillMaxSize()
     ) {
-        if (additiveListViewModel.additives.isNotEmpty()) {
+        if (additives.isNotEmpty()) {
             CardGrid(
-                additiveListViewModel.additives,
+                additives,
                 Modifier,
                 onClickTextCard
             )

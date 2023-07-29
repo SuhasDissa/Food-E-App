@@ -1,13 +1,12 @@
 package app.suhasdissa.foode.backend.repositories
 
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
+import kotlinx.coroutines.flow.Flow
 
 interface AdditivesRepository {
-    suspend fun getAdditives(): List<AdditivesEntity>
+    fun getAdditives(): Flow<List<AdditivesEntity>>
     suspend fun getAdditive(id: Int): AdditivesEntity
     suspend fun search(search: String): List<AdditivesEntity>
-
-    suspend fun getFavourites(): List<AdditivesEntity>
-
+    fun getFavourites(): Flow<List<AdditivesEntity>>
     suspend fun setFavourite(id: Int, favourite: Int)
 }

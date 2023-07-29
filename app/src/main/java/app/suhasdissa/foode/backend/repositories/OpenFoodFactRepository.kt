@@ -11,11 +11,9 @@ interface OpenFoodFactRepository {
 }
 
 class OpenFoodFactRepositoryImpl : OpenFoodFactRepository {
-    override suspend fun getOnlineData(barcode: String): Product? {
-        return OpenFoodFactsAPI.retrofitService.getProductData(barcode).product
-    }
+    override suspend fun getOnlineData(barcode: String): Product? =
+        OpenFoodFactsAPI.retrofitService.getProductData(barcode).product
 
-    override suspend fun searchProduct(q: String): ArrayList<Products> {
-        return OpenFoodFactsAPI.retrofitService.searchProduct(q).products
-    }
+    override suspend fun searchProduct(q: String): ArrayList<Products> =
+        OpenFoodFactsAPI.retrofitService.searchProduct(q).products
 }

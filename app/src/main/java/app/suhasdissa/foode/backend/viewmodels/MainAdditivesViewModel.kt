@@ -1,8 +1,5 @@
 package app.suhasdissa.foode.backend.viewmodels
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -12,30 +9,23 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import app.suhasdissa.foode.FoodeApplication
 import app.suhasdissa.foode.backend.database.entities.AdditivesEntity
 import app.suhasdissa.foode.backend.repositories.AdditivesRepository
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 
-class MainAdditivesViewModel(private val additivesRepository: AdditivesRepository) : ViewModel() {
-    var additives: List<AdditivesEntity> by mutableStateOf(listOf())
-        private set
-    var favAdditives: List<AdditivesEntity> by mutableStateOf(listOf())
-        private set
+class MainAdditivesViewModel(additivesRepository: AdditivesRepository) : ViewModel() {
 
-    init {
-        getAdditives()
-        getFavouriteAdditives()
-    }
-
-    fun getFavouriteAdditives() {
-        viewModelScope.launch {
-            favAdditives = additivesRepository.getFavourites()
-        }
-    }
-
-    private fun getAdditives() {
-        viewModelScope.launch {
-            additives = additivesRepository.getAdditives()
-        }
-    }
+    val additives: StateFlow<List<AdditivesEntity>> = additivesRepository.getAdditives().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000L),
+        initialValue = listOf()
+    )
+    val favAdditives: StateFlow<List<AdditivesEntity>> =
+        additivesRepository.getFavourites().stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000L),
+            initialValue = listOf()
+        )
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
