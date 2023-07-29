@@ -27,13 +27,22 @@
 <p align="center">
   <img src="" width="30%" />
   <img src="" width="30%" />
+  <img src="" width="30%" />
+</p>
+<p align="center">
+  <img src="" width="30%" />
+  <img src="" width="30%" />
 </p>
 </details>
 
 ## ✨ විශේෂාංග
-- ආහාර ආකලන 150 කට වැඩි එකතුවක්
+- A Collection of more than 560 Food Additives
 - ආකලන නම හෝ E-අංකය මගින් සොයන්න
 - එක් එක් ආකලන පිළිබඳ සවිස්තරාත්මක තොරතුරු
+- Scan Food product barcodes to get their Nutrition facts.
+- Search for food products within the app.
+- Suport for multiple languages.
+- Automatic cloud translation of additive information
 - විශාල තිර ටැබ්ලට් සඳහා සහාය
 
 ## 📲 Installation
