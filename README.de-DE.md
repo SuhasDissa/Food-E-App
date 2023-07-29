@@ -27,13 +27,22 @@
 <p align="center">
   <img src="" width="30%" />
   <img src="" width="30%" />
+  <img src="" width="30%" />
+</p>
+<p align="center">
+  <img src="" width="30%" />
+  <img src="" width="30%" />
 </p>
 </details>
 
 ## ✨ Funktionen
-- Eine Sammlung von mehr als 150 Lebensmittelzusätzen
+- A Collection of more than 560 Food Additives
 - Suche nach Zusatzstoffen oder E-Nummer
 - Detaillierte Informationen zu jedem Zusatzstoff
+- Scan Food product barcodes to get their Nutrition facts.
+- Search for food products within the app.
+- Suport for multiple languages.
+- Automatic cloud translation of additive information
 - Unterstützung für Tablets
 
 ## 📲 Installation
