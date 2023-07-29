@@ -27,13 +27,22 @@
 <p align="center">
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="30%" />
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width="30%" />
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" width="30%" />
+</p>
+<p align="center">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" width="30%" />
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" width="30%" />
 </p>
 </details>
 
 ## ✨ Features
-- A Collection of more than 150 Food Additives
+- A Collection of more than 560 Food Additives
 - Search by additive name or E-number
 - Detailed info about each additive
+- Scan Food product barcodes to get their Nutrition facts.
+- Search for food products within the app.
+- Suport for multiple languages.
+- Automatic cloud translation of additive information
 - Support for Large Screen tablets
 
 ## 📲 Installation
