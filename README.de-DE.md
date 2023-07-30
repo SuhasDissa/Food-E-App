@@ -42,7 +42,7 @@
 - Scanne Strichcodes von Lebensmittel, um ihre Nährwertangaben zu erhalten.
 - Suche nach Lebensmittel innerhalb der App.
 - Unterstützung für mehrere Sprachen.
-- Automatic cloud translation of additive information
+- Automatische Cloud-Übersetzung der Zusatzstoffinformationen
 - Unterstützung für Tablets
 
 ## 📲 Installation
