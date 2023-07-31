@@ -12,7 +12,7 @@
     <string name="add_to_favourite">Zu Favoriten hinzufügen</string>
     <string name="remove_from_favourite">Aus Favoriten entfernen</string>
     <string name="list_is_empty">Keine Einträge vorhanden</string>
-    <string name="current_version">"Installierte Version"</string>
+    <string name="current_version">"Aktuelle Version"</string>
     <string name="halal_status_halal">Halal</string>
     <string name="health_rating">Gesundheitseinstufung:</string>
     <string name="scan">Scannen</string>

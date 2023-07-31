@@ -36,13 +36,13 @@
 </details>
 
 ## ✨ Funktionen
-- A Collection of more than 560 Food Additives
+- Eine Sammlung von mehr als 560 Lebensmittelzusatzstoffen
 - Suche nach Zusatzstoffen oder E-Nummer
 - Detaillierte Informationen zu jedem Zusatzstoff
-- Scan Food product barcodes to get their Nutrition facts.
-- Search for food products within the app.
-- Suport for multiple languages.
-- Automatic cloud translation of additive information
+- Scanne Strichcodes von Lebensmittel, um ihre Nährwertangaben zu erhalten.
+- Suche nach Lebensmittel innerhalb der App.
+- Unterstützung für mehrere Sprachen.
+- Automatische Cloud-Übersetzung der Zusatzstoffinformationen
 - Unterstützung für Tablets
 
 ## 📲 Installation
