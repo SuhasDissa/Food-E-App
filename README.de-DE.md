@@ -48,8 +48,11 @@
 ## 📲 Installation
 
 [<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png"
-    alt="Hole es auf GitHub"
-    height="80" />](https://github.com/SuhasDissa/Food-E-App/releases/latest)
+    alt="Get it on GitHub"
+    height="80" />](https://github.com/SuhasDissa/Food-E-App/releases/latest) [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80" />](https://f-droid.org/en/packages/app.suhasdissa.foode/)
+
 
 ## ⭐ Stern-Verlauf
 
