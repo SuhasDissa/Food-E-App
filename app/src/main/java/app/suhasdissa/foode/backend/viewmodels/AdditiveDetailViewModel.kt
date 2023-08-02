@@ -58,10 +58,12 @@ class AdditiveDetailViewModel(
                 return@launch
             }
             translationState = try {
-                val titleTrans = transtationRepository.getTranslation(languageCode, title)
-                val descriptionTrans =
-                    transtationRepository.getTranslation(languageCode, description)
-                additive = additive?.copy(info = descriptionTrans, title = titleTrans)
+                val trans =
+                    transtationRepository.getTranslation(languageCode, "$title\n\n\n$description")
+                val data = trans.split("\n\n\n").let {
+                    it.first() to it.last()
+                }
+                additive = additive?.copy(title = data.first, info = data.second)
                 TranslationState.Success
             } catch (e: Exception) {
                 Log.e("Translate Error", e.toString())

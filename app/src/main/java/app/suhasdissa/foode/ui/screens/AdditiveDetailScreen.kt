@@ -80,16 +80,18 @@ fun AdditiveDetailScreen(
                     overflow = TextOverflow.Ellipsis
                 )
             }, actions = {
-                IconButton(onClick = {
-                    view.playSoundEffect(SoundEffectConstants.CLICK)
-                    showTranslationState = true
-                }) {
-                    Icon(
-                        imageVector = Icons.Default.Translate,
-                        contentDescription = stringResource(
-                            id = R.string.translation_state
+                if (additiveViewModel.translationState != TranslationState.NotTranslated) {
+                    IconButton(onClick = {
+                        view.playSoundEffect(SoundEffectConstants.CLICK)
+                        showTranslationState = true
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Translate,
+                            contentDescription = stringResource(
+                                id = R.string.translation_state
+                            )
                         )
-                    )
+                    }
                 }
             })
         }, floatingActionButton = {
@@ -313,6 +315,9 @@ fun AdditiveDetailBox(
                     }
                 }
             }
+        }
+        item {
+            Spacer(Modifier.height(200.dp))
         }
     }
 }
