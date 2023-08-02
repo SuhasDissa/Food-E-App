@@ -1,6 +1,5 @@
 package app.suhasdissa.foode.ui.screens
 
-import android.content.ClipData
 import android.view.SoundEffectConstants
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -101,10 +100,7 @@ fun AdditiveDetailScreen(
                 }
                 FloatingActionButton(onClick = {
                     view.playSoundEffect(SoundEffectConstants.CLICK)
-                    val copyText =
-                        "${additive.eCode} : ${additive.title}\n\nHalal Status : ${additive.halalStatus}\n\n${additive.info}"
-                    val clip: ClipData = ClipData.newPlainText("Additive Details", copyText)
-                    additiveViewModel.getClipboard().setPrimaryClip(clip)
+                    additiveViewModel.copyToClipboard()
                 }) {
                     Icon(
                         imageVector = Icons.Default.ContentCopy,

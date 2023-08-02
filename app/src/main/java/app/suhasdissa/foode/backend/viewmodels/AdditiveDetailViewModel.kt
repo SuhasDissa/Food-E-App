@@ -1,5 +1,6 @@
 package app.suhasdissa.foode.backend.viewmodels
 
+import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.SharedPreferences
 import android.util.Log
@@ -72,10 +73,6 @@ class AdditiveDetailViewModel(
         }
     }
 
-    fun getClipboard(): ClipboardManager {
-        return clipboard
-    }
-
     fun getAdditive(id: Int) {
         viewModelScope.launch {
             additive = additivesRepository.getAdditive(id)
@@ -88,6 +85,16 @@ class AdditiveDetailViewModel(
     fun setFavourite(favourite: Int) {
         viewModelScope.launch {
             additivesRepository.setFavourite(additive!!.id, favourite)
+        }
+    }
+
+    fun copyToClipboard() {
+        val copyText = with(additive ?: return) {
+            "$eCode : $title\n${if (halalStatus == 1) "Halal Certified\n" else "\n"}$info"
+        }
+        viewModelScope.launch {
+            val clip: ClipData = ClipData.newPlainText("Additive Details", copyText)
+            clipboard.setPrimaryClip(clip)
         }
     }
 
