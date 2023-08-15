@@ -54,13 +54,9 @@
     alt="Get it on F-Droid"
     height="80">](https://f-droid.org/en/packages/app.suhasdissa.foode/)
 
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=SuhasDissa/Food-E-App&type=Timeline)](https://star-history.com/#SuhasDissa/Food-E-App&Timeline)
-
-## 🧾 Translation
-[Crowdin Translate](https://crowdin.com/project/food-e-app)
+## Useful Links
+<a href="https://trello.com/b/f6Ob30vy/food-e-app"><img src="https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white" height="40"></a>
+<a href="https://crowdin.com/project/food-e-app"><img src="https://img.shields.io/badge/Crowdin_Translate-%232E3340.svg?style=for-the-badge&logo=Crowdin&logoColor=white" height="40"></a>
 
 ## For contributors
 
