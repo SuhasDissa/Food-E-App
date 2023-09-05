@@ -1,3 +1,5 @@
+[English](README.md) | [日本語](README.ja-JP.md) | [Deutsch](README.de-DE.md) | [Русский](README.ru-RU.md) | [ଓଡ଼ିଆ](README.or-IN.md) | [සිංහල](README.si-LK.md)
+
 <div align="center">
   <img width="150" src="/logo.png" alt="App icon">
   <h1 align="center">Food-E App</h1>
