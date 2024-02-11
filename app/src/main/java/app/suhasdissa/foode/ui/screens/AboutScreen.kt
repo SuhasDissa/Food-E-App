@@ -66,7 +66,7 @@ fun AboutScreen(
                             "https://github.com/SuhasDissa/Food-E-App/issues"
                         )
                     },
-                    icon = Icons.Default.ContactSupport
+                    icon = Icons.AutoMirrored.Default.ContactSupport
                 )
             }
             item {
