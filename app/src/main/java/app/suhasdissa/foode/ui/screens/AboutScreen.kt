@@ -3,7 +3,7 @@ package app.suhasdissa.foode.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ContactSupport
+import androidx.compose.material.icons.automirrored.filled.ContactSupport
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.NewReleases
@@ -66,7 +66,7 @@ fun AboutScreen(
                             "https://github.com/SuhasDissa/Food-E-App/issues"
                         )
                     },
-                    icon = Icons.Default.ContactSupport
+                    icon = Icons.AutoMirrored.Default.ContactSupport
                 )
             }
             item {
